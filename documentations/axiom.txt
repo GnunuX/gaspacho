@@ -1,0 +1,209 @@
++-- Création de notre première classe axiom --+
+
+from axiom.item import Item
+from axiom.attributes import text, integer
+
+class Rule(Item):
+    name = text()
+    level = integer()
+
++-- Instanciantion de la classe --+
+from axiom.store import Store
+store = Store()
+rule1 = Rule(store=store, name=u"Activation du proxy", level=0)
+
+--
+rule1 
+Rule(level=0, name=u'Activation du proxy', storeID=3)@0x92BA30C
+
+rule1.level 
+0
+
+rule1.level = 3
+rule1.level 
+3
+
+rule1.level += 20
+rule1.level 
+23
+
+--
+
+**exit**
+
++-- Les classes Rule --+
+
+from axiom.item import Item
+from axiom.attributes import text, integer, reference
+
+# Rule
+class Rule(Item):
+    name = text(allowNone=False, indexed=True)
+    type = text(allowNone=False)
+    default = text(allowNone=False)
+    level = integer(default=0)
+    description = text()
+
+class Action(Item):
+    rule = reference(allowNone=False)
+    name = text(allowNone=False)
+    type = text(allowNone=False)
+    valueon = text(allowNone=False)
+    valueoff = text(allowNone=False)
+    description = text()
+
++-- Instanciation --+
++- 1 -+
+from axiom.store import Store
+store = Store()
+
+rule1 = Rule(store=store, name=u"Activation du proxy", type=u"boolean", default=u"no")
+
+rule1 
+Rule(default=u'no', description=None, level=0, name=u'Activation du proxy', type=u'boolean', storeID=3)@0xA05BF6C
+
++- 2 -+
+action1 = Action(store=store, name=u'activate_proxy', type=u'string', valueon=u'True', valueoff=u'False', rule=rule1)
+
++- 3 -+
+store.query(Rule)
+ItemQuery(<Store (in memory)@0x890586c>, <class '__main__.Rule'>, None, None, None, <axiom.attributes.UnspecifiedOrdering object at 0x8c5722c>)
+
+for i in store.query(Rule):
+   i
+Rule(default=u'no', description=None, level=0, name=u'Activation du proxy', type=u'boolean', storeID=5)@0x8C4AD4C
+
+for i in store.query(Rule, Rule.default == u'no'):
+   i
+Rule(default=u'no', description=None, level=0, name=u'Activation du proxy', type=u'boolean', storeID=5)@0x8C4AD4C
+
+
+**exit**
+
++-- Les classes Rule2 --+
+
+from axiom.item import Item
+from axiom.attributes import text, integer, reference, AND
+
+class Rule(Item):
+    name = text(allowNone=False, indexed=True)
+    type = text(allowNone=False)
+    default = text(allowNone=False)
+    level = integer(default=0)
+    description = text()
+    def add_action(self, name, type, valueon, valueoff, description=u''):
+        return self.store.findOrCreate(Action, name=name, type=type, valueon=valueon, valueoff=valueoff, description=description, rule=self)
+    def get_actions(self):
+        return self.store.query(Action, Action.rule == self)
+    def get_action(self, name):
+        return self.store.findFirst(Action, AND(Action.rule == self, Action.name == name))
+
+class Action(Item):
+    rule = reference(allowNone=False)
+    name = text(allowNone=False)
+    type = text(allowNone=False)
+    valueon = text(allowNone=False)
+    valueoff = text(allowNone=False)
+    description = text()
+
++-- Instanciation --+
+from axiom.store import Store
+store = Store()
+
+rule1 = Rule(store=store, name=u"Activation du proxy", type=u"boolean", default=u"no")
+action1 = rule1.add_action(name=u'activate_proxy', type=u'string', valueon=u'True', valueoff=u'False')
+for i in rule1.get_actions():
+    i
+Action(description=u'', name=u'activate_proxy', rule=reference(3), type=u'string', valueoff=u'False', valueon=u'True', storeID=4)@0x95CDD4C
+
+action2 = rule1.add_action(name=u'active_proxy', type=u'string', valueon=u'True', valueoff=u'False')
+for i in rule1.get_actions():
+    i
+Action(description=u'', name=u'activate_proxy', rule=reference(3), type=u'string', valueoff=u'False', valueon=u'True', storeID=4)@0x95CDD4C
+Action(description=u'', name=u'active_proxy', rule=reference(3), type=u'string', valueoff=u'False', valueon=u'True', storeID=5)@0x95D0FAC
+
+rule1.get_action(u'active_proxy')
+Action(description=u'', name=u'active_proxy', rule=reference(3), type=u'string', valueoff=u'False', valueon=u'True', storeID=5)@0xA44CACC
+
+action1.rule.name
+u'Activation du proxy'
+
+store.getItemByID(3)
+Rule(default=u'no', description=None, level=0, name=u'Activation du proxy', type=u'boolean', storeID=3)@0xA42FD4C
+
+action1.deleteFromStore()
+for i in rule1.get_actions():
+    i
+Action(description=u'', name=u'active_proxy', rule=reference(3), type=u'string', valueoff=u'False', valueon=u'True', storeID=5)@0xA44CACC
+
+
+**exit**
+
++-- Classes Software et OS --+
+
+from axiom.item import Item
+from axiom.attributes import text, integer, reference, AND
+
+class Rule(Item):
+    name = text(allowNone=False, indexed=True)
+    type = text(allowNone=False)
+    default = text(allowNone=False)
+    level = integer(default=0)
+    description = text()
+    def add_action(self, name, type, valueon, valueoff, description=u''):
+        return self.store.findOrCreate(Action, name=name, type=type, valueon=valueon, valueoff=valueoff, description=description, rule=self)
+    def get_actions(self):
+        return self.store.query(Action, Action.rule == self)
+    def get_action(self, name):
+        return self.store.findFirst(Action, AND(Action.rule == self, Action.name == name))
+
+class Action(Item):
+    rule = reference(allowNone=False)
+    name = text(allowNone=False)
+    type = text(allowNone=False)
+    valueon = text(allowNone=False)
+    valueoff = text(allowNone=False)
+    description = text()
+    def add_path(self, name):
+        return self.store.findOrCreate(Path, name=name, action=self)
+    def get_paths(self):
+        return self.store.query(Path, Path.action == self)
+
+class Path(Item):
+    action = reference(allowNone=False)
+    name = text(allowNone=False)
+    def add_os_software(self, os, software):
+        return self.store.findOrCreate(RelPathOSSoftware, os=os, software=software, path=self)
+    def get_relations(self):
+        return self.store.query(RelPathOSSoftware, RelPathOSSoftware.path == self)
+
+# Software
+class Software(Item):
+    name = text(allowNone=False)
+    description = text()
+
+# OS
+class OS(Item):
+    name = text(allowNone=False)
+    description = text()
+
+# Relation
+class RelPathOSSoftware(Item):
+    os = reference(allowNone=False)
+    software = reference(allowNone=False)
+    path = reference(allowNone=False)
+
++-- Instanciation --+
+
+from axiom.store import Store
+store = Store()
+
+os1 = OS(store=store, name=u'linux')
+software1 = Software(store=store, name=u'firefox')
+
+rule1 = Rule(store=store, name=u"Activation du proxy", type=u"boolean", default=u"no")
+action1 = rule1.add_action(name=u'activate_proxy', type=u'string', valueon=u'True', valueoff=u'False')
+path1 = action1.add_path(name=u'.mozilla/profile1/rules.js')
+
+rel1 = path1.add_os_software(os=os1, software=software1)
+
