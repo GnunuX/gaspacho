@@ -1,0 +1,31 @@
+<html>
+<head> 
+<title>test1.html</title>
+<link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css" />
+<script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="ext/ext-all.js"></script>
+<script type="text/javascript">
+
+Ext.onReady(function(){
+	var store = new Ext.data.Store({
+		url : 'movies.json',
+		reader: new Ext.data.JsonReader({
+			root	: 'rows',
+			id		: 'id'
+		},[
+			'id',
+			'coverthumb',
+			'title',
+			'director',
+			{name : 'released',type:'date', dateFormat: 'Y-m-d'}, // format de la date renvoyée
+			'genre',
+			'tagline',
+			{name : 'price' , type :'float'},
+			{name : 'available' , type :'bool'}
+		]),
+	});	
+	store.load();  
+})
+</script>
+</head>
+<body>

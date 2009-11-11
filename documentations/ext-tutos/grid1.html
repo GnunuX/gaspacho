@@ -1,0 +1,60 @@
+<html>
+<head> 
+<title>test1.html</title>
+<link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css" />
+<script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="ext/ext-all.js"></script>
+<script type="text/javascript">
+
+Ext.onReady(function(){
+	var store = new Ext.data.Store({
+		url : 'movies.json',
+		reader: new Ext.data.JsonReader({
+			root	: 'rows',
+			id		: 'id'
+		},[
+			'id',
+			'coverthumb',
+			'title',
+			'director',
+			{name : 'released',type:'date', dateFormat: 'Y-m-d'}, // format de la date renvoyée
+			'genre',
+			'tagline',
+			{name : 'price' , type :'float'},
+			{name : 'available' , type :'bool'}
+		]),
+	});	
+	store.load();
+
+    var grid = new Ext.grid.GridPanel({
+		renderTo: document.body,
+		frame:true,
+		title: 'Base de données "Films"',
+        height:500,
+        width:620,
+		enableColumnMove: true,
+        store: store,
+        autoExpandColumn: 'title',// attention fonctionne avec l'id de la colonne (id: 'title')
+        columns: [
+			{header: "Titre",id: 'title', dataIndex: 'title', sortable: true}, 
+			{header: "Réalisateur", dataIndex: 'director', hidden: true},
+			{header: "Réalisé en ", dataIndex: 'released', sortable: true, renderer: Ext.util.Format.dateRenderer('d/m/Y'), width: 80},
+			{header: "Genre", dataIndex: 'genre', sortable: true, }, 
+			{header: "Tagline", dataIndex: 'tagline', hidden: true},
+			{header: "Prix", dataIndex: 'price', sortable: true, width: 155,width: 80},
+			{header: "Disponible", dataIndex: 'available', sortable: true,width: 60}
+        ],
+		sm: new Ext.grid.RowSelectionModel({
+			singleSelect: true,
+			listeners: {
+				rowselect: {
+					fn: function(sm,index,record) { Ext.Msg.alert('Information film','Vous venez de sélectionner index =' + index + ' Titre : '+record.data.title); }
+				}
+			}
+		})	        
+    });
+	
+})
+</script>
+</head>
+<body>
