@@ -1,0 +1,38 @@
+<html>
+<head> 
+<title>tab1.html</title>
+<link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css" />
+<script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="ext/ext-all.js"></script>
+<script type="text/javascript">
+Ext.onReady(function(){
+    var win;
+
+    var tabs = new Ext.TabPanel({
+        width:450,
+        activeTab: 0,
+        frame:true,
+        defaults:{autoHeight: true},
+        items:[
+            {html:'hello coagul 1 ', title: 'Coagul 1'},
+            {html:'hello coagul 1 ', title: 'Coagul 2'}
+        ]
+    });
+    
+    var win = new Ext.Window({
+            layout:'fit',
+            width:500,
+            height:300,
+            closeAction:'hide',
+            plain: true,
+            items : tabs
+    });
+    
+  win.show(); 
+    
+});
+</script>
+</head>
+<body>
+</body>
+</html>
