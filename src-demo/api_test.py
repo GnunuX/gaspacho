@@ -6,24 +6,25 @@ from api.groups import list_groups
 from api.choices import add_choice
 from api.tags import add_tag, confuser, confcomputer
 
-#--BEURK--
-from bdd.groups import Group
-
 import pprint
 
 metadata.bind = "sqlite:///gaspacho.sqlite"
 setup_all()
+#--BEURK--
+from bdd.groups import Group, User
+mathroom = Group.query.filter_by(id=4).first()
+student = User.query.filter_by(id=1).first()
 
-pp = pprint.PrettyPrinter(depth=6)
+pp = pprint.PrettyPrinter(depth=7)
 #list all rules with default settings
 #print pp.pprint(list_rules())
 
 #list all rules with choices for mathroom
-mathroom = Group.query.filter_by(id=3).first()
-print pp.pprint(list_rules(mathroom))
+print pp.pprint(list_rules(mathroom, student))
 
 #list groups
 #print pp.pprint(list_groups())
+#print pp.pprint(list_groups(only_templates=True))
 
 #list platforms
 #print pp.pprint(list_platforms())

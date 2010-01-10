@@ -13,6 +13,7 @@ class Software(Entity):
     name = Field(UnicodeText)
     description = Field(UnicodeText)
     versions = OneToMany('SoftwareVersion')
+    templates = ManyToMany('Group')
     def add_version(self, name, description=None):
         ver = SoftwareVersion(name=name, description=description)
         self.versions.append(ver)

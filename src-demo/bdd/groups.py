@@ -11,15 +11,24 @@ class Group(Entity):
     choices = OneToMany('Choice')
     parent = ManyToOne('Group', inverse='childs')
     childs = OneToMany('Group')
+    depends = ManyToMany('Group')
+    softwares = ManyToMany('Software')
+    template = Field(Boolean, default=False)
 
-    def set_computer(self, computer):
+    def add_computer(self, computer):
         self.computers.append(computer)
 
-    def set_user(self, user):
+    def add_user(self, user):
         self.users.append(user)
 
-    def set_manager(self, user):
+    def add_manager(self, user):
         self.managers.append(user)
+
+    def add_depend(self, depend):
+        self.depends.append(depend)
+
+    def add_software(self, software):
+        self.softwares.append(software)
 
 class User(Entity):
     name = Field(UnicodeText)

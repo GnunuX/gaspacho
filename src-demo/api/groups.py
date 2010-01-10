@@ -2,14 +2,19 @@
 
 from bdd.groups import Group, User, Computer
 
-def add_group(name, parent=None, description=u''):
+def add_group(name, parent=None, template=False, description=u''):
     """
     add group
     """
-    if parent == None:
-        return Group(name=name, description=description)
+    if template == True:
+        if parent != None:
+            raise Exception('group could not be template and have parent')
+        return Group(name=name, template=template, description=description)
     else:
-        return Group(name=name, parent=parent, description=description)
+        if parent == None:
+            return Group(name=name, description=description)
+        else:
+            return Group(name=name, parent=parent, description=description)
 
 def add_user(name, typ=u'user', description=u''):
     """
@@ -23,7 +28,7 @@ def add_computer(name, typ=u'ip', description=u''):
     """
     return Computer(name=name, typ=typ, description=description)
 
-def list_groups():
+def list_groups(only_templates=False):
     """
     list group's hierarchy
     """
@@ -33,7 +38,7 @@ def list_groups():
     for group in Group.query.all():
         if group.parent == None:
             #list all root group
-            rootgroups.append((group.id, group.name))
+            rootgroups.append((group.id, group.name, group.template))
         else:
             #list all child group
             pname = group.parent.name
@@ -45,22 +50,30 @@ def list_groups():
         """
         construct group's hierarchy
         """
-        groups = {}
+        groups = []
         if cgroups.has_key(name):
             for yid, yname in cgroups[name]:
-                groups[yname] = {}
-                groups[yname]['id'] = yid
+                tgroup = {'name': yname, 'id': yid}
                 childs = list(construct_group(yname, cgroups))[0]
-                if not childs == {}:
-                    groups[yname]['childs'] = list(construct_group(yname, cgroups))[0]
+                if not childs == []:
+                    tgroup['childs'] = list(construct_group(yname, cgroups))[0]
+                groups.append(tgroup)
         yield groups
 
-    for tid, name in rootgroups:
+    if only_templates == False:
+        groups['groups'] = []
+    groups['tpls'] = []
+    for tid, name, is_tpl in rootgroups:
         #parse all rootgroups to get childs group
-        groups[name] = {}
-        groups[name]['id'] = tid
-        groups[name]['childs'] = list(construct_group(name, childgroups))[0]
- 
+        if is_tpl == True:
+            groups['tpls'].append({'name': name, 'id': tid})
+        else:
+            if only_templates == False:
+                childs = list(construct_group(name, childgroups))[0]
+                tgroup = {'name': name, 'id': tid}
+                if childs != []:
+                    tgroup['childs'] = childs
+                groups['groups'].append(tgroup)
     return groups
 
 # vim: ts=4 sw=4 expandtab
