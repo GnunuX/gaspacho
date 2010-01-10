@@ -27,7 +27,11 @@ mdvpath = add_path(name=u'ini://path/to/app1/Lin/')
 firefox = add_software(name=u'firefox')
 f35 = firefox.add_version(name=u'3.5')
 #
+ie = add_software(name=u'ie')
+ie6 = ie.add_version(name=u'6.0')
+#
 f35onWinXP = add_platform(winxp, f35, winpath)
+ieonWinXP = add_platform(winxp, ie6, winpath)
 f35onMdv20100 = add_platform(mdv20100, f35, mdvpath)
 #
 
@@ -111,6 +115,7 @@ path02 = variableB.set_platform(platform=f35onWinXP)
 variableC = rulec.add_variable(name=u'default', description=u'', valueon=u'on', valueoff=u'SUPPR', typ=u'string')
 path03 = variableC.set_platform(platform=f35onWinXP)
 path04 = variableC.set_platform(platform=f35onMdv20100)
+path05 = variableC.set_platform(platform=ieonWinXP)
 variableG = rulea.add_variable(name=u'proxyport', description=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
 path10 = variableG.set_platform(platform=f35onMdv20100)
 #--
@@ -127,11 +132,10 @@ variableK = ruleb.add_variable(name=u'proxyaddr', description=u'', valueon=u'', 
 path14 = variableK.set_platform(platform=f35onWinXP)
 #--
 variableL = rulee.add_variable(name=u'default1', description=u'', valueon=u'SUPPR', valueoff=u'off', typ=u'string')
-path15 = variableL.set_platform(platform=f35onWinXP) 
+path15 = variableL.set_platform(platform=ieonWinXP) 
 #--
 variableM = rulef.add_variable(name=u'default2', description=u'', valueon=u'0', valueoff=u'SUPPR', typ=u'boolean')
 path16 = variableM.set_platform(platform=f35onMdv20100)
-#--
 path17 = variableM.set_platform(platform=f35onWinXP)
 #----
 choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')

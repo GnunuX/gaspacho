@@ -13,14 +13,18 @@ setup_all()
 #--BEURK--
 from bdd.groups import Group, User
 mathroom = Group.query.filter_by(id=4).first()
+tplfirefox = Group.query.filter_by(id=3).first()
 student = User.query.filter_by(id=1).first()
 
 pp = pprint.PrettyPrinter(depth=7)
 #list all rules with default settings
 #print pp.pprint(list_rules())
 
-#list all rules with choices for mathroom
-print pp.pprint(list_rules(mathroom, student))
+#list all rules with choices
+#print pp.pprint(list_rules())
+#print pp.pprint(list_rules(user=student))
+#print pp.pprint(list_rules(group=mathroom, user=student))
+list_rules(group=tplfirefox)
 
 #list groups
 #print pp.pprint(list_groups())

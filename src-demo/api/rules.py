@@ -45,43 +45,57 @@ def list_rules(group=None, user=None):
         return (None, None, None, None, None)
  
     rules = {}
+    softwares = []
+    if group != None:
+        if group.softwares != None:
+            for software in group.softwares:
+                softwares.append(str(software.name))
     for rule in Rule.query.all():
-        rid = rule.id
-        rules[rid] = {}
-        #desciption of the rule
-        rules[rid]['rule'] = rule.name
-        rules[rid]['description'] = rule.description
-        rules[rid]['typ'] = rule.typ
-        rules[rid]['platforms'] = {}
-        #value and state of this rules
-        #if group is set, get herited value and state to parent's group
-        #if not, default is set to herited value and state
-        rules[rid]['state'] = {}
-        rules[rid]['value'] = {}
-        rules[rid]['state']['default'] = rule.defaultstate
-        if rule.defaultvalue != None:
-            rules[rid]['value']['default'] = rule.defaultvalue
-        if group != None:
-            pname, puser, pid, pstate, pvalue = get_depends_choice(group, rule, user)
-            if pname == None:
-                pname, puser, pid, pstate, pvalue = get_parent_choice(group, rule, user)
-            if not pname == None:
-                if puser == None:
-                    pusern = None
-                else:
-                    pusern = puser.name
-                rules[rid]['state']['herited'] = {'name': pname, 'user': pusern, 'id': pid, 'state': pstate}
-                rules[rid]['value']['herited'] = {'name': pname, 'user': pusern, 'id': pid, 'value': pvalue}
-            choice = get_choice(group, rule, user)
-            if choice != None:
-                rules[rid]['state']['current'] = choice.state
-                rules[rid]['value']['current'] = choice.value
+        if softwares == []:
+            is_software = True
+        else:
+            is_software = False
+        tplatform = {}
         for variable in rule.variables:
             for platform in variable.platforms:
+                if softwares != [] and platform.softwareversion.software.name in softwares:
+                    is_software = True
                 #add platform.id to limit duplication
-                rules[rid]['platforms'][platform.id] = [platform.osversion.name,
+                tplatform[platform.id] = [platform.osversion.name,
                      platform.osversion.os.name, platform.softwareversion.name,
                      platform.softwareversion.software.name]
+
+        if is_software == True:
+            rid = rule.id
+            rules[rid] = {}
+            #desciption of the rule
+            rules[rid]['rule'] = rule.name
+            rules[rid]['description'] = rule.description
+            rules[rid]['typ'] = rule.typ
+            rules[rid]['platforms'] = tplatform
+            #value and state of this rules
+            #if group is set, get herited value and state to parent's group
+            #if not, default is set to herited value and state
+            rules[rid]['state'] = {}
+            rules[rid]['value'] = {}
+            rules[rid]['state']['default'] = rule.defaultstate
+            if rule.defaultvalue != None:
+                rules[rid]['value']['default'] = rule.defaultvalue
+            if group != None:
+                pname, puser, pid, pstate, pvalue = get_depends_choice(group, rule, user)
+                if pname == None:
+                    pname, puser, pid, pstate, pvalue = get_parent_choice(group, rule, user)
+                if not pname == None:
+                    if puser == None:
+                        pusern = None
+                    else:
+                        pusern = puser.name
+                    rules[rid]['state']['herited'] = {'name': pname, 'user': pusern, 'id': pid, 'state': pstate}
+                    rules[rid]['value']['herited'] = {'name': pname, 'user': pusern, 'id': pid, 'value': pvalue}
+                choice = get_choice(group, rule, user)
+                if choice != None:
+                    rules[rid]['state']['current'] = choice.state
+                    rules[rid]['value']['current'] = choice.value
     return rules
 
 
