@@ -107,6 +107,7 @@ rulef.set_conflevel(confcomputer)
 
 variableA = rulea.add_variable(name=u'proxy_port', description=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
 path01 = variableA.set_platform(platform=f35onWinXP)
+path06 = variableA.set_platform(platform=ieonWinXP)
 
 #--
 variableB = ruleb.add_variable(name=u'proxy_addr', description=u'', valueon=u'', valueoff=u'SUPPR', typ=u'string')
@@ -139,6 +140,7 @@ path16 = variableM.set_platform(platform=f35onMdv20100)
 path17 = variableM.set_platform(platform=f35onWinXP)
 #----
 choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
+choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3118', platform=f35onWinXP)
 #choicea = add_choice(rule=rulea, group=room, state=u'on', value=u'3119')
 choicea = add_choice(rule=rulea, group=tplfirefox, state=u'on', value=u'3119')
 #----

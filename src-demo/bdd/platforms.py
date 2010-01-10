@@ -41,5 +41,6 @@ class Platform(Entity):
     softwareversion = ManyToOne(SoftwareVersion)
     path = ManyToOne('Path')
     variables = ManyToMany('Variable')
+    choices = OneToMany('Choice') 
 
 # vim: ts=4 sw=4 expandtab

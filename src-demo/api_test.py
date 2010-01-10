@@ -18,19 +18,19 @@ student = User.query.filter_by(id=1).first()
 
 pp = pprint.PrettyPrinter(depth=7)
 #list all rules with default settings
-#print pp.pprint(list_rules())
+#pp.pprint(list_rules())
 
 #list all rules with choices
-#print pp.pprint(list_rules())
-#print pp.pprint(list_rules(user=student))
-#print pp.pprint(list_rules(group=mathroom, user=student))
-list_rules(group=tplfirefox)
+#pp.pprint(list_rules())
+#pp.pprint(list_rules(user=student))
+pp.pprint(list_rules(group=mathroom, user=student))
+#pp.pprint(list_rules(group=tplfirefox))
 
 #list groups
-#print pp.pprint(list_groups())
-#print pp.pprint(list_groups(only_templates=True))
+#pp.pprint(list_groups())
+#pp.pprint(list_groups(only_templates=True))
 
 #list platforms
-#print pp.pprint(list_platforms())
+#pp.pprint(list_platforms())
 
 # vim: ts=4 sw=4 expandtab
