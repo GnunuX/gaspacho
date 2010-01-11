@@ -81,7 +81,6 @@ def get_users_by_group(group):
 
 def get_users(typ=None):
     if typ == None:
-        print "pouet"
         uquery = User.query.all()
     else:
         uquery = User.query.filter_by(typ=typ).all()
