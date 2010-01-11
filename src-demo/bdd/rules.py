@@ -25,7 +25,7 @@ class Rule(Entity):
         self.conflevel = conflevel
 
     def __repr__(self):
-        return '["%s", {"typ": "%s", "defaultstate": "%s", "defaultvalue": "%s", "description": "%s"}]' % (self.name, self.typ, self.defaultstate, self.defaultvalue, self.description)
+        return 'name: "%s", typ: "%s", defaultstate: "%s", defaultvalue: "%s", description: "%s"' % (self.name, self.typ, self.defaultstate, self.defaultvalue, self.description)
 
 class Variable(Entity):
     rule = ManyToOne('Rule')

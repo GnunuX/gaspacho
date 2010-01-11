@@ -29,6 +29,8 @@ class Group(Entity):
 
     def add_software(self, software):
         self.softwares.append(software)
+    def __repr__(self):
+        return 'name: "%s", description: "%s", template: "%s"' % (self.name, self.description, self.template)
 
 class User(Entity):
     name = Field(UnicodeText)

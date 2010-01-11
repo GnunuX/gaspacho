@@ -18,7 +18,7 @@ def get_rules(conflevel, group=None, user=None):
     list rules
     """
     def get_choice(group, rule, user):
-        return Choice.query.filter_by(rule=rule, group=group, user=user, conflevel=conflevel).all()
+        return Choice.query.filter_by(rule=rule, group=group, user=user).all()
 
     def get_depends_choice(group, rule, user):
         for depend in group.depends:
@@ -26,7 +26,7 @@ def get_rules(conflevel, group=None, user=None):
             if choices != []:
                 ret = []
                 for choice in choices:
-                    ret.append((depend.name, user, depend.id, choice.platform, choice.state, choice.value))
+                    ret.append((depend, user, choice))
                 return ret
         if user != None:
             return get_depends_choice(group, rule, None)
@@ -44,7 +44,7 @@ def get_rules(conflevel, group=None, user=None):
             else:
                 ret = []
                 for choice in choices:
-                    ret.append((parent.name, user, parent.id, choice.platform, choice.state, choice.value))
+                    ret.append((parent, user, choice))
                 return ret
         if user != None:
             return get_parent_choice(group, rule, None)
@@ -56,72 +56,45 @@ def get_rules(conflevel, group=None, user=None):
         if group.softwares != None:
             for software in group.softwares:
                 softwares.append(str(software.name))
-    for rule in Rule.query.all():
+    for rule in Rule.query.filter_by(conflevel=conflevel).all():
         if softwares == []:
             is_software = True
         else:
             is_software = False
-        tplatform = {}
+        tplatform = []
+        tplatformadded = []
         for variable in rule.variables:
             for platform in variable.platforms:
                 if softwares != [] and platform.softwareversion.software.name in softwares:
                     is_software = True
-                #add platform.id to limit duplication
-                tplatform[platform.id] = [platform.osversion.name,
-                     platform.osversion.os.name, platform.softwareversion.name,
-                     platform.softwareversion.software.name]
+                #not add platform two times
+                if not platform.id in tplatformadded:
+                    tplatformadded.append(platform.id)
+                    tplatform.append(platform)
 
         if is_software == True:
             rid = rule.id
             rules[rid] = {}
-            #desciption of the rule
-            rules[rid]['rule'] = rule.name
-            rules[rid]['description'] = rule.description
-            rules[rid]['typ'] = rule.typ
+            rules[rid]['rule'] = rule
             rules[rid]['platforms'] = tplatform
-            #value and state of this rules
-            #if group is set, get herited value and state to parent's group
-            #if not, default is set to herited value and state
-            rules[rid]['state'] = {}
-            rules[rid]['value'] = {}
-            rules[rid]['state']['default'] = rule.defaultstate
-            if rule.defaultvalue != None:
-                rules[rid]['value']['default'] = rule.defaultvalue
             if group != None:
+                rules[rid]['choice'] = {}
+                #if group is set, get current and herited choice
                 choices = get_depends_choice(group, rule, user)
                 if choices == None:
                     choices = get_parent_choice(group, rule, user)
                 if not choices == None:
+                    rules[rid]['choice']['herited'] = []
                     for choice in choices:
-                        pname = choice[0]
+                        pgroup = choice[0]
                         puser = choice[1]
-                        pid = choice[2]
-                        pplatformid = choice[3]
-                        pstate = choice[4]
-                        pvalue = choice[5]
-                        if puser == None:
-                            pusern = None
-                        else:
-                            pusern = puser.name
-                        rules[rid]['state']['herited'] = {'name': pname, 'user': pusern, 'id': pid, 'state': pstate}
-                        if pplatformid != None:
-                            rules[rid]['state']['herited']['platformid'] = pplatformid
-                        rules[rid]['value']['herited'] = {'name': pname, 'user': pusern, 'id': pid, 'value': pvalue}
-                        if pplatformid != None:
-                            rules[rid]['value']['herited']['platformid'] = pplatformid
+                        pchoice = choice[2]
+                        rules[rid]['choice']['herited'].append({'group': pgroup, 'user': puser, 'choice': pchoice})
                 choices = get_choice(group, rule, user)
                 if choices == []:
                     choices = get_choice(group, rule, None)
                 if choices != []:
-                    rules[rid]['state']['current'] = []
-                    rules[rid]['value']['current'] = []
-                    for choice in choices:
-                        if choice.platform == None:
-                            platform = 0
-                        else:
-                            platform = choice.platform.id
-                        rules[rid]['state']['current'].append({platform: choice.state})
-                        rules[rid]['value']['current'].append({platform: choice.value})
+                    rules[rid]['choice']['current'] = [choice for choice in choices]
     return rules
 
 
