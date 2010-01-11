@@ -79,11 +79,17 @@ def get_groups(only_templates=False):
 def get_users_by_group(group):
     return [(user.id, user.name, user.typ, user.description) for user in group.users]
 
+def get_managers_by_group(group):
+    return [(manager.id, manager.name, manager.typ, manager.description) for manager in group.managers]
+
 def get_users(typ=None):
     if typ == None:
         uquery = User.query.all()
     else:
         uquery = User.query.filter_by(typ=typ).all()
     return [(user.id, user.name, user.typ, user.description) for user in uquery]
+
+def get_computers_by_group(group):
+    return [(computer.id, computer.name, computer.typ, computer.description) for computer in group.computers]
 
 # vim: ts=4 sw=4 expandtab
