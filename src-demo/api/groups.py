@@ -76,4 +76,15 @@ def get_groups(only_templates=False):
                 groups['groups'].append(tgroup)
     return groups
 
+def get_users_by_group(group):
+    return [(user.id, user.name, user.typ, user.description) for user in group.users]
+
+def get_users(typ=None):
+    if typ == None:
+        print "pouet"
+        uquery = User.query.all()
+    else:
+        uquery = User.query.filter_by(typ=typ).all()
+    return [(user.id, user.name, user.typ, user.description) for user in uquery]
+
 # vim: ts=4 sw=4 expandtab
