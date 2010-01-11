@@ -28,7 +28,7 @@ def add_computer(name, typ=u'ip', description=u''):
     """
     return Computer(name=name, typ=typ, description=description)
 
-def list_groups(only_templates=False):
+def get_groups(only_templates=False):
     """
     list group's hierarchy
     """

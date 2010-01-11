@@ -13,7 +13,7 @@ def add_rule(name, typ, defaultstate=u'off', defaultvalue=None,
     return Rule(name=name, typ=typ, defaultstate=defaultstate,
            defaultvalue=defaultvalue, description=description)
 
-def list_rules(group=None, user=None):
+def get_rules(group=None, user=None):
     """
     list rules
     """
@@ -125,7 +125,7 @@ def list_rules(group=None, user=None):
     return rules
 
 
-def list_variables():
+def get_variables():
     """
     list variables
     """

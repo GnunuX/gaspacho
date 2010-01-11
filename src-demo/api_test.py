@@ -1,7 +1,7 @@
 from elixir import *
-from api.rules import list_rules
-from api.platforms import list_platforms
-from api.groups import list_groups
+from api.rules import get_rules
+from api.platforms import get_platforms
+from api.groups import get_groups
 #
 from api.choices import add_choice
 from api.tags import add_tag, confuser, confcomputer
@@ -18,19 +18,19 @@ student = User.query.filter_by(id=1).first()
 
 pp = pprint.PrettyPrinter(depth=7)
 #list all rules with default settings
-#pp.pprint(list_rules())
+#pp.pprint(get_rules())
 
 #list all rules with choices
-#pp.pprint(list_rules())
-#pp.pprint(list_rules(user=student))
-pp.pprint(list_rules(group=mathroom, user=student))
-#pp.pprint(list_rules(group=tplfirefox))
+#pp.pprint(get_rules())
+#pp.pprint(get_rules(user=student))
+pp.pprint(get_rules(group=mathroom, user=student))
+#pp.pprint(get_rules(group=tplfirefox))
 
 #list groups
-#pp.pprint(list_groups())
-#pp.pprint(list_groups(only_templates=True))
+#pp.pprint(get_groups())
+#pp.pprint(get_groups(only_templates=True))
 
 #list platforms
-#pp.pprint(list_platforms())
+#pp.pprint(get_platforms())
 
 # vim: ts=4 sw=4 expandtab

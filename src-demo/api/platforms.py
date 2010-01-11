@@ -29,7 +29,7 @@ def add_path(name, description=None):
     """
     return Path(name=name, description=description)
 
-def list_platforms():
+def get_platforms():
     """
     list all platforms
     """
