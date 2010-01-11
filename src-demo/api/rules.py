@@ -13,12 +13,12 @@ def add_rule(name, typ, defaultstate=u'off', defaultvalue=None,
     return Rule(name=name, typ=typ, defaultstate=defaultstate,
            defaultvalue=defaultvalue, description=description)
 
-def get_rules(group=None, user=None):
+def get_rules(conflevel, group=None, user=None):
     """
     list rules
     """
     def get_choice(group, rule, user):
-        return Choice.query.filter_by(rule=rule, group=group, user=user).all()
+        return Choice.query.filter_by(rule=rule, group=group, user=user, conflevel=conflevel).all()
 
     def get_depends_choice(group, rule, user):
         for depend in group.depends:

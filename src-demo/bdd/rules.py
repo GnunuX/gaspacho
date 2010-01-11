@@ -10,7 +10,7 @@ class Rule(Entity):
     description = Field(UnicodeText)
     variables = OneToMany('Variable')
     tags = ManyToMany('Tag')
-    conflevels = ManyToOne('ConfLevel')
+    conflevel = ManyToOne('ConfLevel')
     choices = ManyToMany('Choice')
 
     def add_variable(self, name, typ, valueon, valueoff, description=u''):

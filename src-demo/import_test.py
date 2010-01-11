@@ -6,7 +6,9 @@ import sys
 from elixir import *
 from api.rules import add_rule
 from api.platforms import add_platform, add_path, add_os, add_software
-from api.tags import add_tag, confuser, confcomputer
+from api.tags import add_tag
+from api.tags import add_tag, get_conflevel
+from bdd.tags import ConfLevel
 from api.groups import add_group, add_user, add_computer
 from api.choices import add_choice
 
@@ -14,6 +16,7 @@ metadata.bind = "sqlite:///gaspacho.sqlite"
 setup_all()
 create_all()
 
+confuser, confcomputer = get_conflevel()
 
 ##--Platform
 win = add_os(name=u'windows')
