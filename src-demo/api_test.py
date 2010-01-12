@@ -1,8 +1,7 @@
 from elixir import *
 from api.rules import get_rules
 from api.platforms import get_platforms
-from api.groups import get_groups, get_users, get_users_by_group
-from api.groups import get_managers_by_group, get_computers_by_group
+from api.groups import get_groups, get_users
 #
 from api.choices import add_choice
 #from api.tags import confuser, confcomputer
@@ -25,21 +24,12 @@ pp = pprint.PrettyPrinter(depth=7)
 #pp.pprint(get_rules(confcomputer))
 
 #list all rules with choices
-pp.pprint(get_rules(confuser, group=mathroom, user=student))
+#pp.pprint(get_rules(confuser, group=mathroom, user=student))
 #pp.pprint(get_rules(confcomputer, group=tplfirefox))
 
 #list groups
-#pp.pprint(get_groups())
-#pp.pprint(get_groups(only_templates=True))
-
-#list users in group
-#pp.pprint(get_users_by_group(mathroom))
-
-#list all managers in group
-#pp.pprint(get_managers_by_group(mathroom))
-
-#list all computers in group
-#pp.pprint(get_computers_by_group(mathroom))
+pp.pprint(get_groups())
+pp.pprint(get_groups(only_templates=True))
 
 #list all users
 #pp.pprint(get_users())

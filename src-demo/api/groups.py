@@ -38,13 +38,13 @@ def get_groups(only_templates=False):
     for group in Group.query.all():
         if group.parent == None:
             #list all root group
-            rootgroups.append((group.id, group.name, group.template))
+            rootgroups.append(group)
         else:
             #list all child group
             pname = group.parent.name
             if not childgroups.has_key(pname):
                 childgroups[pname] = []
-            childgroups[pname].append((group.id, group.name))
+            childgroups[pname].append(group)
 
     def construct_group(name, cgroups):
         """
@@ -52,44 +52,35 @@ def get_groups(only_templates=False):
         """
         groups = []
         if cgroups.has_key(name):
-            for yid, yname in cgroups[name]:
-                tgroup = {'name': yname, 'id': yid}
-                childs = list(construct_group(yname, cgroups))[0]
+            for group in cgroups[name]:
+                tgroup = {'group': group}
+                childs = list(construct_group(group.name, cgroups))[0]
                 if not childs == []:
-                    tgroup['childs'] = list(construct_group(yname, cgroups))[0]
+                    tgroup['childs'] = childs
                 groups.append(tgroup)
         yield groups
 
     if only_templates == False:
         groups['groups'] = []
     groups['tpls'] = []
-    for tid, name, is_tpl in rootgroups:
+    for group in rootgroups:
         #parse all rootgroups to get childs group
-        if is_tpl == True:
-            groups['tpls'].append({'name': name, 'id': tid})
+        if group.template == True:
+            groups['tpls'].append(group)
         else:
             if only_templates == False:
-                childs = list(construct_group(name, childgroups))[0]
-                tgroup = {'name': name, 'id': tid}
+                tgroups = {}
+                childs = list(construct_group(group.name, childgroups))[0]
+                tgroups['group'] = group
                 if childs != []:
-                    tgroup['childs'] = childs
-                groups['groups'].append(tgroup)
+                    tgroups['childs'] = childs
+                groups['groups'].append(tgroups)
     return groups
-
-def get_users_by_group(group):
-    return [(user.id, user.name, user.typ, user.description) for user in group.users]
-
-def get_managers_by_group(group):
-    return [(manager.id, manager.name, manager.typ, manager.description) for manager in group.managers]
 
 def get_users(typ=None):
     if typ == None:
-        uquery = User.query.all()
+        return User.query.all()
     else:
-        uquery = User.query.filter_by(typ=typ).all()
-    return [(user.id, user.name, user.typ, user.description) for user in uquery]
-
-def get_computers_by_group(group):
-    return [(computer.id, computer.name, computer.typ, computer.description) for computer in group.computers]
+        return User.query.filter_by(typ=typ).all()
 
 # vim: ts=4 sw=4 expandtab
