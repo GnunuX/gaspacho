@@ -33,14 +33,6 @@ def get_platforms():
     """
     list all platforms
     """
-    platforms = {}
-    for platform in Platform.query.all():
-        num = platform.id
-        platforms[num] = {}
-        platforms[num]['os'] = [platform.osversion.os.name,
-                platform.osversion.name]
-        platforms[num]['software'] = [platform.softwareversion.software.name,
-                platform.softwareversion.name]
-    return platforms
+    return Platform.query.all()
 
 # vim: ts=4 sw=4 expandtab

@@ -28,8 +28,8 @@ pp = pprint.PrettyPrinter(depth=7)
 #pp.pprint(get_rules(confcomputer, group=tplfirefox))
 
 #list groups
-pp.pprint(get_groups())
-pp.pprint(get_groups(only_templates=True))
+#pp.pprint(get_groups())
+#pp.pprint(get_groups(only_templates=True))
 
 #list all users
 #pp.pprint(get_users())
@@ -37,6 +37,6 @@ pp.pprint(get_groups(only_templates=True))
 #pp.pprint(get_users(u'user'))
 
 #list platforms
-#pp.pprint(get_platforms())
+pp.pprint(get_platforms())
 
 # vim: ts=4 sw=4 expandtab
