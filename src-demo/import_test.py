@@ -6,8 +6,7 @@ import sys
 from elixir import *
 from api.rules import add_rule
 from api.platforms import add_platform, add_path, add_os, add_software
-from api.tags import add_tag
-from api.tags import add_tag, get_conflevel
+from api.tags import add_tag, add_category, get_conflevel
 from bdd.tags import ConfLevel
 from api.groups import add_group, add_user, add_computer
 from api.choices import add_choice
@@ -75,35 +74,39 @@ tplfirefox.add_software(firefox)
 mathroom.add_depend(tplfirefox)
 
 #----
-tag1 = add_tag(name=u'proxy', typ=u'category')
-tag2 = add_tag(name=u'default', typ=u'category')
+tag1 = add_tag(name=u'proxy')
+tag2 = add_tag(name=u'default')
 
-tag3 = add_tag(name=u'web browser', typ=u'group')
+category1 = add_category(name=u'web browser')
 #----
 rulea = add_rule(name=u'configure proxy port', typ=u'integer', description=u'', defaultvalue=u'3128') 
-rulea.add_tag(tag1)
-rulea.add_tag(tag3)
+rulea.set_tag(tag1)
+rulea.set_category(category1)
 rulea.set_conflevel(confuser)
 #--
 ruleb = add_rule(name=u'configure proxy address', typ=u'string', description=u'')
-ruleb.add_tag(tag1)
-ruleb.add_tag(tag3)
+ruleb.set_tag(tag1)
+ruleb.set_category(category1)
 ruleb.set_conflevel(confuser)
 #--
 rulec = add_rule(name=u'configure app1 as default', typ=u'boolean', description=u'', defaultstate=u'on')
-rulec.add_tag(tag1)
-rulec.set_conflevel(confcomputer)
+rulec.set_tag(tag2)
+rulec.set_category(category1)
+rulec.set_conflevel(confuser)
 #--
 ruled = add_rule(name=u'configure app3 as default', typ=u'boolean', description=u'', defaultstate=u'on')
-ruled.add_tag(tag1)
+ruled.set_tag(tag2)
+ruled.set_category(category1)
 ruled.set_conflevel(confcomputer)
 #--
 rulee = add_rule(name=u'configure app4 as default', typ=u'boolean', description=u'')
-rulee.add_tag(tag1)
+rulee.set_tag(tag2)
+rulee.set_category(category1)
 rulee.set_conflevel(confcomputer)
 #--
 rulef = add_rule(name=u'configure app5 as default', typ=u'boolean', description=u'')
-rulef.add_tag(tag1)
+rulef.set_tag(tag2)
+rulef.set_category(category1)
 rulef.set_conflevel(confcomputer)
 #--
 #----

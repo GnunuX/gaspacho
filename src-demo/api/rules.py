@@ -73,28 +73,34 @@ def get_rules(conflevel, group=None, user=None):
                     tplatform.append(platform)
 
         if is_software == True:
-            rid = rule.id
-            rules[rid] = {}
-            rules[rid]['rule'] = rule
-            rules[rid]['platforms'] = tplatform
+            trule = {}
+            trule['rule'] = rule
+            trule['platforms'] = tplatform
             if group != None:
-                rules[rid]['choice'] = {}
+                trule['choice'] = {}
                 #if group is set, get current and herited choice
                 choices = get_depends_choice(group, rule, user)
                 if choices == None:
                     choices = get_parent_choice(group, rule, user)
                 if not choices == None:
-                    rules[rid]['choice']['herited'] = []
+                    trule['choice']['herited'] = []
                     for choice in choices:
                         pgroup = choice[0]
                         puser = choice[1]
                         pchoice = choice[2]
-                        rules[rid]['choice']['herited'].append({'group': pgroup, 'user': puser, 'choice': pchoice})
+                        trule['choice']['herited'].append({'group': pgroup, 'user': puser, 'choice': pchoice})
                 choices = get_choice(group, rule, user)
                 if choices == []:
                     choices = get_choice(group, rule, None)
                 if choices != []:
-                    rules[rid]['choice']['current'] = [choice for choice in choices]
+                    trule['choice']['current'] = [choice for choice in choices]
+            cid = rule.category.id
+            if not rules.has_key(cid):
+                rules[cid] = {'category': rule.category, 'tags': {}}
+            tid = rule.tag.id
+            if not rules[cid]['tags'].has_key(tid):
+                rules[cid]['tags'][tid] = {'tag': rule.tag, 'rules': []}
+            rules[cid]['tags'][tid]['rules'].append(trule)
     return rules
 
 

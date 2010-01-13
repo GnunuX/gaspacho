@@ -9,7 +9,8 @@ class Rule(Entity):
     defaultvalue = Field(UnicodeText)
     description = Field(UnicodeText)
     variables = OneToMany('Variable')
-    tags = ManyToMany('Tag')
+    tag = ManyToOne('Tag')
+    category = ManyToOne('Category')
     conflevel = ManyToOne('ConfLevel')
     choices = ManyToMany('Choice')
 
@@ -18,8 +19,11 @@ class Rule(Entity):
         self.variables.append(var)
         return var
 
-    def add_tag(self, tag):
-        self.tags.append(tag)
+    def set_tag(self, tag):
+        self.tag = tag
+
+    def set_category(self, category):
+        self.category = category
 
     def set_conflevel(self, conflevel):
         self.conflevel = conflevel
