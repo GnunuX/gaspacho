@@ -1,0 +1,15 @@
+Gaspacho demo is a tested version of the gaspacho backend.
+
+This version will be remove when the true backend will be ended.
+
+Dependancies: python, python-elixir.
+
+There is two directories:
+- bdd: every classes to access to the database ;
+- api: you should not access to the bdd directly, use api to do this.
+
+Two scripts help you to test this demo:
+- import_test.py: create a bdd, use this script only one time (or remove gaspacho.sqlite before) ;
+- api_test.py: is a test file to access to the api, you can modify it and use it more than one time.
+
+Enjoy.
