@@ -8,7 +8,7 @@ from api.rules import add_rule
 from api.platforms import add_platform, add_path, add_os, add_software
 from api.tags import add_tag, add_category, get_conflevel
 from bdd.tags import ConfLevel
-from api.groups import add_group, add_user, add_computer
+from api.groups import add_group, add_template, add_user, add_computer
 from api.choices import add_choice
 
 metadata.bind = "sqlite:///gaspacho.sqlite"
@@ -69,9 +69,9 @@ techroom.add_user(student)
 techroom.add_user(teacher)
 techroom.add_computer(techcomputers)
 
-#tplfirefox = add_group(name=u'tplfirefox', template=True)
-#tplfirefox.add_software(firefox)
-#mathroom.add_depend(tplfirefox)
+tplfirefox = add_template(name=u'tplfirefox')
+tplfirefox.add_software(firefox)
+mathroom.add_depend(tplfirefox)
 
 #----
 category1 = add_category(name=u'web browser')
@@ -144,7 +144,7 @@ path17 = variableM.set_platform(platform=f35onWinXP)
 choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
 choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3118', platform=f35onWinXP)
 #choicea = add_choice(rule=rulea, group=room, state=u'on', value=u'3119')
-#choicea = add_choice(rule=rulea, group=tplfirefox, state=u'on', value=u'3119')
+choicea = add_choice(rule=rulea, template=tplfirefox, state=u'on', value=u'3119')
 #----
 session.commit()
 session.flush()

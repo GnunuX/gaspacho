@@ -29,7 +29,7 @@ class Group(Entity):
     def add_software(self, software):
         self.softwares.append(software)
     def __repr__(self):
-        return 'name: "%s", comment: "%s", template: "%s"' % (self.name, self.comment, self.template)
+        return 'name: "%s", comment: "%s"'  % (self.name, self.comment)
 
 class Template(Entity):
     name = Field(UnicodeText)
@@ -50,7 +50,7 @@ class Template(Entity):
         self.softwares.append(software)
 
     def __repr__(self):
-        return 'name: "%s", comment: "%s", template: "%s"' % (self.name, self.comment, self.template)
+        return 'name: "%s", comment: "%s"' % (self.name, self.comment)
 
 class User(Entity):
     name = Field(UnicodeText)

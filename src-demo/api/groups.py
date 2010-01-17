@@ -1,20 +1,18 @@
 # api's groups
 
-from bdd.groups import Group, User, Computer
+from bdd.groups import Group, Template, User, Computer
 
-def add_group(name, parent=None, template=False, comment=u''):
+def add_group(name, parent=None, comment=u''):
     """
     add group
     """
-    if template == True:
-        if parent != None:
-            raise Exception('group could not be template and have parent')
-        return Group(name=name, template=template, comment=comment)
+    if parent == None:
+        return Group(name=name, comment=comment)
     else:
-        if parent == None:
-            return Group(name=name, comment=comment)
-        else:
-            return Group(name=name, parent=parent, comment=comment)
+        return Group(name=name, parent=parent, comment=comment)
+
+def add_template(name, comment=u''):
+    return Template(name=name, comment=comment)
 
 def add_user(name, typ=u'user', comment=u''):
     """
@@ -59,22 +57,23 @@ def get_groups(only_templates=False):
                     tgroup['childs'] = childs
                 groups.append(tgroup)
         yield groups
-
+    #FIXME
     if only_templates == False:
         groups['groups'] = []
     groups['tpls'] = []
     for group in rootgroups:
         #parse all rootgroups to get childs group
-        if group.template == True:
-            groups['tpls'].append(group)
-        else:
-            if only_templates == False:
-                tgroups = {}
-                childs = list(construct_group(group.name, childgroups))[0]
-                tgroups['group'] = group
-                if childs != []:
-                    tgroups['childs'] = childs
-                groups['groups'].append(tgroups)
+#        if group.template == True:
+#            groups['tpls'].append(group)
+#        else:
+        #FIXME
+        if only_templates == False:
+            tgroups = {}
+            childs = list(construct_group(group.name, childgroups))[0]
+            tgroups['group'] = group
+            if childs != []:
+                tgroups['childs'] = childs
+            groups['groups'].append(tgroups)
     return groups
 
 def get_users(typ=None):
