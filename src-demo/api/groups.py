@@ -33,6 +33,11 @@ def get_groups(only_templates=False):
     groups = {}
     rootgroups = []
     childgroups = {}
+    groups['tpls'] = []
+    for template in Template.query.all():
+        groups['tpls'].append(template)
+    if only_templates == True:
+        return groups
     for group in Group.query.all():
         if group.parent == None:
             #list all root group
@@ -57,23 +62,15 @@ def get_groups(only_templates=False):
                     tgroup['childs'] = childs
                 groups.append(tgroup)
         yield groups
-    #FIXME
-    if only_templates == False:
-        groups['groups'] = []
-    groups['tpls'] = []
+    groups['groups'] = []
     for group in rootgroups:
         #parse all rootgroups to get childs group
-#        if group.template == True:
-#            groups['tpls'].append(group)
-#        else:
-        #FIXME
-        if only_templates == False:
-            tgroups = {}
-            childs = list(construct_group(group.name, childgroups))[0]
-            tgroups['group'] = group
-            if childs != []:
-                tgroups['childs'] = childs
-            groups['groups'].append(tgroups)
+        tgroups = {}
+        childs = list(construct_group(group.name, childgroups))[0]
+        tgroups['group'] = group
+        if childs != []:
+            tgroups['childs'] = childs
+        groups['groups'].append(tgroups)
     return groups
 
 def get_users(typ=None):
