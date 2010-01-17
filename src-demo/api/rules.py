@@ -94,9 +94,9 @@ def get_rules(conflevel, group=None, user=None):
                     choices = get_choice(group, rule, None)
                 if choices != []:
                     trule['choice']['current'] = [choice for choice in choices]
-            cid = rule.category.id
+            cid = rule.tag.category.id
             if not rules.has_key(cid):
-                rules[cid] = {'category': rule.category, 'tags': {}}
+                rules[cid] = {'category': rule.tag.category, 'tags': {}}
             tid = rule.tag.id
             if not rules[cid]['tags'].has_key(tid):
                 rules[cid]['tags'][tid] = {'tag': rule.tag, 'rules': []}
