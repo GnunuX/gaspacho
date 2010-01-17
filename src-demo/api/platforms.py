@@ -4,17 +4,17 @@ api's platforms
 
 from bdd.platforms import Platform, OS, Software, Path
 
-def add_os(name=None, description=None):
+def add_os(name=None, comment=None):
     """
     add os
     """
-    return OS(name=name, description=description)
+    return OS(name=name, comment=comment)
 
-def add_software(name=None, description=None):
+def add_software(name=None, comment=None):
     """
     add software
     """
-    return Software(name=name, description=description)
+    return Software(name=name, comment=comment)
 
 def add_platform(osversion=None, softwareversion=None, path=None):
     """
@@ -23,11 +23,11 @@ def add_platform(osversion=None, softwareversion=None, path=None):
     return Platform(osversion=osversion, softwareversion=softwareversion,
             path=path)
 
-def add_path(name, description=None):
+def add_path(name, comment=None):
     """
     add path
     """
-    return Path(name=name, description=description)
+    return Path(name=name, comment=comment)
 
 def get_platforms():
     """

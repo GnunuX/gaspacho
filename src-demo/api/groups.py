@@ -2,31 +2,31 @@
 
 from bdd.groups import Group, User, Computer
 
-def add_group(name, parent=None, template=False, description=u''):
+def add_group(name, parent=None, template=False, comment=u''):
     """
     add group
     """
     if template == True:
         if parent != None:
             raise Exception('group could not be template and have parent')
-        return Group(name=name, template=template, description=description)
+        return Group(name=name, template=template, comment=comment)
     else:
         if parent == None:
-            return Group(name=name, description=description)
+            return Group(name=name, comment=comment)
         else:
-            return Group(name=name, parent=parent, description=description)
+            return Group(name=name, parent=parent, comment=comment)
 
-def add_user(name, typ=u'user', description=u''):
+def add_user(name, typ=u'user', comment=u''):
     """
     add user
     """
-    return User(name=name, typ=typ, description=description)
+    return User(name=name, typ=typ, comment=comment)
 
-def add_computer(name, typ=u'ip', description=u''):
+def add_computer(name, typ=u'ip', comment=u''):
     """
     add computer
     """
-    return Computer(name=name, typ=typ, description=description)
+    return Computer(name=name, typ=typ, comment=comment)
 
 def get_groups(only_templates=False):
     """

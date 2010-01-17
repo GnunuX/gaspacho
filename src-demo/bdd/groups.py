@@ -4,7 +4,7 @@ from elixir import *
 
 class Group(Entity):
     name = Field(UnicodeText)
-    description = Field(UnicodeText)
+    comment = Field(UnicodeText)
     managers = ManyToMany('User', inverse='managedgroups')
     computers = ManyToMany('Computer')
     users = ManyToMany('User', inverse='groups')
@@ -29,11 +29,11 @@ class Group(Entity):
     def add_software(self, software):
         self.softwares.append(software)
     def __repr__(self):
-        return 'name: "%s", description: "%s", template: "%s"' % (self.name, self.description, self.template)
+        return 'name: "%s", comment: "%s", template: "%s"' % (self.name, self.comment, self.template)
 
 class Template(Entity):
     name = Field(UnicodeText)
-    description = Field(UnicodeText)
+    comment = Field(UnicodeText)
     managers = ManyToMany('User', inverse='managedgroups')
     users = ManyToMany('User', inverse='groups')
     choices = OneToMany('Choice')
@@ -49,12 +49,12 @@ class Template(Entity):
         self.softwares.append(software)
 
     def __repr__(self):
-        return 'name: "%s", description: "%s", template: "%s"' % (self.name, self.description, self.template)
+        return 'name: "%s", comment: "%s", template: "%s"' % (self.name, self.comment, self.template)
 
 class User(Entity):
     name = Field(UnicodeText)
     typ = Field(UnicodeText)
-    description = Field(UnicodeText)
+    comment = Field(UnicodeText)
     groups = ManyToMany('Group')
     managedgroups = ManyToMany('Group')
     choices = ManyToMany('Choice')
@@ -62,7 +62,7 @@ class User(Entity):
 class Computer(Entity):
     name = Field(UnicodeText)
     typ = Field(UnicodeText)
-    description = Field(UnicodeText)
+    comment = Field(UnicodeText)
     groups = ManyToMany('Group')
 
 # vim: ts=4 sw=4 expandtab

@@ -6,12 +6,12 @@ from bdd.rules import Rule, Variable
 from bdd.choices import Choice
 
 def add_rule(name, typ, defaultstate=u'off', defaultvalue=None,
-        description=u''):
+        comment=u''):
     """
     add rule
     """
     return Rule(name=name, typ=typ, defaultstate=defaultstate,
-           defaultvalue=defaultvalue, description=description)
+           defaultvalue=defaultvalue, comment=comment)
 
 def get_rules(conflevel, group=None, user=None):
     """

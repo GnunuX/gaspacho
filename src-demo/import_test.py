@@ -79,69 +79,69 @@ tag2 = add_tag(name=u'default')
 
 category1 = add_category(name=u'web browser')
 #----
-rulea = add_rule(name=u'configure proxy port', typ=u'integer', description=u'', defaultvalue=u'3128') 
+rulea = add_rule(name=u'configure proxy port', typ=u'integer', comment=u'', defaultvalue=u'3128') 
 rulea.set_tag(tag1)
 rulea.set_category(category1)
 rulea.set_conflevel(confuser)
 #--
-ruleb = add_rule(name=u'configure proxy address', typ=u'string', description=u'')
+ruleb = add_rule(name=u'configure proxy address', typ=u'string', comment=u'')
 ruleb.set_tag(tag1)
 ruleb.set_category(category1)
 ruleb.set_conflevel(confuser)
 #--
-rulec = add_rule(name=u'configure app1 as default', typ=u'boolean', description=u'', defaultstate=u'on')
+rulec = add_rule(name=u'configure app1 as default', typ=u'boolean', comment=u'', defaultstate=u'on')
 rulec.set_tag(tag2)
 rulec.set_category(category1)
 rulec.set_conflevel(confuser)
 #--
-ruled = add_rule(name=u'configure app3 as default', typ=u'boolean', description=u'', defaultstate=u'on')
+ruled = add_rule(name=u'configure app3 as default', typ=u'boolean', comment=u'', defaultstate=u'on')
 ruled.set_tag(tag2)
 ruled.set_category(category1)
 ruled.set_conflevel(confcomputer)
 #--
-rulee = add_rule(name=u'configure app4 as default', typ=u'boolean', description=u'')
+rulee = add_rule(name=u'configure app4 as default', typ=u'boolean', comment=u'')
 rulee.set_tag(tag2)
 rulee.set_category(category1)
 rulee.set_conflevel(confcomputer)
 #--
-rulef = add_rule(name=u'configure app5 as default', typ=u'boolean', description=u'')
+rulef = add_rule(name=u'configure app5 as default', typ=u'boolean', comment=u'')
 rulef.set_tag(tag2)
 rulef.set_category(category1)
 rulef.set_conflevel(confcomputer)
 #--
 #----
 
-variableA = rulea.add_variable(name=u'proxy_port', description=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
+variableA = rulea.add_variable(name=u'proxy_port', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
 path01 = variableA.set_platform(platform=f35onWinXP)
 path06 = variableA.set_platform(platform=ieonWinXP)
 
 #--
-variableB = ruleb.add_variable(name=u'proxy_addr', description=u'', valueon=u'', valueoff=u'SUPPR', typ=u'string')
+variableB = ruleb.add_variable(name=u'proxy_addr', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'string')
 path02 = variableB.set_platform(platform=f35onWinXP)
 #--
-variableC = rulec.add_variable(name=u'default', description=u'', valueon=u'on', valueoff=u'SUPPR', typ=u'string')
+variableC = rulec.add_variable(name=u'default', comment=u'', valueon=u'on', valueoff=u'SUPPR', typ=u'string')
 path03 = variableC.set_platform(platform=f35onWinXP)
 path04 = variableC.set_platform(platform=f35onMdv20100)
 path05 = variableC.set_platform(platform=ieonWinXP)
-variableG = rulea.add_variable(name=u'proxyport', description=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
+variableG = rulea.add_variable(name=u'proxyport', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
 path10 = variableG.set_platform(platform=f35onMdv20100)
 #--
-variableH = ruleb.add_variable(name=u'proxyaddr', description=u'', valueon=u'', valueoff=u'SUPPR', typ=u'string')
+variableH = ruleb.add_variable(name=u'proxyaddr', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'string')
 path11 = variableH.set_platform(platform=f35onMdv20100) 
 #--
-variableI = ruled.add_variable(name=u'default', description=u'', valueon=u'0', valueoff=u'1', typ=u'boolean')
+variableI = ruled.add_variable(name=u'default', comment=u'', valueon=u'0', valueoff=u'1', typ=u'boolean')
 path12 = variableI.set_platform(platform=f35onWinXP)
 #--
-variableJ = rulea.add_variable(name=u'proxyport', description=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
+variableJ = rulea.add_variable(name=u'proxyport', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
 path13 = variableJ.set_platform(platform=f35onMdv20100) 
 #--
-variableK = ruleb.add_variable(name=u'proxyaddr', description=u'', valueon=u'', valueoff=u'SUPPR', typ=u'string')
+variableK = ruleb.add_variable(name=u'proxyaddr', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'string')
 path14 = variableK.set_platform(platform=f35onWinXP)
 #--
-variableL = rulee.add_variable(name=u'default1', description=u'', valueon=u'SUPPR', valueoff=u'off', typ=u'string')
+variableL = rulee.add_variable(name=u'default1', comment=u'', valueon=u'SUPPR', valueoff=u'off', typ=u'string')
 path15 = variableL.set_platform(platform=ieonWinXP) 
 #--
-variableM = rulef.add_variable(name=u'default2', description=u'', valueon=u'0', valueoff=u'SUPPR', typ=u'boolean')
+variableM = rulef.add_variable(name=u'default2', comment=u'', valueon=u'0', valueoff=u'SUPPR', typ=u'boolean')
 path16 = variableM.set_platform(platform=f35onMdv20100)
 path17 = variableM.set_platform(platform=f35onWinXP)
 #----

@@ -2,23 +2,23 @@ from elixir import *
 
 class Tag(Entity):
     name = Field(UnicodeText)
-    description = Field(UnicodeText)
+    comment = Field(UnicodeText)
     rules = OneToMany('Rule')
     def __repr__(self):
-        return 'name: "%s", description: "%s"' % (self.name, self.description)
+        return 'name: "%s", comment: "%s"' % (self.name, self.comment)
 
 class Category(Entity):
     name = Field(UnicodeText)
-    description = Field(UnicodeText)
+    comment = Field(UnicodeText)
     rules = OneToMany('Rule')
     def __repr__(self):
-        return 'name: "%s", description: "%s"' % (self.name, self.description)
+        return 'name: "%s", comment: "%s"' % (self.name, self.comment)
 
 class ConfLevel(Entity):
     name = Field(UnicodeText)
-    description = Field(UnicodeText)
+    comment = Field(UnicodeText)
     rules = OneToMany('Rule')
     def __repr__(self):
-        return 'name: "%s", description: "%s"' % (self.name, self.description)
+        return 'name: "%s", comment: "%s"' % (self.name, self.comment)
 
 # vim: ts=4 sw=4 expandtab
