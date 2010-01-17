@@ -69,44 +69,40 @@ techroom.add_user(student)
 techroom.add_user(teacher)
 techroom.add_computer(techcomputers)
 
-tplfirefox = add_group(name=u'tplfirefox', template=True)
-tplfirefox.add_software(firefox)
-mathroom.add_depend(tplfirefox)
+#tplfirefox = add_group(name=u'tplfirefox', template=True)
+#tplfirefox.add_software(firefox)
+#mathroom.add_depend(tplfirefox)
 
 #----
+category1 = add_category(name=u'web browser')
 tag1 = add_tag(name=u'proxy')
 tag2 = add_tag(name=u'default')
+category1.add_tag(tag1)
+category1.add_tag(tag2)
 
-category1 = add_category(name=u'web browser')
 #----
 rulea = add_rule(name=u'configure proxy port', typ=u'integer', comment=u'', defaultvalue=u'3128') 
 rulea.set_tag(tag1)
-rulea.set_category(category1)
 rulea.set_conflevel(confuser)
 #--
 ruleb = add_rule(name=u'configure proxy address', typ=u'string', comment=u'')
 ruleb.set_tag(tag1)
-ruleb.set_category(category1)
 ruleb.set_conflevel(confuser)
 #--
 rulec = add_rule(name=u'configure app1 as default', typ=u'boolean', comment=u'', defaultstate=u'on')
 rulec.set_tag(tag2)
-rulec.set_category(category1)
 rulec.set_conflevel(confuser)
 #--
 ruled = add_rule(name=u'configure app3 as default', typ=u'boolean', comment=u'', defaultstate=u'on')
 ruled.set_tag(tag2)
-ruled.set_category(category1)
 ruled.set_conflevel(confcomputer)
 #--
 rulee = add_rule(name=u'configure app4 as default', typ=u'boolean', comment=u'')
 rulee.set_tag(tag2)
-rulee.set_category(category1)
 rulee.set_conflevel(confcomputer)
 #--
 rulef = add_rule(name=u'configure app5 as default', typ=u'boolean', comment=u'')
 rulef.set_tag(tag2)
-rulef.set_category(category1)
 rulef.set_conflevel(confcomputer)
 #--
 #----
@@ -148,7 +144,7 @@ path17 = variableM.set_platform(platform=f35onWinXP)
 choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
 choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3118', platform=f35onWinXP)
 #choicea = add_choice(rule=rulea, group=room, state=u'on', value=u'3119')
-choicea = add_choice(rule=rulea, group=tplfirefox, state=u'on', value=u'3119')
+#choicea = add_choice(rule=rulea, group=tplfirefox, state=u'on', value=u'3119')
 #----
 session.commit()
 session.flush()

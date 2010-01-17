@@ -4,13 +4,17 @@ class Tag(Entity):
     name = Field(UnicodeText)
     comment = Field(UnicodeText)
     rules = OneToMany('Rule')
+    category = ManyToOne('Category')
     def __repr__(self):
         return 'name: "%s", comment: "%s"' % (self.name, self.comment)
 
 class Category(Entity):
     name = Field(UnicodeText)
     comment = Field(UnicodeText)
-    rules = OneToMany('Rule')
+    tags = OneToMany('Tag')
+
+    def add_tag(self, tag):
+        self.tags.append(tag)
     def __repr__(self):
         return 'name: "%s", comment: "%s"' % (self.name, self.comment)
 

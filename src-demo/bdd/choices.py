@@ -7,6 +7,7 @@ class Choice(Entity):
     value = Field(UnicodeText)
     rule = ManyToOne('Rule')
     group = ManyToOne('Group')
+    template = ManyToOne('Template')
     user = ManyToOne('User')
     platform = ManyToOne('Platform')
     def __repr__(self):

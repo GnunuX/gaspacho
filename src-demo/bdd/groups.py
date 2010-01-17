@@ -11,7 +11,7 @@ class Group(Entity):
     choices = OneToMany('Choice')
     parent = ManyToOne('Group', inverse='childs')
     childs = OneToMany('Group')
-    depends = ManyToMany('Group')
+    depends = ManyToMany('Template')
     softwares = ManyToMany('Software')
 
     def add_computer(self, computer):
@@ -23,8 +23,8 @@ class Group(Entity):
     def add_manager(self, user):
         self.managers.append(user)
 
-    def add_depend(self, depend):
-        self.depends.append(depend)
+    def add_depend(self, template):
+        self.depends.append(template)
 
     def add_software(self, software):
         self.softwares.append(software)
@@ -34,8 +34,9 @@ class Group(Entity):
 class Template(Entity):
     name = Field(UnicodeText)
     comment = Field(UnicodeText)
-    managers = ManyToMany('User', inverse='managedgroups')
-    users = ManyToMany('User', inverse='groups')
+#    managers = ManyToMany('User', inverse='managedgroups')
+#    users = ManyToMany('User', inverse='groups')
+    depends = ManyToMany('Group')
     choices = OneToMany('Choice')
     softwares = ManyToMany('Software')
 

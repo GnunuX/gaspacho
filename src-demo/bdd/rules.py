@@ -10,8 +10,6 @@ class Rule(Entity):
     comment = Field(UnicodeText)
     variables = OneToMany('Variable')
     tag = ManyToOne('Tag')
-    #FIXME
-    category = ManyToOne('Category')
     conflevel = ManyToOne('ConfLevel')
     choices = ManyToMany('Choice')
 
@@ -22,9 +20,6 @@ class Rule(Entity):
 
     def set_tag(self, tag):
         self.tag = tag
-
-    def set_category(self, category):
-        self.category = category
 
     def set_conflevel(self, conflevel):
         self.conflevel = conflevel
@@ -37,7 +32,6 @@ class Variable(Entity):
     typ = Field(UnicodeText)
     valueon = Field(UnicodeText)
     valueoff = Field(UnicodeText)
-    #FIXME: comment
     comment = Field(UnicodeText)
     rule = ManyToOne('Rule')
     platforms = ManyToMany('Platform')
