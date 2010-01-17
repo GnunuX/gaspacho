@@ -13,16 +13,19 @@ def add_rule(name, typ, defaultstate=u'off', defaultvalue=None,
     return Rule(name=name, typ=typ, defaultstate=defaultstate,
            defaultvalue=defaultvalue, comment=comment)
 
-def get_rules(conflevel, group=None, user=None):
+def get_rules(conflevel, group=None, template=None, user=None):
     """
     list rules
     """
     def get_choice(group, rule, user):
         return Choice.query.filter_by(rule=rule, group=group, user=user).all()
 
+    def get_template_choice(template, rule, user):
+        return Choice.query.filter_by(rule=rule, template=template, user=user).all()
+
     def get_depends_choice(group, rule, user):
         for depend in group.depends:
-            choices = get_choice(depend, rule, user)
+            choices = get_template_choice(depend, rule, user)
             if choices != []:
                 ret = []
                 for choice in choices:
@@ -77,6 +80,8 @@ def get_rules(conflevel, group=None, user=None):
             trule['rule'] = rule
             trule['platforms'] = tplatform
             if group != None:
+                if template != None:
+                    print "error template"
                 trule['choice'] = {}
                 #if group is set, get current and herited choice
                 choices = get_depends_choice(group, rule, user)
@@ -89,9 +94,16 @@ def get_rules(conflevel, group=None, user=None):
                         puser = choice[1]
                         pchoice = choice[2]
                         trule['choice']['herited'].append({'group': pgroup, 'user': puser, 'choice': pchoice})
-                choices = get_choice(group, rule, user)
-                if choices == []:
-                    choices = get_choice(group, rule, None)
+            if group != None or template != None:
+                if group == None:
+                    choices = get_template_choice(template, rule, user)
+                else:
+                    choices = get_choice(group, rule, user)
+                if choices == [] and user != None:
+                    if group == None:
+                        choices = get_template_choice(template, rule, None)
+                    else:
+                        choices = get_choice(group, rule, None)
                 if choices != []:
                     trule['choice']['current'] = [choice for choice in choices]
             cid = rule.tag.category.id
