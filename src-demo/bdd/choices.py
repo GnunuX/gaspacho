@@ -3,11 +3,11 @@
 from elixir import *
 
 class Choice(Entity):
+    state = Field(UnicodeText)
+    value = Field(UnicodeText)
     rule = ManyToOne('Rule')
     group = ManyToOne('Group')
     user = ManyToOne('User')
-    state = Field(UnicodeText)
-    value = Field(UnicodeText)
     platform = ManyToOne('Platform')
     def __repr__(self):
         return 'state: "%s", value: "%s"' % (self.state, self.value)

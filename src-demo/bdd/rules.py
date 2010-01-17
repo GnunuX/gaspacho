@@ -10,6 +10,7 @@ class Rule(Entity):
     description = Field(UnicodeText)
     variables = OneToMany('Variable')
     tag = ManyToOne('Tag')
+    #FIXME
     category = ManyToOne('Category')
     conflevel = ManyToOne('ConfLevel')
     choices = ManyToMany('Choice')
@@ -32,13 +33,14 @@ class Rule(Entity):
         return 'name: "%s", typ: "%s", defaultstate: "%s", defaultvalue: "%s", description: "%s"' % (self.name, self.typ, self.defaultstate, self.defaultvalue, self.description)
 
 class Variable(Entity):
-    rule = ManyToOne('Rule')
-    platforms = ManyToMany('Platform')
     name = Field(UnicodeText)
     typ = Field(UnicodeText)
     valueon = Field(UnicodeText)
     valueoff = Field(UnicodeText)
+    #FIXME: comment
     description = Field(UnicodeText)
+    rule = ManyToOne('Rule')
+    platforms = ManyToMany('Platform')
     def set_platform(self, platform, description=u''):
         self.platforms.append(platform)
     def __repr__(self):

@@ -37,8 +37,8 @@ class Path(Entity):
     platforms = OneToMany('Platform')
 
 class Platform(Entity):
-    osversion = ManyToOne(OSVersion)
-    softwareversion = ManyToOne(SoftwareVersion)
+    osversion = ManyToOne('OSVersion')
+    softwareversion = ManyToOne('SoftwareVersion')
     path = ManyToOne('Path')
     variables = ManyToMany('Variable')
     choices = OneToMany('Choice') 
