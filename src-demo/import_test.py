@@ -4,7 +4,7 @@ import sys
 #if __name__ == '__main__':
 
 from elixir import *
-from api.rules import add_rule
+from api.rules import add_rule, add_variable
 from api.platforms import add_platform, add_path, add_os, add_software
 from api.tags import add_tag, add_category, get_conflevel
 from bdd.tags import ConfLevel
@@ -17,35 +17,81 @@ create_all()
 
 confuser, confcomputer = get_conflevel()
 
-##--Platform
+#------------------------------------------------------------------------------
+# I - OS and Software
+
 win = add_os(name=u'windows')
 winxp = win.add_version(u'XP')
-winpath = add_path(name=u'ini://path/to/app1/Win/')
-#
+
 mdv = add_os(name=u'mandriva')
 mdv20100 = mdv.add_version(name=u'2010.0')
-mdvpath = add_path(name=u'ini://path/to/app1/Lin/')
-#
+
+gdm = add_software(name=u'gdm')
+gdm2 = gdm.add_version(name=u'2.20.10')
+
 firefox = add_software(name=u'firefox')
 f35 = firefox.add_version(name=u'3.5')
-#
+
 ie = add_software(name=u'ie')
 ie6 = ie.add_version(name=u'6.0')
-#
-f35onWinXP = add_platform(winxp, f35, winpath)
-ieonWinXP = add_platform(winxp, ie6, winpath)
-f35onMdv20100 = add_platform(mdv20100, f35, mdvpath)
-#
+ie7 = ie.add_version(name=u'7.0')
+
+#------------------------------------------------------------------------------
+# II - Category and tag
+
+cat_navweb = add_category(name=u'Navigateur web')
+tag_actproxy = add_tag(name=u'Activer le Proxy')
+tag_conf = add_tag(name=u'Configuration')
+cat_navweb.add_tag(tag_actproxy)
+cat_navweb.add_tag(tag_conf)
+
+cat_session = add_category(name=u'Session')
+tag_ouvsess = add_tag(name=u'Ouverture de session')
+cat_session.add_tag(tag_ouvsess)
+
+#------------------------------------------------------------------------------
+# III - Rule
+
+# 1/ Premiere regle :
+rulea = add_rule(name=u"Autoriser l'arrêt de la machine depuis la fenêtre d'ouverture de session", typ=u'boolean', comment=u'', defaultvalue=u'3128') 
+
+rulea.set_tag(tag_ouvsess)
+rulea.set_conflevel(confcomputer)
+
+# sous mandriva / gdm
+variableA = add_variable(name=u'AllowLogoutActions', comment=u'', valueon=u'HALT;REBOOT;SUSPEND;CUSTOM_CMD', valueoff=u'CUSTOM_CMD', typ=u'string')
+path_gdm2 = add_path(name=u'INI://etc/X11/gdm/custom.conf?section=daemon')
+gdm2onmdv10 = add_platform(mdv20100, gdm2, path_gdm2)
+
+rulea.add_variable(variableA)
+variableA.set_platform(platform=gdm2onmdv10)
+
+# sous windows XP
+variableB = add_variable(name=u'ShutdownWithoutLogon', comment=u'', valueon=u'', valueoff=u'', typ=u'integer')
+path_session = add_path(name=u'REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\policies\\System')
+sessiononwixp = add_platform(winXP, path=path_session)
+
+rulea.add_variable(variableB)
+variableB.set_platform(platform=sessiononwixp)
+
+#------------------------------------------------------------------------------
+# IV - User
 
 student = add_user(name=u'student', typ=u'group')
 teacher = add_user(name=u'teacher', typ=u'group')
 fred = add_user(name=u'fred')
 paul = add_user(name=u'paul')
 
+#------------------------------------------------------------------------------
+# V - Computer
+
 allcomputers = add_computer(name=u'*')
 roomcomputers = add_computer(name=u'*room*', typ=u'name')
 mathcomputers = add_computer(name=u'mathroom*', typ=u'name')
 techcomputers = add_computer(name=u'techroom*', typ=u'name')
+
+#------------------------------------------------------------------------------
+# VI - Group
 
 defaultgroup = add_group(name=u'default')
 defaultgroup.add_user(student)
@@ -73,78 +119,14 @@ tplfirefox = add_template(name=u'tplfirefox')
 tplfirefox.add_software(firefox)
 mathroom.add_depend(tplfirefox)
 
-#----
-category1 = add_category(name=u'web browser')
-tag1 = add_tag(name=u'proxy')
-tag2 = add_tag(name=u'default')
-category1.add_tag(tag1)
-category1.add_tag(tag2)
+#------------------------------------------------------------------------------
+# VII - Choice
 
-#----
-rulea = add_rule(name=u'configure proxy port', typ=u'integer', comment=u'', defaultvalue=u'3128') 
-rulea.set_tag(tag1)
-rulea.set_conflevel(confuser)
-#--
-ruleb = add_rule(name=u'configure proxy address', typ=u'string', comment=u'')
-ruleb.set_tag(tag1)
-ruleb.set_conflevel(confuser)
-#--
-rulec = add_rule(name=u'configure app1 as default', typ=u'boolean', comment=u'', defaultstate=u'on')
-rulec.set_tag(tag2)
-rulec.set_conflevel(confuser)
-#--
-ruled = add_rule(name=u'configure app3 as default', typ=u'boolean', comment=u'', defaultstate=u'on')
-ruled.set_tag(tag2)
-ruled.set_conflevel(confcomputer)
-#--
-rulee = add_rule(name=u'configure app4 as default', typ=u'boolean', comment=u'')
-rulee.set_tag(tag2)
-rulee.set_conflevel(confcomputer)
-#--
-rulef = add_rule(name=u'configure app5 as default', typ=u'boolean', comment=u'')
-rulef.set_tag(tag2)
-rulef.set_conflevel(confcomputer)
-#--
-#----
-
-variableA = rulea.add_variable(name=u'proxy_port', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
-path01 = variableA.set_platform(platform=f35onWinXP)
-path06 = variableA.set_platform(platform=ieonWinXP)
-
-#--
-variableB = ruleb.add_variable(name=u'proxy_addr', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'string')
-path02 = variableB.set_platform(platform=f35onWinXP)
-#--
-variableC = rulec.add_variable(name=u'default', comment=u'', valueon=u'on', valueoff=u'SUPPR', typ=u'string')
-path03 = variableC.set_platform(platform=f35onWinXP)
-path04 = variableC.set_platform(platform=f35onMdv20100)
-path05 = variableC.set_platform(platform=ieonWinXP)
-variableG = rulea.add_variable(name=u'proxyport', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
-path10 = variableG.set_platform(platform=f35onMdv20100)
-#--
-variableH = ruleb.add_variable(name=u'proxyaddr', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'string')
-path11 = variableH.set_platform(platform=f35onMdv20100) 
-#--
-variableI = ruled.add_variable(name=u'default', comment=u'', valueon=u'0', valueoff=u'1', typ=u'boolean')
-path12 = variableI.set_platform(platform=f35onWinXP)
-#--
-variableJ = rulea.add_variable(name=u'proxyport', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'integer')
-path13 = variableJ.set_platform(platform=f35onMdv20100) 
-#--
-variableK = ruleb.add_variable(name=u'proxyaddr', comment=u'', valueon=u'', valueoff=u'SUPPR', typ=u'string')
-path14 = variableK.set_platform(platform=f35onWinXP)
-#--
-variableL = rulee.add_variable(name=u'default1', comment=u'', valueon=u'SUPPR', valueoff=u'off', typ=u'string')
-path15 = variableL.set_platform(platform=ieonWinXP) 
-#--
-variableM = rulef.add_variable(name=u'default2', comment=u'', valueon=u'0', valueoff=u'SUPPR', typ=u'boolean')
-path16 = variableM.set_platform(platform=f35onMdv20100)
-path17 = variableM.set_platform(platform=f35onWinXP)
-#----
-choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
-choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3118', platform=f35onWinXP)
+#choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
+#choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3118', platform=f35onWinXP)
 #choicea = add_choice(rule=rulea, group=room, state=u'on', value=u'3119')
-choicea = add_choice(rule=rulea, template=tplfirefox, state=u'on', value=u'3119')
+#choicea = add_choice(rule=rulea, template=tplfirefox, state=u'on', value=u'3119')
+
 #----
 session.commit()
 session.flush()

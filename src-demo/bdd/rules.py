@@ -13,10 +13,8 @@ class Rule(Entity):
     conflevel = ManyToOne('ConfLevel')
     choices = ManyToMany('Choice')
 
-    def add_variable(self, name, typ, valueon, valueoff, comment=u''):
-        var = Variable(name=name, typ=typ, valueon=valueon, valueoff=valueoff, comment=comment)
+    def add_variable(self, var):
         self.variables.append(var)
-        return var
 
     def set_tag(self, tag):
         self.tag = tag

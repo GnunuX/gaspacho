@@ -13,6 +13,9 @@ def add_rule(name, typ, defaultstate=u'off', defaultvalue=None,
     return Rule(name=name, typ=typ, defaultstate=defaultstate,
            defaultvalue=defaultvalue, comment=comment)
 
+def add_variable(self, name, typ, valueon, valueoff, comment=u''):
+    return Variable(name=name, typ=typ, valueon=valueon, valueoff=valueoff, comment=comment)
+
 def get_rules(conflevel, group=None, template=None, user=None):
     """
     list rules
