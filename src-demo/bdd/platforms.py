@@ -43,6 +43,10 @@ class Platform(Entity):
     variables = ManyToMany('Variable')
     choices = OneToMany('Choice') 
     def __repr__(self):
-        return 'osname: "%s", osversion: "%s", softwarename: "%s", softwareversion: "%s", path: "%s"' % (self.osversion.os.name, self.osversion.name, self.softwareversion.software.name, self.softwareversion.name, self.path.name)
+        if self.softwareversion != None:
+            soft = 'softwarename: "%s", softwareversion: "%s", ' % (self.softwareversion.software.name, self.softwareversion.name)
+        else:
+            soft = ''
+        return '%sosname: "%s", osversion: "%s", path: "%s"' % (soft, self.osversion.os.name, self.osversion.name, self.path.name)
 
 # vim: ts=4 sw=4 expandtab

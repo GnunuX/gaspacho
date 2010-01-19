@@ -4,14 +4,40 @@ api's rules
 
 from bdd.rules import Rule, Variable
 from bdd.choices import Choice
+# ____________________________________________________________
+# Wrapped objects
+ 
+#class W_Rule:
+#    def __init__(self, wrap):
+#        self._w = wrap
+#      
+#    def __getattr__(self, name):
+#        return getattr(self._w, name)
+#    
+#    def get_w(self, name):
+#        return getattr(self._w, name)
+#    def set_w(self, name, value):
+#        return setattr(self._w, name, value)
+#    
+#    _w = property (get_w, set_w)
+#
+#    def add_variable(self, var):
+#        self.variables.append(var)
+#
+#    def set_tag(self, tag):
+#        self.tag = tag
+#
+#    def set_conflevel(self, conflevel):
+#        self.conflevel = conflevel
+
 
 def add_rule(name, typ, defaultstate=u'off', defaultvalue=None,
         comment=u''):
     """
     add rule
     """
-    return Rule(name=name, typ=typ, defaultstate=defaultstate,
-           defaultvalue=defaultvalue, comment=comment)
+    return Rule(name=name, typ=typ, defaultstate=defaultstate, defaultvalue=defaultvalue, comment=comment)
+
 
 def add_variable(name, typ, valueon, valueoff, comment=u''):
     return Variable(name=name, typ=typ, valueon=valueon, valueoff=valueoff, comment=comment)

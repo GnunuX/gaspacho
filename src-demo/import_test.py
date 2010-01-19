@@ -1,4 +1,4 @@
-# _*_ coding: iso-8859-1 _*_
+# _*_ coding: utf-8 _*_
 import sys 
 
 #if __name__ == '__main__':

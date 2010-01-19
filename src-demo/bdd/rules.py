@@ -1,3 +1,4 @@
+# _*_ coding: utf-8 _*_
 # rules
 
 from elixir import *
@@ -13,6 +14,7 @@ class Rule(Entity):
     conflevel = ManyToOne('ConfLevel')
     choices = ManyToMany('Choice')
 
+#FIXME
     def add_variable(self, var):
         self.variables.append(var)
 
@@ -21,9 +23,10 @@ class Rule(Entity):
 
     def set_conflevel(self, conflevel):
         self.conflevel = conflevel
-
+#---
     def __repr__(self):
-        return 'name: "%s", typ: "%s", defaultstate: "%s", defaultvalue: "%s", comment: "%s"' % (self.name, self.typ, self.defaultstate, self.defaultvalue, self.comment)
+        str = 'name: "%s", typ: "%s", defaultstate: "%s", defaultvalue: "%s", comment: "%s"' % (self.name, self.typ, self.defaultstate, self.defaultvalue, self.comment)
+        return str.encode('iso-8859-1','ignore')
 
 class Variable(Entity):
     name = Field(UnicodeText)

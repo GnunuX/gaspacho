@@ -1,3 +1,5 @@
+# _*_ coding: utf-8 _*_
+
 from elixir import *
 from api.rules import get_rules
 from api.platforms import get_platforms
@@ -21,11 +23,12 @@ confuser, confcomputer = get_conflevel()
 
 pp = pprint.PrettyPrinter(depth=7)
 #list all rules with default settings for confuser
-#pp.pprint(get_rules(confcomputer))
+#pp.pprint(get_rules(confuser))
+pp.pprint(get_rules(confcomputer))
 
 #list all rules with choices
 #pp.pprint(get_rules(confuser, group=mathroom, user=student))
-pp.pprint(get_rules(confcomputer, group=tplfirefox))
+#pp.pprint(get_rules(confcomputer, group=tplfirefox))
 
 #list groups
 #pp.pprint(get_groups())

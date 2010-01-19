@@ -59,11 +59,15 @@ class User(Entity):
     groups = ManyToMany('Group')
     managedgroups = ManyToMany('Group')
     choices = ManyToMany('Choice')
+    def __repr__(self):
+        return 'name: "%s", typ: "%s", comment: "%s"' % (self.name, self.typ, self.comment)
 
 class Computer(Entity):
     name = Field(UnicodeText)
     typ = Field(UnicodeText)
     comment = Field(UnicodeText)
     groups = ManyToMany('Group')
+    def __repr__(self):
+        return 'name: "%s", typ: "%s", comment: "%s"' % (self.name, self.typ, self.comment)
 
 # vim: ts=4 sw=4 expandtab
