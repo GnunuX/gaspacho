@@ -35,6 +35,7 @@ f35 = firefox.add_version(name=u'3.5')
 ie = add_software(name=u'ie')
 ie6 = ie.add_version(name=u'6.0')
 ie7 = ie.add_version(name=u'7.0')
+ieall = ie.add_version(name=u'all')
 
 #------------------------------------------------------------------------------
 # II - Category and tag
@@ -68,12 +69,37 @@ rulea.add_variable(variableA)
 variableA.set_platform(platform=gdm2onmdv10)
 
 # sous windows XP
-variableB = add_variable(name=u'ShutdownWithoutLogon', comment=u'', valueon=u'', valueoff=u'', typ=u'integer')
+variableB = add_variable(name=u'ShutdownWithoutLogon', comment=u'', valueon=u'1', valueoff=u'0', typ=u'integer')
 path_session = add_path(name=u'REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\policies\\System')
 sessiononwixp = add_platform(winxp, path=path_session)
 
 rulea.add_variable(variableB)
 variableB.set_platform(platform=sessiononwixp)
+
+# 2/ homepage
+ruleb = add_rule(name=u"Page d'accueil du navigateur", typ=u'string', comment=u'', defaultvalue=u'http://www.coagul.org/') 
+
+ruleb.set_tag(tag_conf)
+ruleb.set_conflevel(confuser)
+
+# pour firefox
+variableC = add_variable(name=u'browser.startup.homepage', typ=u'string', valueon=u'', valueoff=u'SUPPR', comment=u'')
+# sous windows XP
+path_ffwin = add_path(name=u'JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js')
+ffonwinxp = add_platform(winxp, f35, path_ffwin)
+variableC.set_platform(platform=ffonwinxp)
+
+# sous mandriva
+path_ffmdv = add_path(name=u'JS://$HOME/.mozilla/firefox/default/user.js')
+ffonmdv10 = add_platform(mdv20100, f35, path_ffmdv)
+variableC.set_platform(platform=ffonmdv10)
+
+# pour ie
+variableD = add_variable(name=u'Start Page', typ=u'string', valueon=u'', valueoff=u'SUPPR', comment=u'')
+path_iewin = add_path(name=u'REG://HKEY_CURRENT_USER\\software\\microsoft\\Internet Explorer\\Main')
+ieonwinxp = add_platform(winxp, ieall, path_iewin)
+variableD.set_platform(platform=ieonwinxp)
+
 
 #------------------------------------------------------------------------------
 # IV - User
