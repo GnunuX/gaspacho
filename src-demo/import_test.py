@@ -59,7 +59,8 @@ rulea.set_tag(tag_ouvsess)
 rulea.set_conflevel(confcomputer)
 
 # sous mandriva / gdm
-variableA = add_variable(name=u'AllowLogoutActions', comment=u'', valueon=u'HALT;REBOOT;SUSPEND;CUSTOM_CMD', valueoff=u'CUSTOM_CMD', typ=u'string')
+
+variableA = add_variable(name=u'AllowLogoutActions', typ=u'string', valueon=u'HALT;REBOOT;SUSPEND;CUSTOM_CMD', valueoff=u'CUSTOM_CMD', comment=u'')
 path_gdm2 = add_path(name=u'INI://etc/X11/gdm/custom.conf?section=daemon')
 gdm2onmdv10 = add_platform(mdv20100, gdm2, path_gdm2)
 
@@ -69,7 +70,7 @@ variableA.set_platform(platform=gdm2onmdv10)
 # sous windows XP
 variableB = add_variable(name=u'ShutdownWithoutLogon', comment=u'', valueon=u'', valueoff=u'', typ=u'integer')
 path_session = add_path(name=u'REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\policies\\System')
-sessiononwixp = add_platform(winXP, path=path_session)
+sessiononwixp = add_platform(winxp, path=path_session)
 
 rulea.add_variable(variableB)
 variableB.set_platform(platform=sessiononwixp)
