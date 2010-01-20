@@ -23,8 +23,8 @@ confuser, confcomputer = get_conflevel()
 
 pp = pprint.PrettyPrinter(depth=7)
 #list all rules with default settings for confuser
-#pp.pprint(get_rules(confuser))
-pp.pprint(get_rules(confcomputer))
+pp.pprint(get_rules(confuser))
+#pp.pprint(get_rules(confcomputer))
 
 #list all rules with choices
 #pp.pprint(get_rules(confuser, group=mathroom, user=student))

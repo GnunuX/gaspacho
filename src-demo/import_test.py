@@ -66,7 +66,7 @@ path_gdm2 = add_path(name=u'INI://etc/X11/gdm/custom.conf?section=daemon')
 gdm2onmdv10 = add_platform(mdv20100, gdm2, path_gdm2)
 
 rulea.add_variable(variableA)
-variableA.set_platform(platform=gdm2onmdv10)
+variableA.add_platform(platform=gdm2onmdv10)
 
 # sous windows XP
 variableB = add_variable(name=u'ShutdownWithoutLogon', comment=u'', valueon=u'1', valueoff=u'0', typ=u'integer')
@@ -74,7 +74,7 @@ path_session = add_path(name=u'REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Wi
 sessiononwixp = add_platform(winxp, path=path_session)
 
 rulea.add_variable(variableB)
-variableB.set_platform(platform=sessiononwixp)
+variableB.add_platform(platform=sessiononwixp)
 
 # 2/ homepage
 ruleb = add_rule(name=u"Page d'accueil du navigateur", typ=u'string', comment=u'', defaultvalue=u'http://www.coagul.org/') 
@@ -84,21 +84,24 @@ ruleb.set_conflevel(confuser)
 
 # pour firefox
 variableC = add_variable(name=u'browser.startup.homepage', typ=u'string', valueon=u'', valueoff=u'SUPPR', comment=u'')
+ruleb.add_variable(variableC)
 # sous windows XP
 path_ffwin = add_path(name=u'JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js')
 ffonwinxp = add_platform(winxp, f35, path_ffwin)
-variableC.set_platform(platform=ffonwinxp)
+variableC.add_platform(platform=ffonwinxp)
 
 # sous mandriva
 path_ffmdv = add_path(name=u'JS://$HOME/.mozilla/firefox/default/user.js')
 ffonmdv10 = add_platform(mdv20100, f35, path_ffmdv)
-variableC.set_platform(platform=ffonmdv10)
+variableC.add_platform(platform=ffonmdv10)
 
 # pour ie
 variableD = add_variable(name=u'Start Page', typ=u'string', valueon=u'', valueoff=u'SUPPR', comment=u'')
+ruleb.add_variable(variableD)
+
 path_iewin = add_path(name=u'REG://HKEY_CURRENT_USER\\software\\microsoft\\Internet Explorer\\Main')
 ieonwinxp = add_platform(winxp, ieall, path_iewin)
-variableD.set_platform(platform=ieonwinxp)
+variableD.add_platform(platform=ieonwinxp)
 
 
 #------------------------------------------------------------------------------

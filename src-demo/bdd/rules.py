@@ -15,18 +15,18 @@ class Rule(Entity):
     choices = ManyToMany('Choice')
 
 #FIXME
-    def add_variable(self, var):
-        self.variables.append(var)
-
-    def set_tag(self, tag):
-        self.tag = tag
-
-    def set_conflevel(self, conflevel):
-        self.conflevel = conflevel
+#    def add_variable(self, var):
+#        self.variables.append(var)
+#
+#    def set_tag(self, tag):
+#        self.tag = tag
+#
+#    def set_conflevel(self, conflevel):
+#        self.conflevel = conflevel
 #---
     def __repr__(self):
-        str = 'name: "%s", typ: "%s", defaultstate: "%s", defaultvalue: "%s", comment: "%s"' % (self.name, self.typ, self.defaultstate, self.defaultvalue, self.comment)
-        return str.encode('iso-8859-1','ignore')
+        ret = 'name: "%s", typ: "%s", defaultstate: "%s", defaultvalue: "%s", comment: "%s"' % (self.name, self.typ, self.defaultstate, self.defaultvalue, self.comment)
+        return ret.encode('utf-8')
 
 class Variable(Entity):
     name = Field(UnicodeText)
@@ -36,7 +36,7 @@ class Variable(Entity):
     comment = Field(UnicodeText)
     rule = ManyToOne('Rule')
     platforms = ManyToMany('Platform')
-    def set_platform(self, platform, comment=u''):
+    def add_platform(self, platform, comment=u''):
         self.platforms.append(platform)
     def __repr__(self):
         return '["%s", {"typ": "%s", "valueon": "%s", "valueoff": "%s", "comment": "%s"}]' % (self.name, self.typ, self.valueon, self.valueoff, self.comment)
