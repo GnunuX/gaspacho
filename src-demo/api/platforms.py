@@ -3,18 +3,46 @@ api's platforms
 """
 
 from bdd.platforms import Platform, OS, Software, Path
+from bdd.platforms import OSVersion, SoftwareVersion
+
+# ____________________________________________________________
+# Wrapped objects
+ 
+class APIOS:
+    def __init__(self, wrap):
+        self._w = wrap
+
+    #FIXME: OSVersion should not be here 
+    def add_version(self, name, comment=None):
+        ver = OSVersion(name=name, comment=comment)
+        self._w.versions.append(ver)
+        return ver
+
+class APISoftware:
+    def __init__(self, wrap):
+        self._w = wrap
+
+    #FIXME: OSVersion should not be here 
+    def add_version(self, name, comment=None):
+        ver = SoftwareVersion(name=name, comment=comment)
+        self._w.versions.append(ver)
+        return ver
+
+#---
 
 def add_os(name=None, comment=None):
     """
     add os
     """
-    return OS(name=name, comment=comment)
+    ret = OS(name=name, comment=comment)
+    return APIOS(ret)
 
 def add_software(name=None, comment=None):
     """
     add software
     """
-    return Software(name=name, comment=comment)
+    ret = Software(name=name, comment=comment)
+    return APISoftware(ret)
 
 def add_platform(osversion=None, softwareversion=None, path=None):
     """

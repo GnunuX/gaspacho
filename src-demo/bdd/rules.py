@@ -14,18 +14,10 @@ class Rule(Entity):
     conflevel = ManyToOne('ConfLevel')
     choices = ManyToMany('Choice')
 
-#FIXME
-#    def add_variable(self, var):
-#        self.variables.append(var)
-#
-#    def set_tag(self, tag):
-#        self.tag = tag
-#
-#    def set_conflevel(self, conflevel):
-#        self.conflevel = conflevel
-#---
     def __repr__(self):
-        ret = 'name: "%s", typ: "%s", defaultstate: "%s", defaultvalue: "%s", comment: "%s"' % (self.name, self.typ, self.defaultstate, self.defaultvalue, self.comment)
+        ret = 'name: "%s", typ: "%s", defaultstate: "%s", defaultvalue: "%s", \
+                    comment: "%s"' % (self.name, self.typ, self.defaultstate,
+                    self.defaultvalue, self.comment)
         return ret.encode('utf-8')
 
 class Variable(Entity):
@@ -36,9 +28,10 @@ class Variable(Entity):
     comment = Field(UnicodeText)
     rule = ManyToOne('Rule')
     platforms = ManyToMany('Platform')
-    def add_platform(self, platform, comment=u''):
-        self.platforms.append(platform)
+
     def __repr__(self):
-        return '["%s", {"typ": "%s", "valueon": "%s", "valueoff": "%s", "comment": "%s"}]' % (self.name, self.typ, self.valueon, self.valueoff, self.comment)
+        return '["%s", {"typ": "%s", "valueon": "%s", "valueoff": "%s", \
+                    "comment": "%s"}]' % (self.name, self.typ, self.valueon,
+                    self.valueoff, self.comment)
 
 # vim: ts=4 sw=4 expandtab

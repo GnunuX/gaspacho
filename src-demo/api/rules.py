@@ -4,23 +4,12 @@ api's rules
 
 from bdd.rules import Rule, Variable
 from bdd.choices import Choice
+from api.wrapper import APIWrapper
 # ____________________________________________________________
 # Wrapped objects
  
-class W_Rule:
-    def __init__(self, wrap):
-        self._w = wrap
-      
-    def __getattr__(self, name):
-        return getattr(self._w, name)
-    
-    def get_w(self, name):
-        return getattr(self._w, name)
-    def set_w(self, name, value):
-        return setattr(self._w, name, value)
-    
-    _w = property (get_w, set_w)
-
+class APIRule(APIWrapper):
+ 
     def add_variable(self, var):
         self._w.variables.append(var)
 
@@ -30,6 +19,11 @@ class W_Rule:
     def set_conflevel(self, conflevel):
         self._w.conflevel = conflevel
 
+class APIVariable(APIWrapper):
+      
+    def add_platform(self, platform, comment=u''):
+        self._w.platforms.append(platform)
+
 
 def add_rule(name, typ, defaultstate=u'off', defaultvalue=None,
         comment=u''):
@@ -37,11 +31,12 @@ def add_rule(name, typ, defaultstate=u'off', defaultvalue=None,
     add rule
     """
     rule = Rule(name=name, typ=typ, defaultstate=defaultstate, defaultvalue=defaultvalue, comment=comment)
-    return W_Rule(rule)
+    return APIRule(rule)
 
 
 def add_variable(name, typ, valueon, valueoff, comment=u''):
-    return Variable(name=name, typ=typ, valueon=valueon, valueoff=valueoff, comment=comment)
+    variable = Variable(name=name, typ=typ, valueon=valueon, valueoff=valueoff, comment=comment)
+    return APIVariable(variable)
 
 def get_rules(conflevel, group=None, template=None, user=None):
     """

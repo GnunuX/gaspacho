@@ -4,20 +4,12 @@ class OS(Entity):
     name = Field(UnicodeText)
     comment = Field(UnicodeText)
     versions = OneToMany('OSVersion')
-    def add_version(self, name, comment=None):
-        ver = OSVersion(name=name, comment=comment)
-        self.versions.append(ver)
-        return ver
 
 class Software(Entity):
     name = Field(UnicodeText)
     comment = Field(UnicodeText)
     versions = OneToMany('SoftwareVersion')
     templates = ManyToMany('Group')
-    def add_version(self, name, comment=None):
-        ver = SoftwareVersion(name=name, comment=comment)
-        self.versions.append(ver)
-        return ver
 
 class OSVersion(Entity):
     name = Field(UnicodeText)

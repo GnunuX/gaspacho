@@ -2,17 +2,55 @@
 
 from bdd.groups import Group, Template, User, Computer
 
+# ____________________________________________________________
+# Wrapped objects
+ 
+class APIGroup:
+    def __init__(self, wrap):
+        self._w = wrap
+      
+    def add_computer(self, computer):
+        self._w.computers.append(computer)
+
+    def add_user(self, user):
+        self._w.users.append(user)
+
+    def add_manager(self, user):
+        self._w.managers.append(user)
+
+    def add_depend(self, template):
+        self._w.depends.append(template)
+
+    def add_software(self, software):
+        self._w.softwares.append(software)
+
+class APITemplate:
+    def __init__(self, wrap):
+        self._w = wrap
+      
+    def add_user(self, user):
+        self._w.users.append(user)
+
+    def add_manager(self, user):
+        self._w.managers.append(user)
+
+    def add_software(self, software):
+        self._w.softwares.append(software)
+#---
+
 def add_group(name, parent=None, comment=u''):
     """
     add group
     """
     if parent == None:
-        return Group(name=name, comment=comment)
+        ret = Group(name=name, comment=comment)
     else:
-        return Group(name=name, parent=parent, comment=comment)
+        ret = Group(name=name, parent=parent, comment=comment)
+    return APIGroup(Group)
 
 def add_template(name, comment=u''):
-    return Template(name=name, comment=comment)
+    ret = Template(name=name, comment=comment)
+    return APITemplate(Template)
 
 def add_user(name, typ=u'user', comment=u''):
     """
