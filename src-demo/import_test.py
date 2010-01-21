@@ -6,8 +6,8 @@ import sys
 from elixir import *
 from api.rules import add_rule, add_variable
 from api.platforms import add_platform, add_path, add_os, add_software
-from api.tags import add_tag, add_category, get_conflevel
-from bdd.tags import ConfLevel
+from api.categories import add_tag, add_category, get_conflevel
+from bdd.categories import ConfLevel
 from api.groups import add_group, add_template, add_user, add_computer
 from api.choices import add_choice
 

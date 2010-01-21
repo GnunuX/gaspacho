@@ -1,6 +1,6 @@
 # api's tags
 
-from bdd.tags import Tag, Category, ConfLevel
+from bdd.categories import Tag, Category, ConfLevel
 
 # ____________________________________________________________
 # Wrapped objects

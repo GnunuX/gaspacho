@@ -7,13 +7,13 @@ from api.groups import get_groups, get_users
 #
 from api.choices import add_choice
 #from api.tags import confuser, confcomputer
-from api.tags import add_tag
+from api.categories import add_tag
 
 import pprint
 
 metadata.bind = "sqlite:///gaspacho.sqlite"
 setup_all()
-from api.tags import get_conflevel
+from api.categories import get_conflevel
 #--BEURK--
 from bdd.groups import Group, User
 mathroom = Group.query.filter_by(id=4).first()
