@@ -5,10 +5,7 @@ from bdd.groups import Group, Template, User, Computer
 # ____________________________________________________________
 # Wrapped objects
  
-class APIGroup:
-    def __init__(self, wrap):
-        self._w = wrap
-      
+class APIGroup(APIWrapper):
     def add_computer(self, computer):
         self._w.computers.append(computer)
 
@@ -24,10 +21,7 @@ class APIGroup:
     def add_software(self, software):
         self._w.softwares.append(software)
 
-class APITemplate:
-    def __init__(self, wrap):
-        self._w = wrap
-      
+class APITemplate(APIWrapper):
     def add_user(self, user):
         self._w.users.append(user)
 
@@ -36,7 +30,6 @@ class APITemplate:
 
     def add_software(self, software):
         self._w.softwares.append(software)
-#---
 
 def add_group(name, parent=None, comment=u''):
     """

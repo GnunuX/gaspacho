@@ -8,17 +8,14 @@ from bdd.platforms import OSVersion, SoftwareVersion
 # ____________________________________________________________
 # Wrapped objects
  
-class APIOS:
-    def __init__(self, wrap):
-        self._w = wrap
-
+class APIOS(APIWrapper):
     #FIXME: OSVersion should not be here 
     def add_version(self, name, comment=None):
         ver = OSVersion(name=name, comment=comment)
         self._w.versions.append(ver)
         return ver
 
-class APISoftware:
+class APISoftware(APIWrapper):
     def __init__(self, wrap):
         self._w = wrap
 

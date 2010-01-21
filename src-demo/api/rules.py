@@ -5,8 +5,6 @@ api's rules
 from bdd.rules import Rule, Variable
 from bdd.choices import Choice
 from api.wrapper import APIWrapper
-# ____________________________________________________________
-# Wrapped objects
  
 class APIRule(APIWrapper):
  
