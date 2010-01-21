@@ -4,6 +4,7 @@ api's platforms
 
 from bdd.platforms import Platform, OS, Software, Path
 from bdd.platforms import OSVersion, SoftwareVersion
+from api.wrapper import APIWrapper
 
 # ____________________________________________________________
 # Wrapped objects

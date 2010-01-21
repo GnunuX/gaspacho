@@ -1,6 +1,7 @@
 # api's groups
 
 from bdd.groups import Group, Template, User, Computer
+from api.wrapper import APIWrapper
 
 # ____________________________________________________________
 # Wrapped objects
@@ -39,11 +40,11 @@ def add_group(name, parent=None, comment=u''):
         ret = Group(name=name, comment=comment)
     else:
         ret = Group(name=name, parent=parent, comment=comment)
-    return APIGroup(Group)
+    return APIGroup(ret)
 
 def add_template(name, comment=u''):
     ret = Template(name=name, comment=comment)
-    return APITemplate(Template)
+    return APITemplate(ret)
 
 def add_user(name, typ=u'user', comment=u''):
     """
