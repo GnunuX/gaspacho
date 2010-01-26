@@ -20,6 +20,9 @@ def add_category(name, comment=u''):
     ret = Category(name=name, comment=comment)
     return APICategory(ret)
 
+def get_categories():
+    return Category.query.all()
+
 def get_conflevel():
     confuser = ConfLevel.query.filter_by(name=u'confuser').first()
     if confuser == None:
@@ -28,5 +31,13 @@ def get_conflevel():
     if confcomputer == None:
         confcomputer = ConfLevel(name=u'confcomputer', comment=u"Computer's configuration")
     return (confuser, confcomputer)
+
+def get_category_by_id(id):
+    if type(id) != int:
+        raise Exception("not an integer")
+    category = Category.query.filter_by(id=id).first()
+    if category == None:
+        raise Exception("not a valid id")
+    return category
 
 # vim: ts=4 sw=4 expandtab

@@ -4,6 +4,7 @@ api's rules
 
 from bdd.rules import Rule, Variable
 from bdd.choices import Choice
+from bdd.categories import Tag
 from api.wrapper import APIWrapper
  
 class APIRule(APIWrapper):
@@ -36,24 +37,23 @@ def add_variable(name, typ, valueon, valueoff, comment=u''):
     variable = Variable(name=name, typ=typ, valueon=valueon, valueoff=valueoff, comment=comment)
     return APIVariable(variable)
 
-def get_rules(conflevel, group=None, template=None, user=None):
+def get_rules(conflevel, group=None, category=None, template=None, user=None):
     """
     list rules
     """
+    #get_choice: return the choice for a group/rule/user
     def get_choice(group, rule, user):
-        return Choice.query.filter_by(rule=rule, group=group, user=user).all()
+        return Choice.query.filter_by(rule=rule, group=group, user=user).first()
 
+    #get_template_choice: return the choice for a template/rule/user
     def get_template_choice(template, rule, user):
-        return Choice.query.filter_by(rule=rule, template=template, user=user).all()
+        return Choice.query.filter_by(rule=rule, template=template, user=user).first()
 
     def get_depends_choice(group, rule, user):
         for depend in group.depends:
-            choices = get_template_choice(depend, rule, user)
-            if choices != []:
-                ret = []
-                for choice in choices:
-                    ret.append((depend, user, choice))
-                return ret
+            choice = get_template_choice(depend, rule, user)
+            if choices != None:
+                return (depend, user, choice)
         if user != None:
             return get_depends_choice(group, rule, None)
         return None
@@ -61,82 +61,78 @@ def get_rules(conflevel, group=None, template=None, user=None):
     def get_parent_choice(group, rule, user):
         parent = group.parent
         if parent != None:
-            choices = get_choice(parent, rule, user)
-            if choices == []:
+            choice = get_choice(parent, rule, user)
+            if choice == None:
                 ret = get_depends_choice(parent, rule, user)
                 if ret != None:
                     return ret
                 return get_parent_choice(parent, rule, user)
             else:
-                ret = []
-                for choice in choices:
-                    ret.append((parent, user, choice))
-                return ret
+                return (parent, user, choice)
         if user != None:
             return get_parent_choice(group, rule, None)
         return None
  
-    rules = {}
+    rules = []
+    #collect softwares name associate to this group
     softwares = []
     if group != None:
         if group.softwares != None:
             for software in group.softwares:
                 softwares.append(str(software.name))
-    for rule in Rule.query.filter_by(conflevel=conflevel).all():
-        if softwares == []:
-            is_software = True
-        else:
-            is_software = False
-        tplatform = []
-        tplatformadded = []
-        for variable in rule.variables:
-            for platform in variable.platforms:
-                if softwares != [] and platform.softwareversion.software.name in softwares:
-                    is_software = True
-                #not add platform two times
-                if not platform.id in tplatformadded:
-                    tplatformadded.append(platform.id)
-                    tplatform.append(platform)
 
-        if is_software == True:
-            trule = {}
-            trule['rule'] = rule
-            trule['platforms'] = tplatform
-            if group != None:
-                if template != None:
-                    print "error template"
-                trule['choice'] = {}
-                #if group is set, get current and herited choice
-                choices = get_depends_choice(group, rule, user)
-                if choices == None:
-                    choices = get_parent_choice(group, rule, user)
-                if not choices == None:
-                    trule['choice']['herited'] = []
-                    for choice in choices:
+    for tag in Tag.query.filter_by(category=category):
+        trules = []
+        for rule in Rule.query.filter_by(conflevel=conflevel, tag=tag).all():
+            if softwares == []:
+                is_software = True
+            else:
+                is_software = False
+            tplatform = []
+            tplatformadded = []
+            for variable in rule.variables:
+                for platform in variable.platforms:
+                    if softwares != [] and platform.softwareversion.software.name in softwares:
+                        is_software = True
+                    #not add platform two times
+                    if not platform.id in tplatformadded:
+                        tplatformadded.append(platform.id)
+                        tplatform.append(platform)
+
+            if is_software == True:
+                trule = {}
+                trule['rule'] = rule
+                trule['platforms'] = tplatform
+                if group != None:
+                    if template != None:
+                        print "error template"
+                    trule['choice'] = {}
+                    #if group is set, get current and herited choice
+                    choice = get_depends_choice(group, rule, user)
+                    if choice == None:
+                        choice = get_parent_choice(group, rule, user)
+                    if not choice == None:
                         pgroup = choice[0]
                         puser = choice[1]
                         pchoice = choice[2]
-                        trule['choice']['herited'].append({'group': pgroup, 'user': puser, 'choice': pchoice})
-            if group != None or template != None:
-                if group == None:
-                    choices = get_template_choice(template, rule, user)
-                else:
-                    choices = get_choice(group, rule, user)
-                if choices == [] and user != None:
+                        trule['choice']['herited'] = {'group': pgroup, 'user': puser, 'choice': pchoice}
+                if group != None or template != None:
                     if group == None:
-                        choices = get_template_choice(template, rule, None)
+                        choice = get_template_choice(template, rule, user)
                     else:
-                        choices = get_choice(group, rule, None)
-                if choices != []:
-                    trule['choice']['current'] = [choice for choice in choices]
-            cid = rule.tag.category.id
-            if not rules.has_key(cid):
-                rules[cid] = {'category': rule.tag.category, 'tags': {}}
-            tid = rule.tag.id
-            if not rules[cid]['tags'].has_key(tid):
-                rules[cid]['tags'][tid] = {'tag': rule.tag, 'rules': []}
-            rules[cid]['tags'][tid]['rules'].append(trule)
+                        choice = get_choice(group, rule, user)
+                    if choice == "" and user != None:
+                        if group == None:
+                            choice = get_template_choice(template, rule, None)
+                        else:
+                            choice = get_choice(group, rule, None)
+                    if choice != "":
+                        trule['choice']['current'] = choice
+                trules.append(trule)
+        if trules != []:
+            rules.append({'tag': tag, 'rules': trules})
     return rules
+
 
 
 def get_variables():

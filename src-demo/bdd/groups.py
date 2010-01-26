@@ -15,7 +15,7 @@ class Group(Entity):
     softwares = ManyToMany('Software')
 
     def __repr__(self):
-        return 'name: "%s", comment: "%s"'  % (self.name, self.comment)
+        return "{'name': '%s', 'comment': '%s'}"  % (self.name, self.comment)
 
 class Template(Entity):
     name = Field(UnicodeText)
@@ -26,8 +26,8 @@ class Template(Entity):
     choices = OneToMany('Choice')
     softwares = ManyToMany('Software')
 
-    def __repr__(self):
-        return 'name: "%s", comment: "%s"' % (self.name, self.comment)
+#    def __repr__(self):
+#        return '{name: "%s", comment: "%s"}' % (self.name, self.comment)
 
 class User(Entity):
     name = Field(UnicodeText)
@@ -38,7 +38,7 @@ class User(Entity):
     choices = ManyToMany('Choice')
 
     def __repr__(self):
-        return 'name: "%s", typ: "%s", comment: "%s"' % (self.name, self.typ,
+        return '{name: "%s", typ: "%s", comment: "%s"}' % (self.name, self.typ,
                 self.comment)
 
 class Computer(Entity):
@@ -48,7 +48,7 @@ class Computer(Entity):
     groups = ManyToMany('Group')
 
     def __repr__(self):
-        return 'name: "%s", typ: "%s", comment: "%s"' % (self.name, self.typ,
+        return '{"name": "%s", typ: "%s", comment: "%s"}' % (self.name, self.typ,
                 self.comment)
 
 # vim: ts=4 sw=4 expandtab

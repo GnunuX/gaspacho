@@ -58,7 +58,7 @@ def add_computer(name, typ=u'ip', comment=u''):
     """
     return Computer(name=name, typ=typ, comment=comment)
 
-def get_groups(only_templates=False):
+def get_groups_all():
     """
     list group's hierarchy
     """
@@ -68,8 +68,6 @@ def get_groups(only_templates=False):
     groups['tpls'] = []
     for template in Template.query.all():
         groups['tpls'].append(template)
-    if only_templates == True:
-        return groups
     for group in Group.query.all():
         if group.parent == None:
             #list all root group
@@ -104,6 +102,23 @@ def get_groups(only_templates=False):
             tgroups['childs'] = childs
         groups['groups'].append(tgroups)
     return groups
+
+def get_groups(group=None):
+    #    if group == None:
+    #    return get_groups_all()
+#    print get_groups_all()
+    groups = Group.query.filter_by(parent=group).all()
+#    if group == None:
+#        groups.append(Template.query.all())
+    return groups
+
+def get_group_by_id(id):
+    if type(id) != int:
+        raise Exception("not an integer")
+    group = Group.query.filter_by(id=id).first()
+    if group == None:
+        raise Exception("not a valid id")
+    return group
 
 def get_users(typ=None):
     if typ == None:

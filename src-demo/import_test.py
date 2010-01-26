@@ -107,8 +107,8 @@ variableD.add_platform(platform=ieonwinxp)
 #------------------------------------------------------------------------------
 # IV - User
 
-student = add_user(name=u'student', typ=u'group')
-teacher = add_user(name=u'teacher', typ=u'group')
+student = add_user(name=u'student', typ=u'usergroup')
+teacher = add_user(name=u'teacher', typ=u'usergroup')
 fred = add_user(name=u'fred')
 paul = add_user(name=u'paul')
 
@@ -137,6 +137,7 @@ room.add_computer(roomcomputers)
 mathroom = add_group(name=u'mathroom', parent=room)
 mathroom.add_user(student)
 mathroom.add_user(teacher)
+mathroom.add_user(paul)
 mathroom.add_manager(fred)
 mathroom.add_computer(mathcomputers)
 
@@ -152,10 +153,10 @@ mathroom.add_depend(tplfirefox)
 #------------------------------------------------------------------------------
 # VII - Choice
 
-#choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
+choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
 #choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3118', platform=f35onWinXP)
-#choicea = add_choice(rule=rulea, group=room, state=u'on', value=u'3119')
-#choicea = add_choice(rule=rulea, template=tplfirefox, state=u'on', value=u'3119')
+choicea = add_choice(rule=rulea, group=room, state=u'on', value=u'3119')
+choicea = add_choice(rule=rulea, template=tplfirefox, state=u'on', value=u'3119')
 
 #----
 session.commit()

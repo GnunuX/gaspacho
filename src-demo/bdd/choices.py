@@ -10,7 +10,7 @@ class Choice(Entity):
     template = ManyToOne('Template')
     user = ManyToOne('User')
     platform = ManyToOne('Platform')
-    def __repr__(self):
-        return 'state: "%s", value: "%s"' % (self.state, self.value)
+#    def __repr__(self):
+#        return 'state: "%s", value: "%s"' % (self.state, self.value)
 	
 # vim: ts=4 sw=4 expandtab
