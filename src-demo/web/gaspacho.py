@@ -106,7 +106,7 @@ class Gaspacho(resource.Resource):
             else:
                 user = get_group_by_id(int(userid))
             choice = set_choice(rule=rule, group=group, user=user, state=state, value=value)
-            ret = 'ok'
+            return 'ok'
         else:
             return "hu?"
 
