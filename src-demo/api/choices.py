@@ -4,7 +4,7 @@ api's choices
 
 from bdd.choices import Choice
 
-def add_choice(rule, group=None, template=None, user=None, platform=None, state=u'off', value=u''):
+def set_choice(rule, group=None, template=None, user=None, platform=None, state=u'off', value=u''):
     """
     add choice with rule + group
     """

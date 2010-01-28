@@ -5,7 +5,7 @@ from api.rules import get_rules
 from api.platforms import get_platforms
 from api.groups import get_groups, get_users
 #
-from api.choices import add_choice
+from api.choices import set_choice
 #from api.tags import confuser, confcomputer
 from api.categories import add_tag
 

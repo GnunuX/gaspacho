@@ -1,12 +1,12 @@
 from twisted.web import server, resource, static, server
 from twisted.internet import reactor
 from elixir import *
-from api.rules import get_rules
+from api.rules import get_rules, get_rule_by_id
 from api.platforms import get_platforms
 from api.groups import get_groups, get_users, get_group_by_id, get_user_by_id
 from api.categories import get_categories, get_category_by_id
 #
-from api.choices import add_choice
+from api.choices import set_choice
 from api.categories import add_tag
 
 import json
@@ -47,7 +47,7 @@ def data_rules(categoryid, groupid, userid=None):
     for tag in rules:
         ntag = tag['tag'].name
         for rule in tag['rules']:
-            trule = {'name': rule['rule'].name}
+            trule = {'name': rule['rule'].name, 'id': rule['rule'].id, 'tag': ntag}
             if rule['choice'].has_key('current'):
                 trule['current-state'] = rule['choice']['current'].state
                 trule['current-value'] = rule['choice']['current'].value
@@ -95,6 +95,18 @@ class Gaspacho(resource.Resource):
             else:
                 userid = int(userid)
             return data_rules(categoryid, groupid, userid)
+        elif request.postpath[0] == 'set_choice':
+            userid = request.args['userid'][0]
+            group = get_group_by_id(int(request.args['groupid'][0]))
+            rule = get_rule_by_id(int(request.args['ruleid'][0]))
+            state = request.args['state'][0]
+            value = request.args['value'][0]
+            if userid == '':
+                user = None
+            else:
+                user = get_group_by_id(int(userid))
+            choice = set_choice(rule=rule, group=group, user=user, state=state, value=value)
+            ret = 'ok'
         else:
             return "hu?"
 

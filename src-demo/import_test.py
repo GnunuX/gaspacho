@@ -9,7 +9,7 @@ from api.platforms import add_platform, add_path, add_os, add_software
 from api.categories import add_tag, add_category, get_conflevel
 from bdd.categories import ConfLevel
 from api.groups import add_group, add_template, add_user, add_computer
-from api.choices import add_choice
+from api.choices import set_choice
 
 metadata.bind = "sqlite:///gaspacho.sqlite"
 setup_all()
@@ -153,10 +153,10 @@ mathroom.add_depend(tplfirefox)
 #------------------------------------------------------------------------------
 # VII - Choice
 
-choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
-#choicea = add_choice(rule=rulea, group=mathroom, state=u'on', value=u'3118', platform=f35onWinXP)
-choicea = add_choice(rule=rulea, group=room, state=u'on', value=u'3119')
-choicea = add_choice(rule=rulea, template=tplfirefox, state=u'on', value=u'3119')
+choicea = set_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
+#choicea = set_choice(rule=rulea, group=mathroom, state=u'on', value=u'3118', platform=f35onWinXP)
+choicea = set_choice(rule=rulea, group=room, state=u'on', value=u'3119')
+choicea = set_choice(rule=rulea, template=tplfirefox, state=u'on', value=u'3119')
 
 #----
 session.commit()

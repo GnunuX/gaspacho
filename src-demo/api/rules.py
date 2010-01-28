@@ -134,7 +134,13 @@ def get_rules(conflevel=None, group=None, category=None, template=None, user=Non
             rules.append({'tag': tag, 'rules': trules})
     return rules
 
-
+def get_rule_by_id(id):
+    if type(id) != int:
+        raise Exception("not an integer")
+    ret = Rule.query.filter_by(id=id).first()
+    if ret == None:
+        raise Exception("not a valid id")
+    return ret
 
 def get_variables():
     """
