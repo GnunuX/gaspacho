@@ -120,6 +120,14 @@ def get_group_by_id(id):
         raise Exception("not a valid id")
     return group
 
+def get_user_by_id(id):
+    if type(id) != int:
+        raise Exception("not an integer")
+    user = User.query.filter_by(id=id).first()
+    if user == None:
+        raise Exception("not a valid id")
+    return user
+
 def get_users(typ=None):
     if typ == None:
         return User.query.all()

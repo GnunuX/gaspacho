@@ -57,7 +57,7 @@ cat_session.add_tag(tag_ouvsess)
 rulea = add_rule(name=u"Autoriser l'arrêt de la machine depuis la fenêtre d'ouverture de session", typ=u'boolean', comment=u'', defaultvalue=u'3128') 
 
 rulea.set_tag(tag_ouvsess)
-rulea.set_conflevel(confcomputer)
+rulea.set_conflevel(confuser)
 
 # sous mandriva / gdm
 

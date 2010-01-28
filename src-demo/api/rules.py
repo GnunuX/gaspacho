@@ -37,7 +37,7 @@ def add_variable(name, typ, valueon, valueoff, comment=u''):
     variable = Variable(name=name, typ=typ, valueon=valueon, valueoff=valueoff, comment=comment)
     return APIVariable(variable)
 
-def get_rules(conflevel, group=None, category=None, template=None, user=None):
+def get_rules(conflevel=None, group=None, category=None, template=None, user=None):
     """
     list rules
     """
@@ -52,8 +52,8 @@ def get_rules(conflevel, group=None, category=None, template=None, user=None):
     def get_depends_choice(group, rule, user):
         for depend in group.depends:
             choice = get_template_choice(depend, rule, user)
-            if choices != None:
-                return (depend, user, choice)
+            if choice != None:
+                return choice
         if user != None:
             return get_depends_choice(group, rule, None)
         return None
@@ -68,7 +68,7 @@ def get_rules(conflevel, group=None, category=None, template=None, user=None):
                     return ret
                 return get_parent_choice(parent, rule, user)
             else:
-                return (parent, user, choice)
+                return choice
         if user != None:
             return get_parent_choice(group, rule, None)
         return None
@@ -83,7 +83,11 @@ def get_rules(conflevel, group=None, category=None, template=None, user=None):
 
     for tag in Tag.query.filter_by(category=category):
         trules = []
-        for rule in Rule.query.filter_by(conflevel=conflevel, tag=tag).all():
+        if conflevel == None:
+            qrules = Rule.query.filter_by(tag=tag).all()
+        else:
+            qrules = Rule.query.filter_by(conflevel=conflevel, tag=tag).all()
+        for rule in qrules:
             if softwares == []:
                 is_software = True
             else:
@@ -112,10 +116,7 @@ def get_rules(conflevel, group=None, category=None, template=None, user=None):
                     if choice == None:
                         choice = get_parent_choice(group, rule, user)
                     if not choice == None:
-                        pgroup = choice[0]
-                        puser = choice[1]
-                        pchoice = choice[2]
-                        trule['choice']['herited'] = {'group': pgroup, 'user': puser, 'choice': pchoice}
+                        trule['choice']['herited'] = choice
                 if group != None or template != None:
                     if group == None:
                         choice = get_template_choice(template, rule, user)
@@ -126,7 +127,7 @@ def get_rules(conflevel, group=None, category=None, template=None, user=None):
                             choice = get_template_choice(template, rule, None)
                         else:
                             choice = get_choice(group, rule, None)
-                    if choice != "":
+                    if choice != None:
                         trule['choice']['current'] = choice
                 trules.append(trule)
         if trules != []:
