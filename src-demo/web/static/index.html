@@ -1,0 +1,16 @@
+<h1>Toutes les categories</h1>
+<form id="formword" method="get" action="/gaspacho/data_categories_paned">
+	<input type="submit" value="Envoyer"/>
+</form>
+<h1>Groupe par groupe parent</h1>
+<form id="formword" method="post" action="/gaspacho/data_groups_tree">
+	<input type="text" name="id"/>
+	<input type="submit" value="Envoyer"/>
+</form>
+<h1>Regle</h1>
+<form id="formword" method="post" action="/gaspacho/data_rules">
+	Categorie : <input type="text" name="categoryid"/>
+	Groupe : <input type="text" name="groupid"/>
+	Utilisateur : <input type="text" name="userid"/>
+	<input type="submit" value="Envoyer"/>
+</form>
