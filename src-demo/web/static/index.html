@@ -1,21 +1,24 @@
-<h1>Toutes les categories</h1>
+<h1>Categories</h1>
+<h2>Toutes les categories</h2>
 <form id="formword" method="get" action="/gaspacho/data_categories_paned">
 	<input type="submit" value="Envoyer"/>
 </form>
-<h1>Groupe par groupe parent</h1>
+
+<h1>Les groupes</h1>
+<h2>Groupe par groupe parent</h2>
 <form id="formword" method="post" action="/gaspacho/data_groups_tree">
 	<input type="text" name="id"/>
 	<input type="submit" value="Envoyer"/>
 </form>
-<h1>Regle</h1>
-<form id="formword" method="post" action="/gaspacho/data_rules">
+<h2>Regle pour un groupe</h2>
+<form id="formword" method="post" action="/gaspacho/data_rules_group">
 	Categorie : <input type="text" name="categoryid"/>
 	Groupe : <input type="text" name="groupid"/>
 	Utilisateur : <input type="text" name="userid"/>
 	<input type="submit" value="Envoyer"/>
 </form>
-<h1>Definir un choix</h1>
-<form id="formword" method="post" action="/gaspacho/set_choice">
+<h2>Definir un choix pour un groupe</h2>
+<form id="formword" method="post" action="/gaspacho/set_choice_group">
         Regle : <input type="text" name="ruleid"/>
         Groupe : <input type="text" name="groupid"/>
         Utilisateur : <input type="text" name="userid"/>
@@ -24,3 +27,24 @@
         <input type="submit" value="Envoyer"/>
 </form>
 
+<h1>Les templates</h1>
+<h2>Template</h2>
+<form id="formword" method="post" action="/gaspacho/data_templates_tree">
+	<input type="submit" value="Envoyer"/>
+</form>
+<h2>Regle pour un template</h2>
+<form id="formword" method="post" action="/gaspacho/data_rules_template">
+	Categorie : <input type="text" name="categoryid"/>
+	Template : <input type="text" name="templateid"/>
+	Utilisateur : <input type="text" name="userid"/>
+	<input type="submit" value="Envoyer"/>
+</form>
+<h2>Definir un choix pour un template</h2>
+<form id="formword" method="post" action="/gaspacho/set_choice_template">
+        Regle : <input type="text" name="ruleid"/>
+        Template : <input type="text" name="templateid"/>
+        Utilisateur : <input type="text" name="userid"/>
+	Valeur : <input type="text" name="value"/>
+	Etat : <input type="text" name="state"/>
+        <input type="submit" value="Envoyer"/>
+</form>

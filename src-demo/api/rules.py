@@ -107,10 +107,10 @@ def get_rules(conflevel=None, group=None, category=None, template=None, user=Non
                 trule = {}
                 trule['rule'] = rule
                 trule['platforms'] = tplatform
+                trule['choice'] = {}
                 if group != None:
                     if template != None:
                         print "error template"
-                    trule['choice'] = {}
                     #if group is set, get current and herited choice
                     choice = get_depends_choice(group, rule, user)
                     if choice == None:

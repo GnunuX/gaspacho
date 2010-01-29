@@ -103,6 +103,9 @@ def get_groups_all():
         groups['groups'].append(tgroups)
     return groups
 
+def get_templates():
+    return Template.query.all()
+
 def get_groups(group=None):
     #    if group == None:
     #    return get_groups_all()
@@ -119,6 +122,14 @@ def get_group_by_id(id):
     if group == None:
         raise Exception("not a valid id")
     return group
+
+def get_template_by_id(id):
+    if type(id) != int:
+        raise Exception("not an integer")
+    ret = Template.query.filter_by(id=id).first()
+    if ret == None:
+        raise Exception("not a valid id")
+    return ret
 
 def get_user_by_id(id):
     if type(id) != int:
