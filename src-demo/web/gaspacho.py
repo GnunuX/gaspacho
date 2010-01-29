@@ -40,7 +40,7 @@ def data_rules(categoryid, groupid, userid=None):
     category = get_category_by_id(categoryid)
     if userid != None:
         user = get_user_by_id(userid)
-        rules = get_rules(conflevel=confuser, group=group, category=category)
+        rules = get_rules(conflevel=confuser, group=group, category=category, user=user)
     else:
         rules = get_rules(group=group, category=category)
     ret = []
@@ -99,13 +99,15 @@ class Gaspacho(resource.Resource):
             userid = request.args['userid'][0]
             group = get_group_by_id(int(request.args['groupid'][0]))
             rule = get_rule_by_id(int(request.args['ruleid'][0]))
-            state = request.args['state'][0]
-            value = request.args['value'][0]
+            state = unicode(request.args['state'][0])
+            value = unicode(request.args['value'][0])
             if userid == '':
                 user = None
             else:
-                user = get_group_by_id(int(userid))
+                user = get_user_by_id(int(userid))
             choice = set_choice(rule=rule, group=group, user=user, state=state, value=value)
+            session.commit()
+            session.flush()
             return 'ok'
         else:
             return "hu?"
