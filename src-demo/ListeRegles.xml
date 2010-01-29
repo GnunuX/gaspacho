@@ -1,0 +1,3554 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<AppRef>
+	<ListeRegles>
+		<Application nom="ESU">
+			<ConfUtilisateur>
+			</ConfUtilisateur>
+			<ConfMachine>
+				<Regle classeobjet="REGISTRE" type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Déconnecter les utilisateurs n'appartenant pas au groupe de machine</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\CRDP Bretagne\\ESU</Chemin>
+					<Variable nom="DisconnectBadUsers" type="DWORD">
+						<ValueOn>1</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>L'activation de cette règle provoque la déconnexion systématique les utilisateurs n'appartenant pas à un des groupes d'utilisateurs déclarés au niveau du groupe de machine.</Commentaire>
+				</Regle>
+				<Regle classeobjet="REGISTRE" type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Mode debug activé</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\CRDP Bretagne\\ESU</Chemin>
+					<Variable nom="ModeDebug" type="DWORD">
+						<ValueOn>1</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>L'activation de cette règle bascule l'execution du client ESU en mode de debugage afin d'observer les messages d'erreurs signalés.</Commentaire>
+				</Regle>
+				<Regle classeobjet="REGISTRE" type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Afficher le nom de l'utilisateur en fond d'écran</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\CRDP Bretagne\\ESU</Chemin>
+					<Variable nom="ShowUsername" type="DWORD">
+						<ValueOn>1</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>L'activation de cette règle permet d'afficher le nom de l'utilisateur en fond d'écran.</Commentaire>
+				</Regle>
+				<Regle classeobjet="REGISTRE" type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Nettoyage du registre "Utilisateur"</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\CRDP Bretagne\\ESU</Chemin>
+					<Variable nom="CleanRegistry" type="DWORD">
+						<ValueOn>1</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>L'activation de cette règle bascule provoque le nettoyage des clefs de registres amenées à contenir les règles.</Commentaire>
+				</Regle>
+			</ConfMachine>
+		</Application>
+		<Application nom="NuFw">
+			<ConfUtilisateur>
+				<Regle classeobjet="REGISTRE" type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Masquer l'icone du client NuFw dans la barre des tâches</Intitule>
+					<Chemin>REG://HKEY_CURRENT_USER\\SOFTWARE\\INL\\NuWINc</Chemin>
+					<Variable nom="UseSystray" type="DWORD">
+						<ValueOn>0</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+				</Regle>
+				<Regle classeobjet="REGISTRE" type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Ne pas permettre de quitter le client NuFw</Intitule>
+					<Chemin>REG://HKEY_CURRENT_USER\\SOFTWARE\\INL\\NuWINc</Chemin>
+					<Variable nom="OnQuitButton" type="DWORD">
+						<ValueOn>2</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>Réduit la fenêtre (au lieu de la fermer) lorsque l'utilisateur clique sur la croix.</Commentaire>
+				</Regle>
+				<Regle classeobjet="REGISTRE" type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Masquer le menu du client NuFw dans la barre des tâches</Intitule>
+					<Chemin>REG://HKEY_CURRENT_USER\\SOFTWARE\\INL\\NuWINc</Chemin>
+					<Variable nom="SystrayMenuHidden" type="DWORD">
+						<ValueOn>1</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>N'affiche pas le menu lors d'un clic sur l'icone</Commentaire>
+				</Regle>
+				<Regle classeobjet="REGISTRE" type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Masquer les options du client NuFw</Intitule>
+					<Chemin>REG://HKEY_CURRENT_USER\\SOFTWARE\\INL\\NuWINc</Chemin>
+					<Variable nom="HideOptions" type="DWORD">
+						<ValueOn>1</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>Désactive l'accès aux options du client NuFw</Commentaire>
+				</Regle>
+			</ConfUtilisateur>
+			<ConfMachine>
+				<Regle type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Désactiver NuFW à l'ouverture de session</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\INL\\NuWINc</Chemin>
+					<Variable nom="Disabled" type="DWORD">
+						<ValueOn>1</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+						<Commentaire/>
+					</Variable>
+					<Commentaire>Permet de ne pas lancer le client NuFw à l'ouverture de session</Commentaire>
+				</Regle>
+				<Regle type="EDITION">
+					<OS>254</OS>
+					<Intitule>Adresse IP du serveur NuAuth</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\INL\\NuWINc</Chemin>
+					<Variable nom="GwHostname" type="STRING">
+						<ValueOn></ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>Adresse IP du serveur d'authentification NuFW (NuAuth)</Commentaire>
+				</Regle>
+				<Regle classeobjet="REGISTRE" type="EDITION">
+					<OS>254</OS>
+					<Intitule>Port du serveur NuAuth</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\INL\\NuWINc</Chemin>
+					<Variable nom="GwPort" type="DWORD">
+						<ValueOn>4129</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>Port du serveur d'authentification NuFw (NuAuth)</Commentaire>
+				</Regle>
+				<Regle classeobjet="REGISTRE" type="EDITION">
+					<OS>226</OS>
+					<Intitule>Activer NuFw pour Windows 98 et Vista</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run</Chemin>
+					<Variable nom="Nuwinc" type="STRING">
+						<ValueOn>%WINDIR%\\Eole\\NuWINc\\nuwinc.exe</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>Lancer automatiquement le client NuFw à l'ouverture de session sur Windows 98 et Windows Vista.</Commentaire>
+				</Regle>
+			</ConfMachine>
+		</Application>
+		<Application nom="Windows">
+			<ConfMachine>
+				<OU classeobjet="Categorie" nom="Ouverture de session">
+					<Regle type="BOOLEEN">
+						<OS>224</OS>
+						<Intitule>Exiger une validation de l'ouverture de session par le contrôleur de domaine.</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Network\\Logon</Chemin>
+						<Variable nom="MustBeValidated" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+							<Commentaire/>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>224</OS>
+						<Intitule>Désactiver le cache de mot de passe W9x</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Network</Chemin>
+						<Variable nom="DisablePwdCaching" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>224</OS>
+						<Intitule>Cacher le nom du dernier utilisateur à l'ouverture de session</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Network\\Logon</Chemin>
+						<Variable nom="DontShowLastUser" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>16</OS>
+						<Intitule>Cacher le nom du dernier utilisateur à l'ouverture de session</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon</Chemin>
+						<Variable nom="DontDisplayLastUserName" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>14</OS>
+						<Intitule>Cacher le nom du dernier utilisateur à l'ouverture de session</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+						<Variable nom="DontDisplayLastUserName" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'écran de bienvenue à l'ouverture de session</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="NoWelcomeScreen" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Autoriser l'arrêt de la machine depuis la fenêtre d'ouverture de session</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\policies\\System</Chemin>
+						<Variable nom="ShutdownWithoutLogon" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le CTRL+ALT+SUPPR à l'ouverture de session</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+						<Variable nom="DisableCAD" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Activation du clavier numérique à l'ouverture de session</Intitule>
+						<Chemin>REG://HKEY_USERS\\.DEFAULT\\Control Panel\\Keyboard\\</Chemin>
+						<Variable nom="InitialKeyboardIndicators" type="STRING">
+							<ValueOn>2</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="Categorie" nom="Systeme">
+					<Regle type="EDITION">
+						<OS>254</OS>
+						<Intitule>Synchroniser l'horloge des stations avec celle du serveur :</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\CRDP Bretagne\\ESU\\</Chemin>
+						<Variable type="STRING" nom="TimeServer">
+							<ValueOn></ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+							<Commentaire/>
+						</Variable>
+						<Commentaire>Cette règle permet de synchroniser temporellement les stations du groupe avec un serveur de temps.\\nLe protocole utilisé est le NTP. Un serveur 2000 ou 2003 propose ce service par défaut.\\nPrécisez le nom d'hôte ou l'adresse du serveur de temps référence\\nMonServeur.MonDomaine.local\\ntimes.windows.com\\n...</Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>14</OS>
+						<Intitule>Désactiver l'utilisation de "Fichiers hors connexion".</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Netcache</Chemin>
+						<Variable type="DWORD" nom="Enabled">
+							<ValueOn>0</ValueOn>
+							<ValueOff>1</ValueOff>
+							<Commentaire/>
+						</Variable>
+						<Commentaire>Le dossier "Fichiers hors connexion" permet de travailler avec les fichiers et les programmes stockés sur le réseau mème si vous n'êtes pas connecté.\\nRègle cochée=&gt; l'utilisation de fichiers hors connexion est interdit\\nRègle décochée=&gt; l'utilisation de fichiers hors connexion est autorisé\\nRègle grisée=&gt; l'état précédent est inchangé.</Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>30</OS>
+						<Intitule>Donner le privilège de modification de l'heure système aux utilisateurs</Intitule>
+						<Chemin>PRIVILEGE</Chemin>
+						<Variable type="STRING" nom="SeSystemtimePrivilege">
+							<ValueOn>ADD</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+								<Commentaire/>
+						</Variable>
+						<Commentaire>Cette règle permet d'octroyer le privilège de modification de l'heure système aux utilisateurs des stations NT, 2000 PRO et XP.</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>6</OS>
+						<Intitule>Empêcher les mises a jour de windows XP</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\wuauserv</Chemin>
+						<Variable nom="Start" type="STRING">
+							<ValueOn>6</ValueOn>
+							<ValueOff>2</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>30</OS>
+						<Intitule>Empêcher le chiffrage LMHash</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Lsa</Chemin>
+						<Variable nom="NoLMHash" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPRALL</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>30</OS>
+						<Intitule>CD-ROM exclusif pour les utilisateurs locaux</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon</Chemin>
+						<Variable nom="allocatecdroms" type="STRING">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire>Décoché : Tous les administrateurs du domaine ont accès aux disques Compacts du lecteur de CDRom.\\nCoché : Seul l'utilisateur en session locale peut accéder aux données des disques compacts du lecteur de CDRom.</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>12</OS>
+						<Intitule>Permettre le formatage et l'éjection des supports amovibles</Intitule>
+						<Chemin>REG:///HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon</Chemin>
+						<Variable nom="allocatedasd" type="STRING">
+							<ValueOn>2</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire>Autoriser le demontage des clefs usb</Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="Categorie" nom="Dossiers">
+					<OU classeobjet="BlocRegle" nom="Raccourcis du Bureau et du Menu demarrer par defaut">
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier "Bureau" de tous les utilisateurs</Intitule>
+							<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Common Desktop" type="STRING">
+								<ValueOn>%WINDIR%\\All Users\\Bureau\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockage des raccourcis du bureau.</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier "Menu Démarrer"</Intitule>
+							<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Common Start Menu" type="STRING">
+								<ValueOn>C:\\Documents and Settings\\All Users\\Menu Démarrer\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockage des raccourcis du "Menu démarrer" ALL USERS</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier "Programmes" de tous les utilisateurs</Intitule>
+							<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Common Programs" type="STRING">
+								<ValueOn>C:\\Documents and Settings\\All Users\\Menu Démarrer\\Programmes</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockage des raccourcis du "Menu démarrer =&gt; Programmes"  ALL USERS.</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier "Démarrage"  de tous les utilisateurs</Intitule>
+							<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Common Startup" type="STRING">
+								<ValueOn>%WINDIR%\\All Users\\Menu Démarrer\\Programmes\\Démarrage</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockage des raccourcis du "Menu démarrer =&gt; Programmes =&gt; Démarrage"  ALL USERS.</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>224</OS>
+							<Intitule>Dossier "Application Data" de tous les utilisateurs</Intitule>
+							<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Common AppData" type="STRING">
+								<ValueOn>%WINDIR%\\All Users\\Application Data\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockage des profils d'utilisation des applications.</Commentaire>
+						</Regle>
+					</OU>
+				</OU>
+				<OU classeobjet="Categorie" nom="Gestion des profils">
+					<Regle type="BOOLEEN">
+						<OS>30</OS>
+						<Intitule>Effacer la mise en cache du profil itinérant</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System</Chemin>
+						<Variable nom="DeleteRoamingCache" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire>Détermine si le système sauvegarde une copie du profil\\nitinérant sur l'ordinateur local lors de la déconnexion de l'utilisateur\\n\\nRègle cochée=&gt; la copie du profil itinérant est effacée\\nRègle décochée=&gt; la copie du profil itinérant est sauvegardée en local\\nRègle grisée=&gt; l'état précédent est inchangé.</Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>224</OS>
+						<Intitule>Désactiver les profils utilisateurs</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Network\\Logon</Chemin>
+						<Variable type="DWORD" nom="UserProfiles">
+							<ValueOn>0</ValueOn>
+							<ValueOff>1</ValueOff>
+						</Variable>
+						<Commentaire>Les profils utilisateurs ne sont pas obligatoires sous Windows 95,98 et Me.\\nLeur usage est déconseillé.\\n\\nRègle cochée=&gt; les profils ne sont pas utilisés sous Windows 95,98 et Me\\nRègle décochée=&gt; les profils sont utilisés sous Windows 95,98 et Me\\nRègle grisée=&gt; l'état précédent est inchangé.</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>30</OS>
+						<Intitule>Ne pas vérifier les utilisateurs propriétaires des dossiers Profils itinérants</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System</Chemin>
+						<Variable nom="CompatibleRUPSecurity" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire>Règle à activer en cas d'erreur de propriétaire de profil</Commentaire>
+					</Regle>
+				</OU>
+			</ConfMachine>
+			<ConfUtilisateur>
+				<OU classeobjet="Categorie" nom="Dossiers">
+					<OU classeobjet="BlocRegle" nom="Raccourcis du Bureau et du Menu demarrer">
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier "Bureau"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Desktop" type="STRING">
+								<ValueOn>%USERPROFILE%\\Bureau\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockage des raccourcis du bureau.</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier "Menu Démarrer"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Start Menu" type="STRING">
+								<ValueOn>%USERPROFILE%\\Menu Démarrer\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockage des raccourcis du "Menu démarrer".</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier "Démarrage"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Startup" type="STRING">
+								<ValueOn>%USERPROFILE%\\Menu Démarrer\\Programmes\\Démarrage\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockage des raccourcis du dossier "Démarrage" du "Menu démarrer".</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier "Programmes"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Programs" type="STRING">
+								<ValueOn>%USERPROFILE%\\Menu Démarrer\\Programmes\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockage des raccourcis du dossier "Programmes" du "Menu démarrer".</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Dossiers personnels">
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Raccourci "Mes Documents"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Personal" type="STRING">
+								<ValueOn>%USERPROFILE%\\Mes Documents\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement du dossier pointé par "Mes documents". </Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier contenant les favoris Internet</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Favorites" type="STRING">
+								<ValueOn>%USERPROFILE%\\Favoris\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier "application data"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="AppData" type="STRING">
+								<ValueOn>%USERPROFILE%\\Application Data\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockage des profils d'utilisation des applications.</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier des historiques de connexion</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="History" type="STRING">
+								<ValueOn>%USERPROFILE%\\Local Settings\\Historique\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier des "Cookies"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Cookies" type="STRING">
+								<ValueOn>%USERPROFILE%\\Cookies\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier des "Modèles"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders</Chemin>
+							<Variable nom="Templates" type="STRING">
+								<ValueOn>%USERPROFILE%\\Modèles\\</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Emplacement de stockages des modèles des suites Microsoft Office.</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Configuration des profils Utilisateurs">
+						<Regle type="EDITION">
+							<OS>14</OS>
+							<Intitule>Exclure les répertoires suivants du profil itinérant</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\System</Chemin>
+							<Variable nom="ExcludeProfileDirs" type="STRING">
+								<ValueOn>Mes Documents;Favoris;Bureau;Menu démarrer;Application Data;cookies;modèles</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Ce paramètre vous permet d'exclure les dossiers qui sont normalement inclus dans le profil de l'utilisateur.\\nPar défaut, les dossiers Historique, Paramètres locaux, Temp, et Temporary Internet Files sont exclus du profil itinérant de l'utilisateur.\\n\\nSi vous activez ce paramètre, vous pouvez exclure des dossiers supplémentaires.\\nSi vous désactivez ce paramètre seuls les dossiers par défaut sont exclus.</Commentaire>
+						</Regle>
+					</OU>
+				</OU>
+				<OU classeobjet="Categorie" nom="Panneau de configuration">
+					<OU classeobjet="BlocRegle" nom="General">
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Désactiver l'accès au panneau de configuration</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoControlPanel" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Activer le panneau de configuration classique</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer\\restrictcpl</Chemin>
+							<Variable nom="ForceClassicControlPanel" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Imprimantes">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver la suppression d'imprimante</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="NoDeletePrinter" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver l'ajout d'imprimante</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="NoAddPrinter" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Désactiver la découverte automatique des imprimantes sur le réseau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\windows nt\\printers\\wizard</Chemin>
+							<Variable nom="Downlevel Browse" type="DWORD">
+								<ValueOn>0</ValueOn>
+								<ValueOff>1</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>30</OS>
+							<Intitule>Imprimantes réseau installées (séparateur=",") </Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\SOFTWARE\\CRDP Bretagne\\ESU</Chemin>
+							<Variable nom="LImprimantes" type="STRING">
+								<ValueOn></ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Vous pouvez préciser les imprimantes réseau connectées dans l'environnement de travail de l'utilisateur.\\nLe séparateur peut-être est une virgule : ",".\\nL'imprimante placée en premier fera office d'imprimante par défaut.\\n\\nExemple de saisie :\\n\\\\serveura\\lpr1,\\\\serveura\\lpr2</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>30</OS>
+							<Intitule>Définir la première imprimante comme imprimante par défaut</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\CRDP Bretagne\\esu\\</Chemin>
+							<Variable nom="SetDefautPrinter" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>La première imprimante sera enregistrée comme imprimante par défaut dans l'environnement de l'utilisateur.</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>30</OS>
+							<Intitule>Supprimer les imprimantes réseau qui ne sont pas gérées par ESU</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\CRDP Bretagne\\esu\\</Chemin>
+							<Variable nom="DelNotInList" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>L'activation de cette règle provoque l'effacement systèmatiques des imprimantes réseau autres que celles précisées dans la règle "Imprimantes réseau accessibles à l'utilisateur"</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Affichage">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver l'accès aux paramètres d'affichage</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+							<Variable nom="NoDispCPL" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer l'onglet bureau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\system</Chemin>
+							<Variable nom="NoDispBackgroundPage" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer l'onglet ecran de veille</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+							<Variable nom="NoDispScrSavPage" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer les onglets apparence et thèmes</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\activedesktop</Chemin>
+							<Variable nom="NoDispAppearancePage" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer l'onglet configuration</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\activedesktop</Chemin>
+							<Variable nom="NoDispSettingsPage" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Activer l'écran de veille</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\windows\\control panel\\desktop</Chemin>
+							<Variable nom="screensaveactive" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Themes XP">
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer l'option thèmes</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoThemesTab" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Empêcher la sélection des styles des fenêtres et des boutons</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\system</Chemin>
+							<Variable nom="NovisualStyleChoice" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Empêcher la sélection de la taille de police</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\system</Chemin>
+							<Variable nom="NoSizeChoice" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Empêcher la sélection de la couleur du thème</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\system</Chemin>
+							<Variable nom="NoColorChoice" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>6</OS>
+							<Intitule>Appliquer le théme Windows XP suivant :</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\system</Chemin>
+							<Variable nom="SetVisualStyle" type="STRING">
+								<ValueOn>%windir%\\Resources\\Themes\\Windows Classic.theme</ValueOn>
+								<ValueOff>%windir%\\resources\\themes\\luna\\luna.msstyles</ValueOff>
+							</Variable>
+							<Commentaire>Cette règle permet de désactiver le thème graphique de Windows XP</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Reseau">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver l'accès aux paramètres "réseau"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Network</Chemin>
+							<Variable nom="NoNetSetup" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver l'accès aux paramètres "mot de passe"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+							<Variable nom="NoSecCPL" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+					</OU>
+				</OU>
+				<OU classeobjet="Categorie" nom="Systeme">
+					<OU classeobjet="BlocRegle" nom="General">
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Désactiver l'utilisation de dossiers et de fichiers hors connexion</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\NetCache</Chemin>
+							<Variable nom="NoCacheViewer" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver les outils de modification du registre</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+							<Variable nom="DisableRegistryTools" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Cette règle empêche particulièrement le lancement du programe "regedit.exe"</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>30</OS>
+							<Intitule>Désactiver l'écran de bienvenue à l'ouverture de session</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoWelcomeScreen" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver les mises à jour automatiques de windows</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoAutoUpdate" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Nom du ficher d'interface (par exemple, explorer.exe)</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\system</Chemin>
+							<Variable nom="shell" type="STRING">
+								<ValueOn>explorer.exe</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Cette règle permet de substituer au bureau classique de windows une application comme environnement de travail. Par exemple : le navigateur FireFox.</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Gestion d'énergie [0=ordinateur de bureau | 1=ordinateur portable | 2=présentation | 3=toujours allumé]</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Control Panel\\PowerCfg</Chemin>
+							<Variable nom="CurrentPowerPolicy" type="STRING">
+								<ValueOn>3</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Activation du clavier numérique [décoché=désactivé | coché=activé]</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Control Panel\\Keyboard</Chemin>
+							<Variable nom="InitialKeyboardIndicators" type="STRING">
+								<ValueOn>2</ValueOn>
+								<ValueOff>0</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>30</OS>
+							<Intitule>Désactiver le changement de mot de passe</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+							<Variable nom="DisableChangePassword" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Parametres systemes w9x">
+						<Regle type="BOOLEEN">
+							<OS>224</OS>
+							<Intitule>Masquer l'onglet périphériques</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+							<Variable nom="NoDevMgrPage" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>224</OS>
+							<Intitule>Masquer l'onglet profils matériels</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+							<Variable nom="NoConfigPage" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>224</OS>
+							<Intitule>Masquer l'onglet système fichiers</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+							<Variable nom="NoFileSysPage" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>224</OS>
+							<Intitule>Masquer l'onglet mémoire virtuelle</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System</Chemin>
+							<Variable nom="NoVirtMemPage" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>224</OS>
+							<Intitule>Désactiver les applications MSDOS</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\WinOldApp</Chemin>
+							<Variable nom="NoRealMode" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>224</OS>
+							<Intitule>Désactiver la ligne de commande MSDOS</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\WinOldApp</Chemin>
+							<Variable nom="disabled" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Parametres reseau w9x">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver les contrôles de partage des imprimantes</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Network</Chemin>
+							<Variable nom="NoPrintSharingControl" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver les contrôles de partage des fichiers</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Network</Chemin>
+							<Variable nom="NoFileSharingControl" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Gestionnaire des taches">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver le gestionnaire des tâches</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\system</Chemin>
+							<Variable nom="DisableTaskMgr" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver le verrouillage de l'ordinateur</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\system</Chemin>
+							<Variable nom="DisableLockWorkstation" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+					</OU>
+				</OU>
+				<OU classeobjet="Categorie" nom="Barre des taches">
+					<OU classeobjet="BlocRegle" nom="General">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer l'accès aux menus contextuels pour la barre des tâches</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoTrayContextMenu" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Verrouiller la Barre des tâches</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="LockTaskBar" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer la zone de notification</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="notrayitemsdisplay" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Ne pas afficher de barres d'outils personnalisées dans la Barre des tâches</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoToolbarsOnTaskbar" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Désactiver le nettoyage de la zone de notification</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="noautotraynotify" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer l'horloge de la zone de notification système</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="HideClock" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+					</OU>
+				</OU>
+				<OU classeobjet="Categorie" nom="Poste de travail">
+					<OU classeobjet="BlocRegle" nom="Objets systemes">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Afficher les imprimantes de l'utilisateur dans le Poste de Travail</Intitule>
+							<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\{2227A280-3AEA-1069-A2DE-08002B30309D}</Chemin>
+							<Variable nom="Info" type="STRING">
+								<ValueOn>Mes Imprimantes</ValueOn>
+								<ValueOff>SUPPRALL</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<Regle type="LECTEURS">
+						<OS>254</OS>
+						<Intitule>Cacher</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+						<Variable nom="NoDrives" type="DWORD">
+							<ValueOn>0</ValueOn>
+							<ValueOff></ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle type="LECTEURS">
+						<OS>44</OS>
+						<Intitule>Désactiver le parcours</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+						<Variable nom="NoViewOnDrive" type="DWORD">
+							<ValueOn>0</ValueOn>
+							<ValueOff></ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle type="LECTEURS">
+						<OS>254</OS>
+						<Intitule>Désactiver Autorun</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+						<Variable nom="NoDriveAutoRun" type="DWORD">
+							<ValueOn>0</ValueOn>
+							<ValueOff></ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="Categorie" nom="Environnement">
+					<OU classeobjet="BlocRegle" nom="General">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver la recherche des raccourcis manquants</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable type="DWORD" nom="LinkResolveIgnoreLinkInfo">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Détermine si Windows doit assurer le suivi des raccourcis jusqu'à leur source lorsqu'il ne peut pas trouver la cible sur le système de l'utilisateur.</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Désactiver le suivi utilisateur</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoInstrumentation" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver les connexions/déconnexions réseau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="NoNetConnectDisconnect" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Cacher les fichiers et répertoires cachés...</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced</Chemin>
+							<Variable nom="Hidden" type="DWORD">
+								<ValueOn>0</ValueOn>
+								<ValueOff>1</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Cacher les extensions des fichiers dont le type est connus</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced</Chemin>
+							<Variable nom="HideFileExt" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>0</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Activer l'environnement classique (désactivation activedesktop, themes)</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="ClassicShell" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Désactiver les fonctionnalités de gravage de cd</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\network</Chemin>
+							<Variable nom="NoCdBurning" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer les documents partagés du poste de travail</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\network</Chemin>
+							<Variable nom="NoSharedDocuments" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Désactiver la configuration utilisateur des fichiers hors connexion</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\windows\\netcache</Chemin>
+							<Variable nom="NoConfigCache" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Menu et menus contextuels ">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver le menu "fichier" dans les fenêtres de l'environnement</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="NoFileMenu" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver le menu contextuel (clique droit) dans les dossiers de l'environnement</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="NoViewContextMenu" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Désactiver l'accès aux paramètres d'animation des menus</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoChangeAnimation" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer le bouton rechercher de l'explorateur windows</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="noshellsearchbutton" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Boite de dialogue PROPRIETE des disques, fichiers et repertoires">
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer l'onglet "matériel"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoHardwareTab" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer l'onglet "DFS"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoDfsTab" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer l'onglet "sécurité"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoSecurityTab" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Voisinage reseau">
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer "ordinateurs proches" dans les favoris réseau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoComputersNearMe" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer "tout le réseau" dans les favoris réseau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\network</Chemin>
+							<Variable nom="NoEntireNetwork" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Corbeille">
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Ne pas déplacer les fichiers supprimés vers la corbeille</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\network</Chemin>
+							<Variable nom="NoRecycleFiles" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Afficher la boîte de dialogue de confirmation lors de la suppression des fichiers</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\network</Chemin>
+							<Variable nom="ConfirmFileDelete" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+					</OU>
+				</OU>
+				<OU classeobjet="Categorie" nom="Bureau">
+					<OU classeobjet="BlocRegle" nom="General">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer tous les éléments du bureau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoDesktop" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver le redimensionnement des barres d'outils du bureau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nomovingBands" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Désactiver l'assistant nettoyage du bureau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoDesktopCleanupWizard" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Quitter windows sans sauvegarer les modifications apportées au bureau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="NoSaveSettings" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Icones">
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer l'icône "Poste de travail" du "Bureau"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\nonenum</Chemin>
+							<Variable nom="{20D04FE0-3AEA-1069-A2D8-08002B30309D}" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Si vous désactivez ce paramètre, le Poste de travail sera masqué du Bureau, du nouveau menu Démarrer, du volet d'exploration Dossiers et des affichages Web de l'Explorateur. Si l'utilisateur parvient à naviguer jusqu'au Poste de travail, le dossier sera vide.\\n\\nSi vous activez ce paramètre, le Poste de travail sera affiché comme d'habitude, apparaissant normalement sur le Bureau, le menu Démarrer, le volet d'exploration Dossiers et les affichages Web, sauf s'il est restreint par un autre paramètre.\\n\\nSi vous ne configurez pas ce paramètre, le comportement par défaut est d'afficher le Poste de travail comme d'habitude.</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer l'élément "propriétés" du menu contextuel de "poste de travail"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoPropertiesMyComputer" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer l'élément "Gérer" du menu contextuel du "Poste de travail"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="NoManageMyComputerVerb" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Cacher l'icône "voisinage réseau" (ou "favoris réseaux" pour Me,2k et XP)</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoNetHood" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Ce paramètre n'affecte que l'icône du bureau.\\nElle n'empêche pas les utilisateurs de se connecter au réseau ni de l'explorer.</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Ne pas ajouter de partages des documents récemment ouverts dans "favoris réseau"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoRecentDocsNethood" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer l'icône "internet explorer" du "bureau"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoInternetIcon" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer l'icône "mes documents" du "bureau"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\nonenum</Chemin>
+							<Variable nom="{450D8FBA-AD25-11D0-98A8-0800361B1103}" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer l'élément "propriétés" du menu contextuel de "mes documents"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoPropertiesMyDocuments" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Désactiver la modification du chemin du raccourci "mes documents"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="DisablePersonalDirChange" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer l'icône de la "corbeille" du bureau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\nonenum</Chemin>
+							<Variable nom="{645FF040-5081-101B-9F08-00AA002F954E}" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer l'élément "propriétés" du menu contextuel de la "corbeille"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoPropertiesRecycleBin" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Afficher les imprimantes de l'utilisateur sur le Bureau</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Desktop\\NameSpace\\{2227A280-3AEA-1069-A2DE-08002B30309D}</Chemin>
+							<Variable nom="Info" type="STRING">
+								<ValueOn>Mes Imprimantes</ValueOn>
+								<ValueOff>SUPPRALL</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Active desktop">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver active desktop</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoActiveDesktop" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Désactiver les modifications</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoActiveDesktopChanges" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Autoriser uniquement les papier peints au format BMP</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\activedesktop</Chemin>
+							<Variable type="DWORD" nom="NoHtmlWallpaper">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Papier peint">
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Chemin vers l'image appliquée en fond d'écran</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Control Panel\\Desktop</Chemin>
+							<Variable type="STRING" nom="Wallpaper">
+								<ValueOn></ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Règle cochée=&gt; l'image précisée dans la zone de saisie est appliquée en fond d'écran.\\nRègle décochée=&gt; Pas d'image en fond d'écran\\nRègle grisée=&gt; l'état précédent est inchangé.</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Disposition du papier peint [coché=centré | décoché=mosaïque]</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Control Panel\\Desktop</Chemin>
+							<Variable type="STRING" nom="TileWallpaper">
+								<ValueOn>0</ValueOn>
+								<ValueOff>1</ValueOff>
+							</Variable>
+							<Commentaire>Règle cochée=&gt; le papier-peint est centré dans le bureau\\nRègle décochée=&gt; le papier-peint est affiché en mozaïque\\nRègle grisée=&gt; l'état précédent est inchangé.</Commentaire>
+						</Regle>
+					</OU>
+				</OU>
+				<OU classeobjet="Categorie" nom="Menu Demarrer">
+					<OU classeobjet="BlocRegle" nom="General">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver le glisser-déplacer et le menu contextuel dans le menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable type="DWORD" nom="nochangestartmenu">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Le menu contextuel est le menu apparaissant lors d'un clique bouton droit sur le menu démarrer.</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver l'accès à windows update</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoWindowsUpdate" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Désactiver les info-bulles</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nosmballoontip" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>30</OS>
+							<Intitule>Désactiver le "groupe de programmes" commun à tous les utilisateurs</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nocommongroups" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>30</OS>
+							<Intitule>Désactiver le "groupe de programmes" propre à chaque utilisateur</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nostartmenusubfolders" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer le menu favoris du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nofavoritesmenu" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer le menu documents récents du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="norecentdocsmenu" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer le menu rechercher du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nofind" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Supprime l'élément Rechercher du menu Démarrer et désactive certains éléments de recherche de l'Explorateur Windows.\\n\\nCe paramètre supprime l'élément Rechercher du menu Démarrer et du menu contextuel qui apparaît lorsque vous cliquez à l'aide du bouton droit sur le menu Démarrer. De plus, le système ne répond pas lorsque les utilisateurs appuient sur la touche Application (la touche portant le logo Windows) + F.\\n\\nDans l'Explorateur Windows, l'élément Rechercher apparaît toujours dans la barre d'outils standard, mais le système ne répond pas lorsque l'utilisateur appuie sur Ctrl+F. De plus, l'élément Rechercher n'apparaît pas dans le menu contextuel lorsque vous cliquez à l'aide du bouton droit sur une icône représentant un lecteur ou un dossier.\\n\\nCe paramètre n'affecte que les éléments d'interface utilisateur spécifiés. Elle n'affecte pas Internet Explorer et n'empêche pas l'utilisateur d'utiliser d'autres méthodes de recherche.</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer le menu exécuter du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="norun" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Vous permet de supprimer la commande Exécuter du menu Démarrer, d'Internet Explorer et du Gestionnaire de tâches.\\n\\nSi vous désactivez ce paramètre, les modifications suivantes se produisent :\\n\\n(1) La commande Exécuter est supprimée du menu Démarrer.\\n\\n(2) La commande Nouvelle tâche (Exécuter) est supprimée du Gestionnaire de tâches.\\n\\n(3) L'utilisateur ne pourra pas entrer les accès suivants dans la barre d'adresses Internet Explorer :\\n\\n--- Un chemin d'accès UNC : \\\\&lt;serveur&gt;\\&lt;partage&gt;\\n\\n--- L'accès aux lecteurs locaux : par exemple, C:\\n\\n--- L'accès aux dossier locaux : par exemple, \\temp&gt;\\n\\nDe même, les utilisateurs qui disposent de claviers étendus ne pourront plus afficher la boîte de dialogue Exécuter en appuyant sur la touche Windows + R.</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Masquer le menu aide du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nosmhelp" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Supprime la commande Aide du menu Démarrer.\\n\\nCe paramètre n'affecte que le menu Démarrer. Elle ne supprime pas le menu d'aide de l'Explorateur Windows et n'empêche pas les utilisateurs d'exécuter l'aide.</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer l'icône connexions réseau du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nonetworkconnections" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>14</OS>
+							<Intitule>Ajouter l'option fermeture de session au menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="ForceStartMenuLogoff" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Menu demarrer classique">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer "paramètres/active desktop"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="NoSetActiveDesktop" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer "panneau de configuration", "imprimantes", "connexion à distance"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="NoSetFolders" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer "paramètres/options des dossiers"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+							<Variable nom="NoFolderOptions" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer "paramètres/barre des tâches et menu démarrer"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nosettaskbar" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Effacer l'historique des documents récemments ouverts</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="clearrecentdocsonexit" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Masquer le menu "mes documents récents"</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="norecentdocshistory" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Menu demarrer XP">
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Activer le menu démarrer classique</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nosimplestartmenu" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer l'icône mes documents du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nosmmydocs" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire></Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer l'icône ma musique du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nostartmenumymusic" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer l'icône mes images du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nosmmypictures" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer l'icône favoris réseau du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="nostartmenunetworkplaces" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer la liste de programmes en attente</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoStartMenuPinnedList" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer la liste des raccourcis fréquemments utilisés</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoStartMenuMfuProgramsList" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer la liste "tous les programmes" du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoStartMenuMorePrograms" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer le nom d'utilisateur du menu de démarrage</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="NoUsernameInStartMenu" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Désactiver le masquage des raccourcis peu utilisés</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+							<Variable nom="IntelliMenus" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire/>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer l'icône Imprimantes et télécopieurs du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\</Chemin>
+							<Variable nom="Start_ShowPrinters" type="DWORD">
+								<ValueOn>0</ValueOn>
+								<ValueOff>1</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer le Panneau de configuration du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\</Chemin>
+							<Variable nom="Start_ShowControlPanel" type="DWORD">
+								<ValueOn>0</ValueOn>
+								<ValueOff>1</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Masquer le Poste de travail du menu démarrer</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\</Chemin>
+							<Variable nom="Start_ShowMyComputer" type="DWORD">
+								<ValueOn>0</ValueOn>
+								<ValueOff>1</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+				</OU>
+			</ConfUtilisateur>
+		</Application>
+		<Application nom="Internet Explorer">
+			<ConfMachine>
+				<OU classeobjet="BlocRegle" nom="IE7">
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>6</OS>
+						<Intitule>Desactive la configuration initiale d'IE7</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Internet Explorer\\Main</Chemin>
+						<Variable nom="DisableFirstRunCustomize" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>6</OS>
+						<Intitule>Desactive le hameconnage automatique des sites.</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Internet Explorer\\PhishingFilter</Chemin>
+						<Variable nom="Enabled" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+				</OU>
+			</ConfMachine>
+			<ConfUtilisateur>
+				<OU classeobjet="Categorie" nom="IE7">
+					<OU classeobjet="BlocRegle" nom="Moteur de recherche pour ie7">
+						<Regle classeobjet="REGISTRE" type="EDITION">
+							<OS>6</OS>
+							<Intitule>Moteur de recherche</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\SearchScopes\\{83F174E3-6950-4AF8-80A5-7F83D4553B29}</Chemin>
+							<Variable nom="DisplayName" type="STRING">
+								<ValueOn>Google</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="EDITION">
+							<OS>6</OS>
+							<Intitule>URL du moteur de recherche</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\SearchScopes\\{83F174E3-6950-4AF8-80A5-7F83D4553B29}</Chemin>
+							<Variable nom="URL" type="STRING">
+								<ValueOn>http://www.google.fr/search?hl=fr&amp;q={searchTerms}+&amp;meta=</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>6</OS>
+							<Intitule>Moteur de recherche Google par defaut</Intitule>
+							<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\SearchScopes</Chemin>
+							<Variable nom="DefaultScope" type="STRING">
+								<ValueOn>{83F174E3-6950-4AF8-80A5-7F83D4553B29}</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+				</OU>
+				<OU classeobjet="BlocRegle" nom="Configuration du proxy">
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Activer le proxy</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings</Chemin>
+						<Variable nom="ProxyEnable" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>L'activation cette règle impose le passage par le Proxy pour accéder à Internet.</Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification des paramètres proxy</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Proxy" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="EDITION">
+						<OS>254</OS>
+						<Intitule>Entrez les valeurs pour votre Proxy (Adresse:Port)</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings</Chemin>
+						<Variable nom="ProxyServer" type="STRING">
+							<ValueOn>%ESU_PROXY_HOST%:%ESU_PROXY_PORT%</ValueOn>
+							<ValueOff>IGNORE</ValueOff>
+						</Variable>
+						<Commentaire>Veuillez préciser l'adresse de votre Proxy et le port de communication, par exemple :\\n    172.16.0.1:3128\\n    proxy.monetablissement.in:1080\\n    ....</Commentaire>
+					</Regle>
+					<Regle type="EDITION">
+						<OS>254</OS>
+						<Intitule>Ne pas utiliser le proxy pour les adresses commençant par (séparateur = ; )  :</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings</Chemin>
+						<Variable nom="ProxyOverride" type="STRING">
+							<ValueOn>%ESU_PROXY_BYPASS%</ValueOn>
+							<ValueOff>IGNORE</ValueOff>
+						</Variable>
+						<Commentaire>Veuillez préciser la liste des adresses, réseaux et domaines accessibles directement sans passer par le Proxy. \\n\\nLe séparateur est un point-virgule : ";"\\n\\nDe manière générale, précisez l'identité de réseau et le domaine local. Par exemple :\\n     172.16.*;*.350695R.ac-rennes.fr\\n     192.168.1.*;*.mondomaine.local\\n     ...</Commentaire>
+					</Regle>
+					<Regle type="EDITION">
+						<OS>254</OS>
+						<Intitule>Url du script de configuration automatique du proxy (ex : http://srvproxy/cgi-bin/slis.pac)</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings</Chemin>
+						<Variable nom="AutoConfigURL" type="STRING">
+							<ValueOn></ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Règle Activée : Précisez l'URL du script d'autoconfiguration, par exemple :\\n     http://172.16.0.1/cgi-bin/slis.pac\\n\\nRègle désactivée : Le script d'autoconfiguration est ignoré.</Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="BlocRegle" nom="General">
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification des options</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Restrictions</Chemin>
+						<Variable nom="NoBrowserOptions" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'onglet général</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\control panel</Chemin>
+						<Variable nom="generalTab" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'onglet sécurité</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\control panel</Chemin>
+						<Variable nom="SecurityTab" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'onglet contenu</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\control panel</Chemin>
+						<Variable nom="ContentTab" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'onglet connexions</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\control panel</Chemin>
+						<Variable nom="ConnectionsTab" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'onglet programmes</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\control panel</Chemin>
+						<Variable nom="ProgramsTab" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'onglet avancés</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\control panel</Chemin>
+						<Variable nom="AdvancedTab" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="BlocRegle" nom="Onglet general">
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le changement des paramètres "page de démarrage"</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="HomePage" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="EDITION">
+						<OS>254</OS>
+						<Intitule>Url de la page de démarrage de ie</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\Internet Explorer\\Main</Chemin>
+						<Variable nom="Start Page" type="STRING">
+							<ValueOn>http://eole.orion.education.fr</ValueOn>
+							<ValueOff>IGNORE</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le changement des paramètres "fichiers internet temporaires"</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Cache" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le changement des paramètres "historique"</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="History" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le changement des paramètres de couleurs</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Colors" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le changement des paramètres de couleur de liens</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="links" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le changement des paramètres de polices</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Fonts" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le changement des paramètres de langue</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Languages" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le changement des paramètres d'accessibilité</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Accessibility" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Vérifier s'il existe une version plus récente des pages visitées à chaque visite</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings</Chemin>
+						<Variable nom="SyncMode5" type="DWORD">
+							<ValueOn>3</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="BlocRegle" nom="Onglet contenu">
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification des paramètres du gestionnaire d'accès</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Ratings" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification des paramètres de certificats</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Certificates" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification des paramètres de l'assistant profil</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Profiles" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification des paramètres microsoft wallet</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Wallet" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Gestionnaire d'identifications : empêcher les utilisateurs d'utiliser des identifications</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\windows\\currentversion\\identities</Chemin>
+						<Variable nom="locked down" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="BlocRegle" nom="Onglet connexions">
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'appel à l'assistant de connexion</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Connection Wizard" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification des paramètres de connexion</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Connection Settings" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="BlocRegle" nom="Onglet programmes">
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification des paramètres de la messagerie</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\windows\\currentversion\\internet settings</Chemin>
+						<Variable nom="Messaging" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification des paramètres du calendrier et des contacts</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="CalendarContact" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la vérification au démarrage</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="CheckIfDefault" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la fonctionnalité rétablir les paramètres web</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\windows\\currentversion\\internet settings</Chemin>
+						<Variable nom="ResetWebSettings" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="BlocRegle" nom="Onglet avance">
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification de paramètres dans l'onglet avancées</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Advanced" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le débugger de script</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\Main</Chemin>
+						<Variable nom="Disable Script Debugger" type="STRING">
+							<ValueOn>yes</ValueOn>
+							<ValueOff>no</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Afficher une notification à chaque erreur de script</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\Main</Chemin>
+						<Variable nom="Error Dlg Displayed On Every Error" type="STRING">
+							<ValueOn>yes</ValueOn>
+							<ValueOff>no</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Afficher des messages d'erreur HTTP simplifiés</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\Main</Chemin>
+						<Variable nom="Friendly http errors" type="STRING">
+							<ValueOn>yes</ValueOn>
+							<ValueOff>no</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Afficher une notification de téléchargement terminé</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\Main</Chemin>
+						<Variable nom="NotifyDownloadComplete" type="STRING">
+							<ValueOn>yes</ValueOn>
+							<ValueOff>no</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la vérification des mises à jour de IE</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\Main</Chemin>
+						<Variable nom="NoUpdateCheck" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Activer le mode FTP passif (fonctionnement compatible avec les Pare-feux)</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Ftp</Chemin>
+						<Variable nom="Use PASV" type="STRING">
+							<ValueOn>yes</ValueOn>
+							<ValueOff>no</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Activer l'affichage des dossiers sur les sites FTP</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Ftp</Chemin>
+						<Variable nom="Use Web Based FTP" type="STRING">
+							<ValueOn>yes</ValueOn>
+							<ValueOff>no</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'enregistrement des pages cryptées sur le disque</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings</Chemin>
+						<Variable nom="DisableCachingOfSSLPages" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Vider le dossier Tempory Internet Files à la fermeture du navigateur</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Cache</Chemin>
+						<Variable nom="Persistent" type="DWORD">
+							<ValueOn>0</ValueOn>
+							<ValueOff>1</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'affichage des chaînes</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Infodelivery\\Restrictions</Chemin>
+						<Variable nom="NoChannelUI" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification des paramètres de configuration automatique</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel</Chemin>
+						<Variable nom="Autoconfig" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="EDITION">
+						<OS>254</OS>
+						<Intitule>Répertoire d'enregistrement des fichiers téléchargés</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer</Chemin>
+						<Variable nom="Download Directory" type="STRING">
+							<ValueOn>J:\\Mes documents</ValueOn>
+							<ValueOff></ValueOff>
+						</Variable>
+						<Commentaire>Exemple : p:\\mes documents</Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la saisie semi-automatique dans les formulaires</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\windows\\currentversion\\internet settings</Chemin>
+						<Variable nom="FormSuggest" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Ne pas autoriser l'enregistrement des mots de passe</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\windows\\currentversion\\internet settings</Chemin>
+						<Variable nom="FormSuggest Passwords" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la modification du navigateur par défaut</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\windows\\currentversion\\internet settings</Chemin>
+						<Variable nom="CheckIfDefault" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer les news de la barre d'outils</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\restrictions</Chemin>
+						<Variable nom="RestGoMenu" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la navigation sur les disques et les répertoires</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer</Chemin>
+						<Variable nom="NoFileUrl" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>L'activation de cette règle fait que l'accès à des pages HTML via un chemin local est interdit.</Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'impression des pages web (force l'utilisation du copier/coller afin d'éviter)</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Restrictions</Chemin>
+						<Variable nom="NoPrinting" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver l'option "enregistrer ce programme sur le disque"</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoSelectDownloadDir" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>60</OS>
+						<Intitule>Autoriser le contenu actif</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_LOCALMACHINE_LOCKDOWN</Chemin>
+						<Variable nom="iexplore.exe" type="DWORD">
+							<ValueOn>0</ValueOn>
+							<ValueOff>1</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="BlocRegle" nom="Configurer les menus">
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Menu Fichier : désactiver la commande Enregistrer sous...</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoBrowserSaveAs" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Menu Fichier : désactiver la commande Ouvrir</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoFileOpen" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Menu Affichage : désactiver la commande Source</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoViewSource" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Menu Affichage : désactiver la commande Plein écran</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoTheaterMode" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le menu Favoris</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoFavorites" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le menu Aide</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoHelpMenu" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Menu Aide : Masquer la commande Astuce du jour</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoHelpItemTipOfTheDay" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Menu Aide : Masquer la commande Pour les utilisateurs de Netscape</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoHelpItemNetscapeHelp" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Menu Aide : Masquer la commande Envoyer des commentaires</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoHelpItemSendFeedback" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver le menu contextuel</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\policies\\microsoft\\internet explorer\\restrictions</Chemin>
+						<Variable nom="NoBrowserContextMenu" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="Categorie" nom="Configurer les barres d outils">
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la personnalisation des barres d'outils du navigateur</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="NoBandCustomize" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la personnalisation des boutons de la barre de boutons du navigateur</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="NoToolbarCustomize" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver les modifications de la barre d'outils</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Restrictions</Chemin>
+						<Variable nom="NoBrowserBars" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la possibilité d'afficher ou non certaines barres d'outils</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Toolbars\\Restrictions</Chemin>
+						<Variable nom="NoToolbarOptions" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la barre des boutons</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Toolbars\\Restrictions</Chemin>
+						<Variable nom="NoToolBar" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la barre d'adresse</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Toolbars\\Restrictions</Chemin>
+						<Variable nom="NoAddressBar" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Désactiver la barre de liens</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Internet Explorer\\Toolbars\\Restrictions</Chemin>
+						<Variable nom="NoLinksBar" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Configurer les boutons de la barre de boutons (à activer pour configurer l'affichage ou non les boutons)</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="SpecifyDefaultButtons" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Précédente</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnback" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Suivante</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnforward" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Arrêter</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnstop" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Actualiser</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnrefresh" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Démarrage</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnhome" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Rechercher</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnsearch" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Favoris</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnfavorites" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Historique</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnhistory" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Média</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnmedia" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Dossiers</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnfolders" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Plein écran</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnfullscreen" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Outils</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btntools" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Courrier</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnmailnews" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Taille du texte</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnsize" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Imprimer</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnprint" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Édition</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnedit" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Discussion</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btndiscussions" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Couper</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btncut" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Copier</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btncopy" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Coller</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnpaste" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+					<Regle type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Masquer le bouton Codage</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer</Chemin>
+						<Variable nom="btnencoding" type="DWORD">
+							<ValueOn>2</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire></Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="BlocRegle" nom="Confidentialite">
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Bloquer les fenêtres publicitaires intempestives</Intitule>
+						<Chemin>REG://HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\New Windows</Chemin>
+						<Variable nom="PopupMgr" type="STRING">
+							<ValueOn>yes</ValueOn>
+							<ValueOff>no</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+				</OU>
+			</ConfUtilisateur>
+		</Application>
+		<Application nom="Outlook express">
+			<ConfUtilisateur>
+				<Regle type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Bloquer les pièces jointes qui pourraient contenir un virus</Intitule>
+					<Chemin>REG://HKEY_CURRENT_USER\\software\\microsoft\\outlook express</Chemin>
+					<Variable nom="BlockExeAttachments" type="DWORD">
+						<ValueOn>1</ValueOn>
+						<ValueOff>0</ValueOff>
+					</Variable>
+					<Commentaire></Commentaire>
+				</Regle>
+			</ConfUtilisateur>
+		</Application>
+		<Application nom="Firefox">
+			<ConfUtilisateur>
+				<OU classeobjet="Categorie" nom="Gestion du profil">
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>254</OS>
+						<Intitule>Nom du profil</Intitule>
+						<Chemin>INI://%AppData%\\Mozilla\\Firefox\\profiles.ini?section=Profile0</Chemin>
+						<Variable nom="Name" type="STRING">
+							<ValueOn>Defaut</ValueOn>
+							<ValueOff>IGNORE</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>254</OS>
+						<Intitule>Définir l'emplacement du profil de l'utilisateur</Intitule>
+						<Chemin>INI://%AppData%\\Mozilla\\Firefox\\profiles.ini?section=Profile0</Chemin>
+						<Variable nom="Path" type="STRING">
+							<ValueOn>Profiles/Defaut</ValueOn>
+							<ValueOff>IGNORE</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Définir le chemin déterminant l'emplacement profil comme relatif</Intitule>
+						<Chemin>INI://%AppData%\\Mozilla\\Firefox\\profiles.ini?section=Profile0</Chemin>
+						<Variable nom="IsRelative" type="BOOLEAN">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="Categorie" nom="Options">
+					<OU classeobjet="BlocRegle" nom="General">
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Page de démarrage</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.startup.homepage" type="STRING">
+								<ValueOn>http://eole.orion.education.fr</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Vérifier que Firefox est le navigateur par défaut</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.shell.checkDefaultBrowser" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Choix de la langue</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="intl.accept_languages" type="STRING">
+								<ValueOn>fr-fr, fr, en-us, en</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Choix de l'encodage de caractères</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="intl.charset.default" type="STRING">
+								<ValueOn>ISO-8859-1</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Démarrage avec une page vide</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.startup.page" type="DWORD">
+								<ValueOn>0</ValueOn>
+								<ValueOff>1</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Cache">
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Taille en Kilo-octets (Ko) du cache</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.cache.disk.capacity" type="DWORD">
+								<ValueOn>5000</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Taille maximum en kilo-octets de l'espace disque que Firefox utilisera pour stocker le cache</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Activer la mise en cache des pages visitées</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.cache.disk.enable" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Telechargements">
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Dossier de téléchargement </Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.download.dir" type="STRING">
+								<ValueOn>%PERSONAL%</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Activer l'enregistrement des fichiers téléchargés dans l'emplacement précisé ci-dessus</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.download.folderList" type="DWORD">
+								<ValueOn>2</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Permet de préciser l'emplacement de sauvegarde des fichiers téléchargés.\\n\\n2 =&gt; Les fichiers sont enregistrés dans le dossier précisé dans la règle "Dossier de téléchargement"\\n1 =&gt; Les fichiers sont enregistrés dans le dossier "Mes Documents/Mes téléchargements"\\n0 =&gt; Les fichiers sont enregistrés sur le bureau</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Toujours demander le dossier de téléchargement</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.download.useDownloadDir" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>true</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Afficher le gestionnaire de téléchargements quand un téléchargement débute</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.download.manager.showWhenStarting" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Fermer le gestionnaire de téléchargement lorsque tous les téléchargements sont terminés</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.download.manager.closeWhenDone" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Gestion des onglets">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Toujours afficher la barre d'onglets</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.tabs.autoHide" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Avertir lors de la fermeture de plusieurs onglets</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.tabs.warnOnClose" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Mettre les nouveaux onglets en avant-plan</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.tabs.loadInBackground" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>true</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Prévenir lors de l'ouverture de plusieurs onglets d'un ralentissement possible</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.tabs.warnOnOpen" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Les liens ouvrant de nouvelles fenêtres doivent s'ouvrir dans un nouvel onglet</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.link.open_newwindow" type="DWORD">
+								<ValueOn>3</ValueOn>
+								<ValueOff>2</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Les liens provenant d'applications externes doivent s'ouvrir dans un nouvel onglet</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.link.open_external" type="DWORD">
+								<ValueOn>3</ValueOn>
+								<ValueOff>2</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Vie Privee">
+						<Regle type="EDITION">
+							<OS>254</OS>
+							<Intitule>Historique : Se souvenir des pages visitées pendant combien de jours ?</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.history_expire_days" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Ne pas autoriser l'enregistrement des mots de passe</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="signon.rememberSignons" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>true</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver la saisie semi-automatique dans les formulaires</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.formfill.enable" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>true</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="EDITION">
+							<OS>254</OS>
+							<Intitule>Ne pas accepter les cookies (2-&gt; les cookies, 1-&gt; les cookies tiers)</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="network.cookie.cookieBehavior" type="DWORD">
+								<ValueOn>2</ValueOn>
+								<ValueOff>0</ValueOff>
+							</Variable>
+							<Commentaire>2 -&gt; Ne pas Ne pas accepter les cookies\\n1 -&gt; Ne pas accepter les cookies tiers</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="EDITION">
+							<OS>254</OS>
+							<Intitule>Conserver les cookies jusqu'à (0-&gt; par défaut, 1-&gt; demander, 2-&gt; session FF)</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="network.cookie.lifetimePolicy" type="DWORD">
+								<ValueOn>2</ValueOn>
+								<ValueOff>0</ValueOff>
+							</Variable>
+							<Commentaire>0 -&gt; par défaut\\n1 -&gt; demander\\n2 -&gt; A la fermeture de firefox (session Firefox)</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactivation l'importation des Favoris depuis IE</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="browser.places.importBookmarksHTML" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>true</ValueOff>
+							</Variable>
+							<Commentaire>Eviter d'avoir la fenêtre d'importation au premier lancement</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>A la fermeture de firefox, effacer les traces de navigation selon les critères ci-dessous</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="privacy.sanitize.sanitizeOnShutdown" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Effacer les traces de navigation à la fermeture</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Effacer le cache à la fermeture de firefox</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="privacy.item.cache" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Effacer les traces de navigation à la fermeture selon les critères définis ci-dessous</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Effacer les cookies à la fermeture de firefox</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="privacy.item.cookies" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Effacer l'historique de navigation à la fermeture de firefox</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="privacy.item.history" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Effacer l'historique de téléchargement à la fermeture de firefox</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="privacy.item.dowloads" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Effacer les données de sites web hors connexions à la fermeture de firefox</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="privacy.item.offlineApps" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Effacer les recherches et données de formulaires enregistrées à la fermeture de firefox</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="privacy.item.formdata" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Effacer les mots de passe enregistrés à la fermeture de firefox</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="privacy.item.passwords" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Effacer les sessions d'identification à la fermeture de firefox</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="privacy.item.sessions" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Fonctionnalites web">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Bloquer les fenêtres Popup</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="dom.disable_open_during_load" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>true</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Interdire aux sites web d'installer des programmes</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="xpinstall.enabled" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>true</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver JavaScript</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="javascript.enabled" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>true</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver Java</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="security.enable_java" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>true</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Parametres de connexion">
+						<Regle classeobjet="REGISTRE" type="EDITION">
+							<OS>254</OS>
+							<Intitule>Activer le Proxy</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="network.proxy.type" type="DWORD">
+								<ValueOn>1</ValueOn>
+								<ValueOff>SUPPR</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="EDITION">
+							<OS>254</OS>
+							<Intitule>Nom d'hote du proxy HTTP</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="network.proxy.http" type="STRING">
+								<ValueOn>%ESU_PROXY_HOST%</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="EDITION">
+							<OS>254</OS>
+							<Intitule>Port de communication du proxy HTTP</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="network.proxy.http_port" type="DWORD">
+								<ValueOn>%ESU_PROXY_PORT%</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+						<Regle classeobjet="REGISTRE" type="EDITION">
+							<OS>254</OS>
+							<Intitule>Ne pas utiliser le proxy pour les adresses commençant par (séparateur = ; )  :</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="network.proxy.no_proxies_on" type="STRING">
+								<ValueOn>%ESU_PROXY_BYPASS%</ValueOn>
+								<ValueOff>IGNORE</ValueOff>
+							</Variable>
+							<Commentaire>Veuillez préciser la liste des adresses, réseaux et domaines accessibles directement sans passer par le Proxy. \\n\\nLe séparateur est un point-virgule : ";"\\n\\nDe manière générale, précisez l'identité de réseau et le domaine local. Par exemple :\\n     172.16.*;*.350695R.ac-rennes.fr\\n     192.168.1.*;*.mondomaine.local\\n     ...</Commentaire>
+						</Regle>
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Utiliser le même Proxy pour tous les protocoles</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="network.proxy.share_proxy_settings" type="BOOLEAN">
+								<ValueOn>true</ValueOn>
+								<ValueOff>false</ValueOff>
+							</Variable>
+							<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+						</Regle>
+					</OU>
+					<OU classeobjet="BlocRegle" nom="Avance">
+						<Regle type="BOOLEEN">
+							<OS>254</OS>
+							<Intitule>Désactiver les recherches automatiques de mises à jour</Intitule>
+							<Chemin>JS://%AppData%\\Mozilla\\Firefox\\Profiles\\Defaut\\user.js</Chemin>
+							<Variable nom="app.update.enabled" type="BOOLEAN">
+								<ValueOn>false</ValueOn>
+								<ValueOff>true</ValueOff>
+							</Variable>
+							<Commentaire>Cette règle permet la désactivation de la mise à jour automatique de FireFox.</Commentaire>
+						</Regle>
+					</OU>
+				</OU>
+			</ConfUtilisateur>
+			<ConfMachine>
+			</ConfMachine>
+		</Application>
+		<Application nom="Thunderbird">
+			<ConfUtilisateur>
+				<OU classeobjet="Categorie" nom="Gestion du profil">
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>254</OS>
+						<Intitule>Nom du profil</Intitule>
+						<Chemin>INI://%AppData%\\Thunderbird\\profiles.ini?section=Profile0</Chemin>
+						<Variable nom="Name" type="STRING">
+							<ValueOn>Defaut</ValueOn>
+							<ValueOff>IGNORE</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>254</OS>
+						<Intitule>Définir l'emplacement du profil de l'utilisateur</Intitule>
+						<Chemin>INI://%AppData%\\Thunderbird\\profiles.ini?section=Profile0</Chemin>
+						<Variable nom="Path" type="STRING">
+							<ValueOn>Profiles/Defaut</ValueOn>
+							<ValueOff>IGNORE</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>254</OS>
+						<Intitule>Définir le chemin déterminant l'emplacement profil comme relatif</Intitule>
+						<Chemin>INI://%AppData%\\Thunderbird\\profiles.ini?section=Profile0</Chemin>
+						<Variable nom="IsRelative" type="BOOLEAN">
+							<ValueOn>1</ValueOn>
+							<ValueOff>0</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="Categorie" nom="Options">
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>254</OS>
+						<Intitule>Description du serveur LDAP</Intitule>
+						<Chemin>JS://%AppData%\\Thunderbird\\Profiles\\Defaut\\user.js</Chemin>
+						<Variable nom="ldap_2.servers.Scribe.description" type="STRING">
+							<ValueOn>Scribe</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle type="EDITION">
+						<OS>254</OS>
+						<Intitule>Annuaire LDAP pour le carnet d'adresses</Intitule>
+						<Chemin>JS://%AppData%\\Thunderbird\\Profiles\\Defaut\\user.js</Chemin>
+						<Variable nom="ldap_2.servers.Scribe.uri" type="STRING">
+							<ValueOn>ldap://%EOLE_IP_SCRIBE%:389/o=gouv,c=fr??sub?(mail=*)</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+				</OU>
+			</ConfUtilisateur>
+			<ConfMachine>
+				<Regle classeobjet="REGISTRE" type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Thunderbird client courrier par défaut</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\mailto\\shell\\open</Chemin>
+					<Variable nom="command" type="STRING">
+						<ValueOn>"%PROGRAMFILES%\\Mozilla Thunderbird\\thunderbird.exe" -osint -compose "%1"</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+				</Regle>
+				<Regle classeobjet="REGISTRE" type="BOOLEEN">
+					<OS>254</OS>
+					<Intitule>Thunderbird icône courrier par défaut</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\mailto</Chemin>
+					<Variable nom="DefaultIcon" type="STRING">
+						<ValueOn>%PROGRAMFILES%\\Mozilla Thunderbird\\thunderbird.exe,0</ValueOn>
+						<ValueOff>SUPPR</ValueOff>
+					</Variable>
+					<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+				</Regle>
+			</ConfMachine>
+		</Application>
+		<Application nom="Client Scribe">
+			<ConfUtilisateur/>
+			<ConfMachine>
+				<Regle classeobjet="REGISTRE" type="EDITION">
+					<OS>254</OS>
+					<Intitule>Activer le mode debug du client</Intitule>
+					<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Eole\\Scribe</Chemin>
+					<Variable nom="log_level" type="STRING">
+						<ValueOn>debug</ValueOn>
+						<ValueOff>info</ValueOff>
+					</Variable>
+					<Commentaire>Le client dispose de plusieurs niveau de journalisation :\\n* debug, beaucoup d'informations\\n* info, informations standard\\n* error, seulement les erreurs</Commentaire>
+				</Regle>
+			</ConfMachine>
+		</Application>
+		<Application nom="Windows Update">
+			<ConfUtilisateur/>
+			<ConfMachine>
+				<OU classeobjet="BlocRegle" nom="Configuration des mises a jour automatiques">
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>14</OS>
+						<Intitule>Automatisaton de l'installation des mises à jour</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU</Chemin>
+						<Variable nom="AUOptions" type="DWORD">
+							<ValueOn>4</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>1 = Désactiver les MAJ\\n2 = Avertir en cas de nouvelles MAJ, mais sans les télécharger\\n3 = Télécharger automatiquement les MAJ et prévenir lorsqu'elles sont prêtes à être installées\\n4 = Télécharger et installer automatiquement les MAJ à l'heure définie. (Valide seulement si "Jour d'installation" et "Heure d'installation" sont paramétrés)\\n5 = La planification des MAJ est configurée mais l'utilisateur final peut la configurer</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>14</OS>
+						<Intitule>Installation silencieuse des mises à jour mineures</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU</Chemin>
+						<Variable nom="AutoInstallMinorUpdates" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>0 = Considérer les MAJ mineures comme les autres MAJ\\n1 = Installer silencieusement les MAJ mineures</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>14</OS>
+						<Intitule>Demander à l'utilisateur s'il veut redémarrer (NE PAS redémarrer brutalement)</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU</Chemin>
+						<Variable nom="NoAutoRebootWithLoggedOnUsers" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>14</OS>
+						<Intitule>Désactiver les mises à jour automatiques</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU</Chemin>
+						<Variable nom="NoAutoUpdate" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>14</OS>
+						<Intitule>Jour d'installation des MAJ automatiques 0=Tous les jours, 1=Dimanche, 7=Samedi</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU</Chemin>
+						<Variable nom="ScheduledInstallDay" type="DWORD">
+							<ValueOn>0</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>14</OS>
+						<Intitule>Heure d'installation des MAJ automatiques (0 &lt; n &lt; 23)</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU</Chemin>
+						<Variable nom="ScheduledInstallTime" type="DWORD">
+							<ValueOn>4</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>14</OS>
+						<Intitule>Activer le téléchargement des MAJ depuis un serveur WSUS</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU</Chemin>
+						<Variable nom="UseWUServer" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>1 = Téléchargement depuis un serveur WSUS\\n0 = Téléchargement depuis "windowsupdate"</Commentaire>
+					</Regle>
+				</OU>
+				<OU classeobjet="BlocRegle" nom="Configuration WSUS">
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>14</OS>
+						<Intitule>Le serveur WSUS distribue des mise à jour tierces</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate</Chemin>
+						<Variable nom="AcceptTrustedPublisherCerts" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>14</OS>
+						<Intitule>Les utilisateurs NON-administrateurs peuvent paramétrer les MAJ automatiques (dangereux)</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate</Chemin>
+						<Variable nom="ElevateNonAdmins" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>14</OS>
+						<Intitule>Nom du groupe dont la machine fait partie</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate</Chemin>
+						<Variable nom="TargetGroup" type="STRING">
+							<ValueOn>TestServers</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Ne fonctionne que si la règle "Activer la gestion des groupes WSUS" est activée.</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>14</OS>
+						<Intitule>Activer la gestion des groupes WSUS</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate</Chemin>
+						<Variable nom="TargetGroupEnabled" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>14</OS>
+						<Intitule>URL HTTP(S) du serveur WSUS</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate</Chemin>
+						<Variable nom="WUServer" type="STRING">
+							<ValueOn></ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="EDITION">
+						<OS>14</OS>
+						<Intitule>URL HTTP(S) du serveur de status WSUS (doit être identique au serveur WSUS)</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate</Chemin>
+						<Variable nom="WUStatusServer" type="STRING">
+							<ValueOn></ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+					<Regle classeobjet="REGISTRE" type="BOOLEEN">
+						<OS>14</OS>
+						<Intitule>Désactiver l'accès à Windows Update</Intitule>
+						<Chemin>REG://HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate</Chemin>
+						<Variable nom="DisableWindowsUpdateAccess" type="DWORD">
+							<ValueOn>1</ValueOn>
+							<ValueOff>SUPPR</ValueOff>
+						</Variable>
+						<Commentaire>Pas de commentaires pour cette règle !</Commentaire>
+					</Regle>
+				</OU>
+			</ConfMachine>
+		</Application>
+	</ListeRegles>
+	<ListeApplicationsAInstaller>ListeApplicationsAInstaller.xml</ListeApplicationsAInstaller>
+	<ListeApplicationsAutorisees>ListeApplicationsAutorisees.xml</ListeApplicationsAutorisees>
+</AppRef>
