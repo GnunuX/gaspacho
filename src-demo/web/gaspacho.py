@@ -42,8 +42,7 @@ def data_categories_paned():
     ret = []
     for category in get_categories():
         ret.append({"text": category.name, "id": category.id})
-    ret2 = {"images": ret}
-    return json.dumps(ret2)
+    return json.dumps(ret)
 
 def data_rules_group(categoryid, groupid, userid=None):
     #grouping
