@@ -1,50 +1,130 @@
-<h1>Categories</h1>
-<h2>Toutes les categories</h2>
-<form id="formword" method="get" action="/gaspacho/data_categories_paned">
-	<input type="submit" value="Envoyer"/>
-</form>
+<html>
+<head>
+<title>test1.html</title>
+<link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css" />
+<script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="ext/ext-all.js"></script>
+<script type="text/javascript" src="js/GPO.ajaxglobal.js"></script>
+<script language="Javascript" src='ext/build/locale/ext-lang-fr.js'></script>
+<script type="text/javascript">
+var viewport;
 
-<h1>Les groupes</h1>
-<h2>Groupe par groupe parent</h2>
-<form id="formword" method="post" action="/gaspacho/data_groups_tree">
-	<input type="text" name="id"/>
-	<input type="submit" value="Envoyer"/>
-</form>
-<h2>Regle pour un groupe</h2>
-<form id="formword" method="post" action="/gaspacho/data_rules_group">
-	Categorie : <input type="text" name="categoryid"/>
-	Groupe : <input type="text" name="groupid"/>
-	Utilisateur : <input type="text" name="userid"/>
-	<input type="submit" value="Envoyer"/>
-</form>
-<h2>Definir un choix pour un groupe</h2>
-<form id="formword" method="post" action="/gaspacho/set_choice_group">
-        Regle : <input type="text" name="ruleid"/>
-        Groupe : <input type="text" name="groupid"/>
-        Utilisateur : <input type="text" name="userid"/>
-	Valeur : <input type="text" name="value"/>
-	Etat : <input type="text" name="state"/>
-        <input type="submit" value="Envoyer"/>
-</form>
 
-<h1>Les templates</h1>
-<h2>Template</h2>
-<form id="formword" method="post" action="/gaspacho/data_templates_tree">
-	<input type="submit" value="Envoyer"/>
-</form>
-<h2>Regle pour un template</h2>
-<form id="formword" method="post" action="/gaspacho/data_rules_template">
-	Categorie : <input type="text" name="categoryid"/>
-	Template : <input type="text" name="templateid"/>
-	Utilisateur : <input type="text" name="userid"/>
-	<input type="submit" value="Envoyer"/>
-</form>
-<h2>Definir un choix pour un template</h2>
-<form id="formword" method="post" action="/gaspacho/set_choice_template">
-        Regle : <input type="text" name="ruleid"/>
-        Template : <input type="text" name="templateid"/>
-        Utilisateur : <input type="text" name="userid"/>
-	Valeur : <input type="text" name="value"/>
-	Etat : <input type="text" name="state"/>
-        <input type="submit" value="Envoyer"/>
-</form>
+
+
+Ext.onReady(function(){
+    Ext.QuickTips.init();
+
+     function addTab(){
+        tabs.add({
+            title: 'New Tab ',
+            iconCls: 'tabs',
+            html: 'Tab Body <br/><br/>',
+            closable:true
+        }).show();
+    };
+
+    var tabs = new Ext.TabPanel({
+        //renderTo:'tabs',
+        resizeTabs:true, // turn on tab resizing
+        minTabWidth: 115,
+        tabWidth:135,
+        enableTabScroll:true,
+        //width:600,
+        //height:250,
+        defaults: {autoScroll:true}/*,
+        plugins: new Ext.ux.TabCloseMenu()*/
+    });
+
+    // tab generation code
+
+
+
+    var Tree = Ext.tree;
+
+    var tree = new Tree.TreePanel({
+        useArrows: true,
+        autoScroll: true,
+        animate: true,
+        enableDD: true,
+        containerScroll: true,
+        border: false,
+        // auto create TreeLoader
+        dataUrl: 'flux.txt',
+
+        root: {
+            nodeType: 'async',
+            text: 'Ext JS',
+            draggable: false,
+            id: 'src'
+        }
+    });
+
+
+    tree.on('click', function(node, event){
+        console.log(node);
+            /*Ext.Ajax.request({
+                url: './flux.txt',
+                params: {
+                    codeadmin: node.id
+                },
+                success: function(response){
+                        console.log(response);
+                        console.log("ajax ok");
+                }
+            });*/
+
+              var store = new Ext.data.JsonStore({
+                // store configs
+                autoDestroy: true,
+                url: 'flux.txt',
+                storeId: 'group',
+                // reader configs
+                //root: 'images',
+                //idProperty: 'name',
+                fields: ['text', 'id','cls']
+            });
+
+            console.log(store);
+            var index = 0;
+            for (var i=0; i < store.getCount(); i++){
+               addTab();
+            }
+    });
+
+    viewport = new Ext.Viewport({
+              layout : "border",
+              items : [    {
+                  region : "center",
+                  title : "titre",
+                  items :[tabs]
+              },    {
+                  region : "north",
+                  title : "nord",
+                  height : 40
+              },    {
+                  region : "south",
+                  title : "sud",
+                  height : 40
+              },    {
+                  id: 'west_panel',
+                  region : "west",
+                  title : "Group",
+                  width : 150,
+                  minWidth : 50,
+                  split : true,
+                  collapsible : true,
+                  titleCollapse : true,
+                        items : [
+                                tree
+                         ]
+                 }]
+            });
+
+
+    tree.getRootNode().expand();
+
+})
+</script>
+</head>
+<body>
