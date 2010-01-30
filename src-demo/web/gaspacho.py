@@ -26,7 +26,7 @@ def data_groups_tree(id=None):
         ret.append({"text": group.name, "id": group.id, "cls": cls})
     if ogroup != None:
         for user in ogroup.users:
-            ret.append({"text": user.name, "id": user.id, "cls": user.typ})
+            ret.append({"text": user.name, "id": "u"+str(user.id), "cls": user.typ, "leaf": True})
     return json.dumps(ret)
 
 def data_templates_tree():
@@ -108,7 +108,7 @@ class Gaspacho(resource.Resource):
 
     def render_POST(self, request):
         if request.postpath[0] == 'data_groups_tree':
-            id = request.args['id'][0]
+            id = request.args['node'][0]
             if id == '':
                 id = None
             else:
