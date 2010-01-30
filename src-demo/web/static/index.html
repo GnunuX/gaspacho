@@ -94,6 +94,7 @@ Ext.onReady(function(){
 	    tabsjson.on('load', function(store, records, options){
 			    var index = 0;
 			    var len = records.length
+			    tabs.removeAll();
                 for (var i=0; i < len ; i++){
                    addTab(records[i].json.text);
                 }
