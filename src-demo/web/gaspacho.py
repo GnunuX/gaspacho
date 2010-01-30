@@ -26,7 +26,7 @@ def data_groups_tree(id=None):
         ret.append({"text": group.name, "id": group.id, "cls": cls})
     if ogroup != None:
         for user in ogroup.users:
-            ret.append({"text": user.name, "id": "u"+str(user.id), "cls": user.typ, "leaf": True})
+            ret.append({"text": user.name, "id": str(ogroup.id)+"-"+str(user.id), "cls": user.typ, "leaf": True})
     return json.dumps(ret)
 
 def data_templates_tree():
