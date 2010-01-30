@@ -119,6 +119,8 @@ allcomputers = add_computer(name=u'*')
 roomcomputers = add_computer(name=u'*room*', typ=u'name')
 mathcomputers = add_computer(name=u'mathroom*', typ=u'name')
 techcomputers = add_computer(name=u'techroom*', typ=u'name')
+cdicomputers = add_computer(name=u'cdi*', typ=u'name')
+sdpcomputers = add_computer(name=u'sdp*', typ=u'name')
 
 #------------------------------------------------------------------------------
 # VI - Group
@@ -146,17 +148,26 @@ techroom.add_user(student)
 techroom.add_user(teacher)
 techroom.add_computer(techcomputers)
 
+cdi = add_group(name=u'cdi', parent=defaultgroup)
+cdi.add_user(student)
+cdi.add_computer(cdicomputers)
+
+sdp = add_group(name=u'salledesprofs', parent=defaultgroup)
+sdp.add_user(student)
+sdp.add_computer(sdpcomputers)
+
 tplfirefox = add_template(name=u'tplfirefox')
 tplfirefox.add_software(firefox)
 mathroom.add_depend(tplfirefox)
+cdi.add_depend(tplfirefox)
 
 #------------------------------------------------------------------------------
 # VII - Choice
 
-choicea = set_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
+#choicea = set_choice(rule=rulea, group=mathroom, state=u'on', value=u'3120')
 #choicea = set_choice(rule=rulea, group=mathroom, state=u'on', value=u'3118', platform=f35onWinXP)
-choicea = set_choice(rule=rulea, group=room, state=u'on', value=u'3119')
-choicea = set_choice(rule=rulea, template=tplfirefox, state=u'on', value=u'3119')
+#choicea = set_choice(rule=rulea, group=room, state=u'on', value=u'3119')
+#choicea = set_choice(rule=rulea, template=tplfirefox, state=u'on', value=u'3119')
 
 #----
 session.commit()
