@@ -42,7 +42,8 @@ def data_categories_paned():
     ret = []
     for category in get_categories():
         ret.append({"text": category.name, "id": category.id})
-    return json.dumps(ret)
+    ret2 = {"images": ret}
+    return json.dumps(ret2)
 
 def data_rules_group(categoryid, groupid, userid=None):
     #grouping
@@ -104,13 +105,12 @@ class Gaspacho(resource.Resource):
         return Resource.getChild(self, name, request)
 
     def render_GET(self, request):
-        if request.postpath[0] == 'data_categories_paned':
-            return data_categories_paned()
-        else:
-            return "hu?"
+        return "hu?"
 
     def render_POST(self, request):
-        if request.postpath[0] == 'data_groups_tree':
+        if request.postpath[0] == 'data_categories_paned':
+            return data_categories_paned()
+        elif request.postpath[0] == 'data_groups_tree':
             id = request.args['node'][0]
             if id == '':
                 id = None

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>test1.html</title>
+<title>Gaspacho</title>
 <link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css" />
 <script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
 <script type="text/javascript" src="ext/ext-all.js"></script>
@@ -15,12 +15,12 @@ var viewport;
 Ext.onReady(function(){
     Ext.QuickTips.init();
 
-     function addTab(){
+     function addTab(title){
         tabs.add({
-            title: 'New Tab ',
+            title: title,
             iconCls: 'tabs',
             html: 'Tab Body <br/><br/>',
-            closable:true
+            closable: false
         }).show();
     };
 
@@ -32,7 +32,9 @@ Ext.onReady(function(){
         enableTabScroll:true,
         //width:600,
         //height:250,
-        defaults: {autoScroll:true}/*,
+	defaults: {autoScroll:true},
+
+	/*,
         plugins: new Ext.ux.TabCloseMenu()*/
     });
 
@@ -57,7 +59,7 @@ Ext.onReady(function(){
             text: 'default',
             draggable: false,
             id: '1'
-        }
+        },
     });
 
 
@@ -74,22 +76,28 @@ Ext.onReady(function(){
                 }
             });*/
 
-              var store = new Ext.data.JsonStore({
+              var tabsjson = new Ext.data.JsonStore({
+		baseParams: {
+		  id: node.id
+		},
                 // store configs
-                autoDestroy: true,
+		autoDestroy: true,
+//		autoLoad: true,
                 url: '/gaspacho/data_categories_paned',
-                storeId: 'group',
+                //storeId: 'group',
                 // reader configs
-                //root: 'images',
+                root: 'images',
                 //idProperty: 'name',
-                fields: ['text', 'id','cls']
+                fields: ['text', 'id']
             });
-
-            console.log(store);
-         //   var index = 0;
-           // for (var i=0; i < store.getCount(); i++){
-            //   addTab();
-            //}
+	    tabsjson.load();
+	    tabsjson.on('load', function(store, records, options){
+			    var index = 0;
+			    var len = records.length
+                for (var i=0; i < len ; i++){
+                   addTab(records[i].json.text);
+                }
+	    });
     });
 
     viewport = new Ext.Viewport({
