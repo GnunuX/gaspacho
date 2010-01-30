@@ -10,7 +10,10 @@ from api.categories import get_categories, get_category_by_id
 from api.choices import set_choice
 from api.categories import add_tag
 
-import json
+try:
+    import json
+except:
+    import simplejson as json
 
 metadata.bind = "sqlite:///gaspacho.sqlite"
 setup_all()
