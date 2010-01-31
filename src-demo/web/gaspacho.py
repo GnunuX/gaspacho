@@ -26,7 +26,11 @@ def data_groups_tree(id=None):
         ogroup = get_group_by_id(id)
     for group in get_groups(ogroup):
         cls = 'group'
-        ret.append({"text": group.name, "id": group.id, "cls": cls})
+        if group.users == [] and group.children == []:
+            leaf = True
+        else:
+            leaf = False
+        ret.append({"text": group.name, "id": group.id, "cls": cls, "leaf": leaf})
     if ogroup != None:
         for user in ogroup.users:
             ret.append({"text": user.name, "id": str(id)+"-"+str(user.id), "cls": user.typ, "leaf": True})

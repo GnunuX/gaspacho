@@ -153,8 +153,12 @@ cdi.add_user(student)
 cdi.add_computer(cdicomputers)
 
 sdp = add_group(name=u'salledesprofs', parent=defaultgroup)
-sdp.add_user(student)
+#sdp.add_user(student)
 sdp.add_computer(sdpcomputers)
+
+sdp2 = add_group(name=u'salledesprof2', parent=sdp)
+#sdp.add_user(student)
+sdp2.add_computer(sdpcomputers)
 
 tplfirefox = add_template(name=u'tplfirefox')
 tplfirefox.add_software(firefox)

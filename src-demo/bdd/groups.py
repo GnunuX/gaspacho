@@ -9,8 +9,8 @@ class Group(Entity):
     computers = ManyToMany('Computer')
     users = ManyToMany('User', inverse='groups')
     choices = OneToMany('Choice')
-    parent = ManyToOne('Group', inverse='childs')
-    childs = OneToMany('Group')
+    parent = ManyToOne('Group', inverse='children')
+    children = OneToMany('Group')
     depends = ManyToMany('Template')
     softwares = ManyToMany('Software')
 
