@@ -26,7 +26,7 @@ Ext.onReady(function(){
 
     var tabs = new Ext.TabPanel({
         //renderTo:'tabs',
-        resizeTabs:true, // turn on tab resizing
+        resizeTabs: false, // turn on tab resizing
         minTabWidth: 115,
         tabWidth:135,
         enableTabScroll:true,
@@ -34,8 +34,6 @@ Ext.onReady(function(){
         //height:250,
 	defaults: {autoScroll:true},
 
-	/*,
-        plugins: new Ext.ux.TabCloseMenu()*/
     });
 
     // tab generation code
@@ -64,18 +62,6 @@ Ext.onReady(function(){
 
 
     tree.on('click', function(node, event){
-        //console.log(node);
-            /*Ext.Ajax.request({
-                url: '/gaspacho/data_categories_paned',
-                params: {
-                    codeadmin: node.id
-                },
-                success: function(response){
-                        console.log(response);
-                        console.log("ajax ok");
-                }
-            });*/
-
               var tabsjson = new Ext.data.JsonStore({
 		baseParams: {
 		  id: node.id
@@ -113,6 +99,7 @@ Ext.onReady(function(){
                   title : "Groups",
                   width : 150,
                   minWidth : 50,
+        	  autoScroll: true,
                   split : true,
                   collapsible : true,
                   titleCollapse : true,
