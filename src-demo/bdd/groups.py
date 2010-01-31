@@ -21,7 +21,7 @@ class Template(Entity):
     name = Field(UnicodeText)
     comment = Field(UnicodeText)
 #    managers = ManyToMany('User', inverse='managedgroups')
-#    users = ManyToMany('User', inverse='groups')
+    users = ManyToMany('User', inverse='templates')
     depends = ManyToMany('Group')
     choices = OneToMany('Choice')
     softwares = ManyToMany('Software')
@@ -34,6 +34,7 @@ class User(Entity):
     typ = Field(UnicodeText)
     comment = Field(UnicodeText)
     groups = ManyToMany('Group')
+    templates = ManyToMany('Template')
     managedgroups = ManyToMany('Group')
     choices = ManyToMany('Choice')
 

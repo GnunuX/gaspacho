@@ -158,6 +158,7 @@ sdp.add_computer(sdpcomputers)
 
 tplfirefox = add_template(name=u'tplfirefox')
 tplfirefox.add_software(firefox)
+tplfirefox.add_user(student)
 mathroom.add_depend(tplfirefox)
 cdi.add_depend(tplfirefox)
 

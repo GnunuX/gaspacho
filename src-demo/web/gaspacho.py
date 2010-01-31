@@ -29,13 +29,22 @@ def data_groups_tree(id=None):
         ret.append({"text": group.name, "id": group.id, "cls": cls})
     if ogroup != None:
         for user in ogroup.users:
-            ret.append({"text": user.name, "id": str(ogroup.id)+"-"+str(user.id), "cls": user.typ, "leaf": True})
+            ret.append({"text": user.name, "id": str(id)+"-"+str(user.id), "cls": user.typ, "leaf": True})
     return json.dumps(ret)
 
-def data_templates_tree():
+def data_templates_tree(id):
     ret = []
-    for template in get_templates():
-        ret.append({"text": template.name, "id": template.id, "cls": 'template'})
+    if id == None:
+        for template in get_templates():
+            if template.users == []:
+                leaf = True
+            else:
+                leaf = False
+            ret.append({"text": template.name, "id": 't'+str(template.id), "cls": 'template', "leaf": leaf})
+    else:
+        template = get_template_by_id(id)
+        for user in template.users:
+            ret.append({"text": user.name, "id": str(id)+"-"+str(user.id), "cls": user.typ, "leaf": True})
     return json.dumps(ret)
 
 def data_categories_paned(groupname, groupid):
@@ -114,13 +123,17 @@ class Gaspacho(resource.Resource):
             return data_categories_paned(groupname, groupid)
         elif request.postpath[0] == 'data_groups_tree':
             id = request.args['node'][0]
-            if id == '':
+            if id[0] == 't':
+                #template
+                tid=int(id[1:])
+                if tid == 0:
+                    tid=None
+                return data_templates_tree(tid)
+            elif id == '':
                 id = None
             else:
                 id = int(id)
             return data_groups_tree(id)
-        elif request.postpath[0] == 'data_templates_tree':
-            return data_templates_tree()
         elif request.postpath[0] == 'data_rules_group':
             userid = request.args['userid'][0]
             groupid = int(request.args['groupid'][0])

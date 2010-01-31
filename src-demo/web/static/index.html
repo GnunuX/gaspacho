@@ -37,7 +37,6 @@ Ext.onReady(function(){
 	defaults: {autoScroll:true},
 
     });
-
     // tab generation code
 
 
@@ -53,15 +52,31 @@ Ext.onReady(function(){
         border: false,
         // auto create TreeLoader
         dataUrl: '/gaspacho/data_groups_tree',
+	root: new Ext.tree.AsyncTreeNode({
+            expanded: true,
+            children: [{
+                text: 'default',
+            	draggable: false,
+            	expanded: true,
+		leaf: false,
+		id: '1'
+            }, {
+                text: 'templates',
+            	draggable: false,
+            	expanded: true,
+		leaf: false,
+		id: 't0'
+            }]
+        }),
+	rootVisible: false,
 
-        root: {
+/*        root: {
             nodeType: 'async',
             text: 'default',
             draggable: false,
             id: '1'
-        },
+        },*/
     });
-
 
     tree.on('click', function(node, event){
               var tabsjson = new Ext.data.JsonStore({

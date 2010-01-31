@@ -1,6 +1,9 @@
 .usergroup .x-tree-node-icon{
-	    background-image:url( group.gif ) !important;
-    }
+    background-image:url( usergroup.gif ) !important;
+}
 .user .x-tree-node-icon{
-	    background-image:url( user.gif ) !important;
-    }
+    background-image:url( user.gif ) !important;
+}
+.template .x-tree-node-icon{
+    background-image:url( group.gif ) !important;
+}
