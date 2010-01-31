@@ -23,6 +23,7 @@ Ext.onReady(function(){
             html: 'Tab Body <br/><br/>',
             closable: false
         }).show();
+	tabs.setActiveTab(0);
     };
 
     var tabs = new Ext.TabPanel({
@@ -65,7 +66,8 @@ Ext.onReady(function(){
     tree.on('click', function(node, event){
               var tabsjson = new Ext.data.JsonStore({
 		baseParams: {
-		  id: node.id
+		  id: node.id,
+		  name: node.text
 		},
                 // store configs
 		autoDestroy: true,

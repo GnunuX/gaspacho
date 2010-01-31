@@ -38,8 +38,9 @@ def data_templates_tree():
         ret.append({"text": template.name, "id": template.id, "cls": 'template'})
     return json.dumps(ret)
 
-def data_categories_paned():
-    ret = []
+def data_categories_paned(groupname, groupid):
+    #FIXME: need groupname here?
+    ret = [{"text": "Properties", "id": groupid}]
     for category in get_categories():
         ret.append({"text": category.name, "id": category.id})
     return json.dumps(ret)
@@ -108,7 +109,9 @@ class Gaspacho(resource.Resource):
 
     def render_POST(self, request):
         if request.postpath[0] == 'data_categories_paned':
-            return data_categories_paned()
+            groupid = request.args['id'][0]
+            groupname = request.args['name'][0]
+            return data_categories_paned(groupname, groupid)
         elif request.postpath[0] == 'data_groups_tree':
             id = request.args['node'][0]
             if id == '':
