@@ -52,10 +52,9 @@ def data_templates_tree(id):
     return json.dumps(ret)
 
 def data_categories_paned(groupname, groupid):
-    #FIXME: need groupname here?
-    ret = [{"text": "Properties", "id": groupid}]
+    ret = [{"text": "Properties", "id": groupid, "name": groupname}]
     for category in get_categories():
-        ret.append({"text": category.name, "id": category.id})
+        ret.append({"text": category.name, "id": category.id, "name": groupname})
     return json.dumps(ret)
 
 def data_rules_group(categoryid, groupid, userid=None):

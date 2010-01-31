@@ -16,11 +16,11 @@ var viewport;
 Ext.onReady(function(){
     Ext.QuickTips.init();
 
-     function addTab(title){
+     function addTab(title, name){
         tabs.add({
             title: title,
             iconCls: 'tabs',
-            html: 'Tab Body <br/><br/>',
+            html: 'Tab Body for '+name,
             closable: false
         }).show();
 	tabs.setActiveTab(0);
@@ -87,7 +87,7 @@ Ext.onReady(function(){
                 // reader configs
                 //root: 'images',
                 //idProperty: 'name',
-                fields: ['text', 'id']
+                fields: ['text', 'id', 'name']
             });
 	    tabsjson.load();
 	    tabsjson.on('load', function(store, records, options){
@@ -95,7 +95,7 @@ Ext.onReady(function(){
 			    var len = records.length
 			    tabs.removeAll();
                 for (var i=0; i < len ; i++){
-                   addTab(records[i].json.text);
+                   addTab(records[i].json.text, records[i].json.name);
                 }
 	    });
     });
