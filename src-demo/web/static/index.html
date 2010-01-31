@@ -29,8 +29,8 @@ Ext.onReady(function(){
     var tabs = new Ext.TabPanel({
         //renderTo:'tabs',
         resizeTabs: false, // turn on tab resizing
-        minTabWidth: 115,
-        tabWidth:135,
+        //minTabWidth: 115,
+        //tabWidth:135,
         enableTabScroll:true,
         //width:600,
         //height:250,
@@ -71,13 +71,6 @@ Ext.onReady(function(){
             }]
         }),
 	rootVisible: false,
-
-/*        root: {
-            nodeType: 'async',
-            text: 'default',
-            draggable: false,
-            id: '1'
-        },*/
     });
 
     tree.on('click', function(node, event){
@@ -112,6 +105,7 @@ Ext.onReady(function(){
               items : [    {
                   region : "center",
                   title : "Rules",
+                  layout: 'fit',
                   items :[tabs]
               },    {
                   id: 'west_panel',
