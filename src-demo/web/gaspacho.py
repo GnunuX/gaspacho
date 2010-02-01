@@ -37,7 +37,7 @@ def data_groups_tree(id=None):
         ret.append({"text": group.name, "id": group.id, "cls": cls, "leaf": leaf, "expanded": expanded})
     if ogroup != None:
         for user in ogroup.users:
-            ret.append({"text": user.name, "id": str(id)+"-"+str(user.id), "cls": user.typ, "leaf": True})
+            ret.append({"text": user.name, "id": str(id)+"-"+str(user.id), "cls": user.typ, "leaf": True, "draggable": False})
     if id == None:
         ret.extend(data_templates_tree(None, False))
     return json.dumps(ret)
@@ -50,11 +50,11 @@ def data_templates_tree(id, retjson=True):
                 leaf = True
             else:
                 leaf = False
-            ret.append({"text": template.name, "id": 't'+str(template.id), "cls": 'template', "leaf": leaf})
+            ret.append({"text": template.name, "id": 't'+str(template.id), "cls": 'template', "leaf": leaf, "draggable": False})
     else:
         template = get_template_by_id(id)
         for user in template.users:
-            ret.append({"text": user.name, "id": 't'+str(id)+"-"+str(user.id), "cls": user.typ, "leaf": True})
+            ret.append({"text": user.name, "id": 't'+str(id)+"-"+str(user.id), "cls": user.typ, "leaf": True, "draggable": False})
     if retjson:
         return json.dumps(ret)
     return ret
