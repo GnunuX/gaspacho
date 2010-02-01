@@ -61,6 +61,9 @@ def parse_conf(confs):
         regle.os = conf.find('OS').text
         regle.path = conf.find('Chemin').text
         regle.variable, regle.vartyp, regle.valueon, regle.valueoff = parse_var(conf.find('Variable'))
+        comment = conf.find('Commentaire').text
+        if comment == 'Pas de commentaires pour cette règle !':
+            comment = ''
         regle.comment = conf.find('Commentaire').text
         yield regle
 
