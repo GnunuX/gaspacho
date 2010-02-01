@@ -50,7 +50,7 @@ def data_templates_tree(id, retjson=True):
                 leaf = True
             else:
                 leaf = False
-            ret.append({"text": template.name, "id": 't'+str(template.id), "cls": 'template', "expanded": True, "leaf": leaf})
+            ret.append({"text": template.name, "id": 't'+str(template.id), "cls": 'template', "leaf": leaf})
     else:
         template = get_template_by_id(id)
         for user in template.users:
