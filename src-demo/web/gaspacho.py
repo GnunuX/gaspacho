@@ -48,7 +48,7 @@ def data_templates_tree(id):
     else:
         template = get_template_by_id(id)
         for user in template.users:
-            ret.append({"text": user.name, "id": str(id)+"-"+str(user.id), "cls": user.typ, "leaf": True})
+            ret.append({"text": user.name, "id": 't'+str(id)+"-"+str(user.id), "cls": user.typ, "leaf": True})
     return json.dumps(ret)
 
 def data_categories_paned(groupname, groupid):
